@@ -6,6 +6,8 @@
   }
 }
 
+#'@importFrom httr GET user_agent content stop_for_status
+#'@export
 occurrence <- function(
   scientificname=NULL,
   year=NULL,
@@ -47,8 +49,9 @@ occurrence <- function(
 
   while (!lastpage) {
     url <- paste0(baseurl, "&offset=", format(offset, scientific=FALSE))
-    json <- getURL(URLencode(url))
-    res <- fromJSON(json)
+    result <- httr::GET(url, httr::user_agent("obisclient - https://github.com/iobis/obisclient"))
+    httr::stop_for_status(result)
+    res <- httr::content(result)
     limit <- res$limit
     offset <- offset + limit
     lastpage <- res$lastpage
