@@ -10,7 +10,7 @@
 #' @param qc A vector of qc numbers you want to filter out.
 #' @return The taxon list.
 #' @export
-occurrence <- function(
+taxon <- function(
   scientificname = NULL,
   year = NULL,
   obisid = NULL,
@@ -20,7 +20,7 @@ occurrence <- function(
   geometry = NULL,
   qc = NULL,
   verbose = FALSE) {
-  
+
   if(!is.null(year) && is.na(as.numeric(year))) {
     warning(paste("Invalid year:", year))
     year <- NULL
@@ -30,13 +30,13 @@ occurrence <- function(
     qc <- qc[qc > 1 & qc <= 30] ## restrict to valid qcnumbers range
     qc <- paste0(qc, collapse = ",")
   }
-  
+
   offset <- 0
   i <- 1
   lastpage <- FALSE
   total <- 0
   datalist <- list()
-  
+
   while (!lastpage) {
     query <- list(scientificname = scientificname,
                   year = year,
@@ -47,7 +47,7 @@ occurrence <- function(
                   geometry = geometry,
                   qc = qc,
                   offset = format(offset, scientific=FALSE))
-    
+
     result <- httr::GET(.url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
                         path = "taxon", query = query)
     httr::stop_for_status(result)
@@ -55,7 +55,7 @@ occurrence <- function(
       cat(result$request$url, "\n")
     }
     res <- httr::content(result, simplifyVector=TRUE)
-    
+
     if(!is.null(res$message)) {
       lastpage = TRUE
       warning(res$message)
@@ -65,7 +65,7 @@ occurrence <- function(
       lastpage <- res$lastpage
       datalist[[i]] <- res$results
       total <- total + nrow(res$results)
-      
+
       cat("\rRetrieved ", total, " records of ", res$count, " (", floor(total/res$count*100),"%)", sep="")
       i <- i + 1
     }
