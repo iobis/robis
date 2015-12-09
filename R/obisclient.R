@@ -1,8 +1,32 @@
+#' obisclient: R client for the OBIS API
+#'
+#' Work in progress
+#'
+#' @docType package
+#' @name obisclient
+NULL
+
+
+
+
 .url <- function(local) {
   # options(obisclient_url) <- "http://127.0.0.1:8090/"
   getOption("obisclient_url", "http://api.iobis.org/")
 }
 
+#' Find occurrences.
+#'
+#' @param scientificname
+#' @param year
+#' @param obisid
+#' @param aphiaid
+#' @param startdate
+#' @param enddate
+#' @param geometry A wkt geometry string.
+#' @return The occurrences.
+#' @examples
+#' occurrence(scientificname = "Abra sibogai")
+#' @export
 occurrence <- function(
   scientificname=NULL,
   year=NULL,
@@ -33,6 +57,10 @@ occurrence <- function(
 
   if (!is.null(startdate)) {
     baseurl <- paste0(baseurl, "&startdate=", startdate)
+  }
+
+  if (!is.null(geometry)) {
+    baseurl <- paste0(baseurl, "&geometry=", geometry)
   }
 
   offset <- 0
