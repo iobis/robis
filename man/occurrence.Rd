@@ -6,7 +6,7 @@
 \usage{
 occurrence(scientificname = NULL, year = NULL, obisid = NULL,
   aphiaid = NULL, startdate = NULL, enddate = NULL, geometry = NULL,
-  verbose = FALSE)
+  qc = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{}
@@ -22,14 +22,17 @@ occurrence(scientificname = NULL, year = NULL, obisid = NULL,
 \item{enddate}{}
 
 \item{geometry}{A wkt geometry string.}
+
+\item{qc}{A vector of quality control flags you want to filter on. List of \link[=qc]{QC flags}.}
 }
 \value{
-The occurrences.
+The occurrence records.
 }
 \description{
 Find occurrences.
 }
 \examples{
 occurrence(scientificname = "Abra sibogai")
+occurrence(scientificname = "Abra sibogai", qc = c(1:6, 27))
 }
 
