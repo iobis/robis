@@ -1,13 +1,8 @@
 .url <- function(local) {
-  if (local) {
-    return("http://127.0.0.1:8090/")
-  } else {
-    return("http://api.iobis.org/")
-  }
+  # options(obisclient_url) <- "http://127.0.0.1:8090/"
+  getOption("obisclient_url", "http://api.iobis.org/")
 }
 
-#'@importFrom httr GET user_agent content stop_for_status
-#'@export
 occurrence <- function(
   scientificname=NULL,
   year=NULL,
@@ -16,8 +11,7 @@ occurrence <- function(
   startdate=NULL,
   enddate=NULL,
   geometry=NULL,
-  verbose=FALSE,
-  local=FALSE) {
+  verbose=FALSE) {
 
   baseurl <- paste0(.url(local), "occurrence?")
 
@@ -49,9 +43,11 @@ occurrence <- function(
 
   while (!lastpage) {
     url <- paste0(baseurl, "&offset=", format(offset, scientific=FALSE))
-    result <- httr::GET(url, httr::user_agent("obisclient - https://github.com/iobis/obisclient"))
+
+    result <- httr::GET(URLencode(url), httr::user_agent("obisclient - https://github.com/iobis/obisclient"))
     httr::stop_for_status(result)
-    res <- httr::content(result)
+    res <- httr::content(result, simplifyVector=TRUE)
+
     limit <- res$limit
     offset <- offset + limit
     lastpage <- res$lastpage
@@ -59,14 +55,11 @@ occurrence <- function(
     total <- total + nrow(res$results)
     if (verbose) {
       cat(url, "\n")
-    } else {
-      cat("\014")
     }
-    cat("Retrieved ", total, " records of ", res$count, " (", floor(total/res$count*100),"%)\n", sep="")
+    cat("\rRetrieved ", total, " records of ", res$count, " (", floor(total/res$count*100),"%)", sep="")
     i <- i + 1
-
   }
-
+  cat("\n")
   data <- rbind.fill(datalist)
   return(data)
 }
