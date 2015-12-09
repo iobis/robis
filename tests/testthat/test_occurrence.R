@@ -3,9 +3,10 @@ context("occurrence")
 
 small_test_species <- "Abra sibogai"
 small_test_aphiaid <- 345684
+other_test_aphiaid <- 141438 # Abra segmentum
 
 test_that("occurrence returns small number of records for a scientific name", {
-  records <- occurrence(scientificname = small_test_species)
+  records <- occurrence(scientificname = small_test_species, verbose = TRUE)
   expect_more_than(nrow(records), 0)
   expect_true(is.data.frame(records))
   expect_true(all(records$scientificName == small_test_species))
@@ -24,8 +25,23 @@ test_that("occurrence returns small number of records for an obis id", {
   records <- occurrence(obisid = records$obisID[1])
   expect_more_than(nrow(records), 0)
   expect_true(is.data.frame(records))
-  expect_true(all(records$taxonID == small_test_obisid))
+  expect_true(all(records$taxonID == records$obisID[1]))
   expect_true(all(records$aphiaID == small_test_aphiaid))
+})
+
+test_that("occurrence returns records filtered on year",{
+  records <- occurrence(aphiaid = other_test_aphiaid, year = 1935)
+  expect_more_than(nrow(records), 0)
+  expect_true(all(records$yearcollected == 1935))
+})
+
+test_that("occurrence returns records filtered on year",{
+  records <- occurrence(aphiaid = other_test_aphiaid)
+  year <- na.omit(records$yearcollected)[1]
+  records <- occurrence(aphiaid = other_test_aphiaid, year = year)
+  expect_more_than(year, 0)
+  expect_more_than(nrow(records), 0)
+  expect_true(all(records$yearcollected == year))
 })
 
 test_that("qc flags in queries are respected", {
