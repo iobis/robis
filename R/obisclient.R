@@ -37,6 +37,10 @@ occurrence <- function(
   qc = NULL,
   verbose = FALSE) {
 
+  if(!is.null(year) && is.na(as.numeric(year))) {
+    warning(paste("Invalid year:", year))
+    year <- NULL
+  }
   if(!is.null(qc)) {
     qc <- setdiff(qc, 9) ## ignore QC 9 (NOT IMPLEMENTED)
     qc <- qc[qc > 1 & qc <= 30] ## restrict to valid qcnumbers range
@@ -50,8 +54,6 @@ occurrence <- function(
   datalist <- list()
 
   while (!lastpage) {
-
-
     query <- list(scientificname = scientificname,
                   year = year,
                   obisid = obisid,
@@ -70,16 +72,19 @@ occurrence <- function(
     }
     res <- httr::content(result, simplifyVector=TRUE)
 
-    ## TODO print message
+    if(!is.null(res$message)) {
+      lastpage = TRUE
+      warning(res$message)
+    } else {
+      limit <- res$limit
+      offset <- offset + limit
+      lastpage <- res$lastpage
+      datalist[[i]] <- res$results
+      total <- total + nrow(res$results)
 
-    limit <- res$limit
-    offset <- offset + limit
-    lastpage <- res$lastpage
-    datalist[[i]] <- res$results
-    total <- total + nrow(res$results)
-
-    cat("\rRetrieved ", total, " records of ", res$count, " (", floor(total/res$count*100),"%)", sep="")
-    i <- i + 1
+      cat("\rRetrieved ", total, " records of ", res$count, " (", floor(total/res$count*100),"%)", sep="")
+      i <- i + 1
+    }
   }
   cat("\n")
   data <- rbind.fill(datalist)

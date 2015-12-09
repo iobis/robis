@@ -56,3 +56,7 @@ test_that("qc flags in queries are respected", {
   expect_equal(length(check_qc_no_zero(records_with_qc)), 0)
   expect_less_than(nrow(records_with_qc), nrow(records))
 })
+
+test_that("occurrence test warnings",{
+  expect_warning({occurrence(aphiaid = -1, verbose = T)})
+})
