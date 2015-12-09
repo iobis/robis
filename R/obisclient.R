@@ -20,7 +20,7 @@ NULL
 #' @param startdate
 #' @param enddate
 #' @param geometry A wkt geometry string.
-#' @param qc A vector of qc numbers you want to filter out.
+#' @param qc A vector of quality control flags you want to filter on. List of \link[=qc]{QC flags}.
 #' @return The occurrence records.
 #' @examples
 #' occurrence(scientificname = "Abra sibogai")
@@ -42,7 +42,7 @@ occurrence <- function(
     year <- NULL
   }
   if(!is.null(qc)) {
-    qc <- setdiff(qc, 9) ## ignore QC 9 (NOT IMPLEMENTED)
+    qc <- setdiff(qc, c(8,9,20)) ## ignore QC 8,9,20 (NOT IMPLEMENTED)
     qc <- qc[qc > 1 & qc <= 30] ## restrict to valid qcnumbers range
     qc <- paste0(qc, collapse = ",")
   }

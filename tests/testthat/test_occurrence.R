@@ -58,5 +58,7 @@ test_that("qc flags in queries are respected", {
 })
 
 test_that("occurrence test warnings",{
-  expect_warning({occurrence(aphiaid = -1, verbose = T)})
+  expect_warning({occurrence(aphiaid = -1)})
+  expect_warning({occurrence(aphiaid = small_test_aphiaid, year = NA)})
+  expect_warning({occurrence(aphiaid = small_test_aphiaid, year = "test")})
 })
