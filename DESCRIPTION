@@ -1,6 +1,6 @@
 Package: obisclient
 Title: Temporary package for testing the OBIS API during development
-Version: 0.1
+Version: 0.1.0.9000
 Author: Pieter Provoost
 Description: Temporary package for testing the OBIS API during development
 Depends:

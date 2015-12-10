@@ -1,11 +1,3 @@
-#' obisclient: R client for the OBIS API
-#'
-#' Work in progress
-#'
-#' @docType package
-#' @name obisclient
-NULL
-
 .url <- function() {
   # options(obisclient_url) <- "http://127.0.0.1:8090/"
   getOption("obisclient_url", "http://api.iobis.org/")

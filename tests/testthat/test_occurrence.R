@@ -57,6 +57,17 @@ test_that("qc flags in queries are respected", {
   expect_less_than(nrow(records_with_qc), nrow(records))
 })
 
+test_that("occurrence returns records filtered on geometry",{
+  records <- occurrence(aphiaid = other_test_aphiaid, geometry = "POLYGON ((0 0, 0 45, 45 45, 45 0, 0 0))")
+  expect_more_than(nrow(records), 0)
+  expect_less_than(nrow(records), nrow(occurrence(aphiaid = other_test_aphiaid)))
+  expect_true(all(records$decimalLongitude < 45))
+  expect_true(all(records$decimalLatitude < 45))
+  expect_true(all(records$decimalLongitude > 0))
+  expect_true(all(records$decimalLatitude > 0))
+})
+
+
 test_that("occurrence test warnings",{
   expect_warning({occurrence(aphiaid = -1)})
   expect_warning({occurrence(aphiaid = small_test_aphiaid, year = NA)})
