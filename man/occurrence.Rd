@@ -6,7 +6,7 @@
 \usage{
 occurrence(scientificname = NULL, year = NULL, obisid = NULL,
   aphiaid = NULL, startdate = NULL, enddate = NULL, geometry = NULL,
-  qc = NULL, verbose = FALSE)
+  qc = NULL, fields = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{}
@@ -24,6 +24,8 @@ occurrence(scientificname = NULL, year = NULL, obisid = NULL,
 \item{geometry}{A wkt geometry string.}
 
 \item{qc}{A vector of quality control flags you want to filter on. List of \link[=qc]{QC flags}.}
+
+\item{fields}{A vector of field names you want to have returned in order, by default all fields with values are returned.}
 }
 \value{
 The occurrence records.
@@ -32,7 +34,10 @@ The occurrence records.
 Find occurrences.
 }
 \examples{
-occurrence(scientificname = "Abra sibogai")
-occurrence(scientificname = "Abra sibogai", qc = c(1:6, 27))
+records <- occurrence(scientificname = "Abra sibogai")
+records <- occurrence(aphiaid = 141438, startdate = as.Date("2007-10-10"))
+records <- occurrence(aphiaid = 141438, geometry = "POLYGON ((0 0, 0 45, 45 45, 45 0, 0 0))")
+records <- occurrence(scientificname = "Abra sibogai", qc = c(1:6, 27))
+records <- occurrence(scientificname = "Abra sibogai", fields = c("species", "decimalLongitude", "decimalLatitude"))
 }
 

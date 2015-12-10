@@ -35,14 +35,14 @@ test_that("occurrence returns records filtered on year",{
   records <- occurrence(aphiaid = other_test_aphiaid, year = year)
   expect_more_than(year, 0)
   expect_more_than(nrow(records), 0)
-  expect_less_than(nrow(records), nrowr(records_original))
+  expect_less_than(nrow(records), nrow(records_original))
   expect_true(all(records$yearcollected == year))
 })
 
 expect_filtered <- function(...) {
   records <- occurrence(aphiaid = other_test_aphiaid, ...)
-  expect_more_than(nrow(records), 0)
-  expect_less_than(nrow(records), nrow(occurrence(aphiaid = other_test_aphiaid)))
+  expect_more_than(NROW(records), 0)
+  expect_less_than(NROW(records), nrow(occurrence(aphiaid = other_test_aphiaid)))
   records
 }
 
@@ -58,9 +58,9 @@ test_that("occurrence returns records filtered on enddate",{
   expect_true(all(as.Date(records$eventDate) < end))
 })
 
-test_that("occurrence returns records filtered on enddate",{
+test_that("occurrence returns records filtered on start and enddate",{
   start <- as.Date("2007-06-22")
-  end <- as.Date("2008-1-1")
+  end <- as.Date("2011-1-1")
   records <- expect_filtered(startdate = start, enddate = end)
   expect_true(all(as.Date(records$eventDate) > start))
   expect_true(all(as.Date(records$eventDate) < end))
@@ -68,7 +68,7 @@ test_that("occurrence returns records filtered on enddate",{
 
 test_that("occurrence returns 0 records then no errors occur",{
   records <- occurrence(aphiaid = other_test_aphiaid, startdate = as.Date("3210-1-1"))
-  expect_equal(nrow(records), 0)
+  expect_equal(NROW(records), 0)
 })
 
 test_that("occurrence returns records filtered on geometry",{
@@ -92,8 +92,16 @@ test_that("qc flags in queries are respected", {
   expect_less_than(nrow(records_with_qc), nrow(records))
 })
 
+test_that("occurrence returns requested fields",{
+  fields = c("species", "decimalLongitude", "decimalLatitude")
+  records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)
+  expect_more_than(nrow(records), 0)
+  expect_equal(colnames(records), fields)
+})
+
 test_that("occurrence test warnings",{
   expect_warning({occurrence(aphiaid = -1)})
   expect_warning({occurrence(aphiaid = small_test_aphiaid, year = NA)})
   expect_warning({occurrence(aphiaid = small_test_aphiaid, year = "test")})
+  expect_warning({occurrence(aphiaid = small_test_aphiaid, fields = c("species", "abcdefghij"))})
 })
