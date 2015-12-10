@@ -3,6 +3,14 @@
   getOption("obisclient_url", "http://api.iobis.org/")
 }
 
+handle_date <- function(date) {
+  if(!is.null(date) && class(date) == "Date") {
+    as.character(date)
+  } else {
+    date
+  }
+}
+
 #' Find occurrences.
 #'
 #' @param scientificname
@@ -50,8 +58,8 @@ occurrence <- function(
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
-                  startdate = startdate,
-                  enddate = enddate,
+                  startdate = handle_date(startdate),
+                  enddate = handle_date(enddate),
                   geometry = geometry,
                   qc = qc,
                   offset = format(offset, scientific=FALSE))
@@ -71,9 +79,10 @@ occurrence <- function(
       limit <- res$limit
       offset <- offset + limit
       lastpage <- res$lastpage
-      datalist[[i]] <- res$results
-      total <- total + nrow(res$results)
-
+      if(res$count > 0) {
+        datalist[[i]] <- res$results
+        total <- total + nrow(res$results)
+      }
       cat("\rRetrieved ", total, " records of ", res$count, " (", floor(total/res$count*100),"%)", sep="")
       i <- i + 1
     }
