@@ -54,7 +54,7 @@ Get a taxon list for a region:
 taxa <- taxon(geometry="POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
 ```
 
-Get a taxon list for a region in marineregions.org:
+Get a taxon list for a region in marineregions.org (requires sckott/mregions):
 
 ```R
 require(mregions)
