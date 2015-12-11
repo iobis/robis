@@ -78,6 +78,12 @@ occurrence <- function(
 
     result <- httr::GET(.url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
                         path = "occurrence", query = query)
+
+    if (result$status_code == 0) { ## URI too long seems to result in status code 0
+      warning("status code 0, is the geometry parameter too long?")
+      return(NULL)
+    }
+
     httr::stop_for_status(result)
     if (verbose) {
       cat(result$request$url, "\n")
