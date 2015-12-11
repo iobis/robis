@@ -28,6 +28,12 @@ Restrict fields in result set:
 data <- occurrence("Abra alba", fields=c("decimalLongitude", "decimalLatitude"))
 ```
 
+Filter occurrences by [QC flags](http://www.ncbi.nlm.nih.gov/pubmed/25632106):
+
+```R
+data <- occurrence("Abra nitida", qc=c(22, 23))
+```
+
 Get occurrences by geometry:
 
 ```R
