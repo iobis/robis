@@ -33,3 +33,17 @@ Get occurrences by geometry:
 ```R
 data <- occurrence("Abra alba", geometry="POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
 ```
+
+## Taxon
+
+Get a taxon list for a specific group and year:
+
+```R
+data <- taxon("Semelidae", year=2005)
+```
+
+Get a taxon list for a region:
+
+```R
+data <- taxon(geometry="POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
+```
