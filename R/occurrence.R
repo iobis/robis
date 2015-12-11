@@ -1,5 +1,4 @@
 .url <- function() {
-  # options(obisclient_url) <- "http://127.0.0.1:8090/"
   getOption("obisclient_url", "http://api.iobis.org/")
 }
 

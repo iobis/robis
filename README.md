@@ -1,6 +1,6 @@
 # obisclient
 
-OBIS API client
+R client for the OBIS API
 
 ## Installation
 
