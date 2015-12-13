@@ -2,6 +2,7 @@ Package: obisclient
 Title: R client for the OBIS API
 Version: 0.1.1
 Author: Pieter Provoost, Samuel Bosch
+Maintainer: Pieter Provoost <pieterprovoost@gmail.com>
 Description: R client for the OBIS API
 Depends:
     R (>= 3.1.3),
