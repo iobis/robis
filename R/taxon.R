@@ -26,8 +26,8 @@ taxon <- function(
     year <- NULL
   }
   if(!is.null(qc)) {
-    qc <- setdiff(qc, 9) ## ignore QC 9 (NOT IMPLEMENTED)
-    qc <- qc[qc > 1 & qc <= 30] ## restrict to valid qcnumbers range
+    qc <- setdiff(qc, 9) # ignore QC 9 (NOT IMPLEMENTED)
+    qc <- qc[qc > 1 & qc <= 30] # restrict to valid qcnumbers range
     qc <- paste0(qc, collapse = ",")
   }
 
@@ -38,7 +38,7 @@ taxon <- function(
   datalist <- list()
 
   while (!lastpage) {
-    body <- list(scientificname = scientificname,
+    query <- list(scientificname = scientificname,
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
@@ -48,11 +48,16 @@ taxon <- function(
                   qc = qc,
                   offset = format(offset, scientific=FALSE))
 
-    result <- httr::POST(.url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
-                        path = "taxon", body = body)
+    # use POST for complex geometries
+    if (!is.null(geometry) && nchar(geometry) > max_characters()) {
+      result <- http_request("POST", "taxon", query)
+    } else {
+      result <- http_request("GET", "taxon", query)
+    }
+
     httr::stop_for_status(result)
     if (verbose) {
-      cat(result$request$url, "\n")
+      log_request(result)
     }
     res <- httr::content(result, simplifyVector=TRUE)
 
@@ -65,8 +70,7 @@ taxon <- function(
       lastpage <- res$lastpage
       datalist[[i]] <- res$results
       total <- total + nrow(res$results)
-
-      cat("\rRetrieved ", total, " records of ", res$count, " (", floor(total/res$count*100),"%)", sep="")
+      log_progress(total, res$count)
       i <- i + 1
     }
   }

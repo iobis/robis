@@ -1,23 +1,3 @@
-.url <- function() {
-  getOption("obisclient_url", "http://api.iobis.org/")
-}
-
-handle_date <- function(date) {
-  if(!is.null(date) && class(date) == "Date") {
-    as.character(date)
-  } else {
-    date
-  }
-}
-
-handle_vector <- function(x) {
-  if(!is.null(x)) {
-    paste0(x, collapse = ",")
-  } else {
-    x
-  }
-}
-
 #' Find occurrences.
 #'
 #' @param scientificname
@@ -54,8 +34,8 @@ occurrence <- function(
     year <- NULL
   }
   if(!is.null(qc)) {
-    qc <- setdiff(qc, c(8,9,20)) ## ignore QC 8,9,20 (NOT IMPLEMENTED)
-    qc <- qc[qc > 1 & qc <= 30] ## restrict to valid qcnumbers range
+    qc <- setdiff(qc, c(8,9,20)) # ignore QC 8,9,20 (NOT IMPLEMENTED)
+    qc <- qc[qc > 1 & qc <= 30] # restrict to valid qcnumbers range
   }
 
   offset <- 0
@@ -65,7 +45,7 @@ occurrence <- function(
   datalist <- list()
 
   while (!lastpage) {
-    body <- list(scientificname = scientificname,
+    query <- list(scientificname = scientificname,
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
@@ -76,17 +56,16 @@ occurrence <- function(
                   fields = handle_vector(fields),
                   offset = format(offset, scientific=FALSE))
 
-    result <- httr::POST(.url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
-                        path = "occurrence", body = body)
-
-    if (result$status_code == 0) { ## URI too long seems to result in status code 0
-      warning("status code 0, is the geometry parameter too long?")
-      return(NULL)
+    # use POST for complex geometries
+    if (!is.null(geometry) && nchar(geometry) > max_characters()) {
+      result <- http_request("POST", "occurrence", query)
+    } else {
+      result <- http_request("GET", "occurrence", query)
     }
 
     httr::stop_for_status(result)
     if (verbose) {
-      cat(result$request$url, "\n")
+      log_request(result)
     }
     res <- httr::content(result, simplifyVector=TRUE)
 
@@ -100,7 +79,7 @@ occurrence <- function(
       if(res$count > 0) {
         datalist[[i]] <- res$results
         total <- total + nrow(res$results)
-        cat("\rRetrieved ", total, " records of ", res$count, " (", floor(total/res$count*100),"%)", sep="")
+        log_progress(total, res$count)
         i <- i + 1
       }
     }
@@ -116,7 +95,7 @@ occurrence <- function(
     for (extra_col in setdiff(colnames(data), fields)) { # remove fields that were not requested
       data[,extra_col] <- NULL
     }
-    data <- data[,setdiff(fields,missing_fields)] # re-order columns to the expected order
+    data <- data[,setdiff(fields, missing_fields)] # re-order columns to the expected order
   }
   return(data)
 }
