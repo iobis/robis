@@ -1,5 +1,7 @@
 # obisclient
 
+[![Travis-CI Build Status](https://travis-ci.org/iobis/obisclient.svg?branch=master)](https://travis-ci.org/iobis/obisclient)
+
 R client for the OBIS API
 
 ## Installation
