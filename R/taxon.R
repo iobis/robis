@@ -38,7 +38,7 @@ taxon <- function(
   datalist <- list()
 
   while (!lastpage) {
-    query <- list(scientificname = scientificname,
+    body <- list(scientificname = scientificname,
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
@@ -48,8 +48,8 @@ taxon <- function(
                   qc = qc,
                   offset = format(offset, scientific=FALSE))
 
-    result <- httr::GET(.url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
-                        path = "taxon", query = query)
+    result <- httr::POST(.url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
+                        path = "taxon", body = body)
     httr::stop_for_status(result)
     if (verbose) {
       cat(result$request$url, "\n")

@@ -65,7 +65,7 @@ occurrence <- function(
   datalist <- list()
 
   while (!lastpage) {
-    query <- list(scientificname = scientificname,
+    body <- list(scientificname = scientificname,
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
@@ -76,8 +76,8 @@ occurrence <- function(
                   fields = handle_vector(fields),
                   offset = format(offset, scientific=FALSE))
 
-    result <- httr::GET(.url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
-                        path = "occurrence", query = query)
+    result <- httr::POST(.url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
+                        path = "occurrence", body = body)
 
     if (result$status_code == 0) { ## URI too long seems to result in status code 0
       warning("status code 0, is the geometry parameter too long?")
