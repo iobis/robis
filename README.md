@@ -58,5 +58,8 @@ Get a taxon list for a region in marineregions.org (requires [sckott/mregions](h
 
 ```R
 require(mregions)
+
 taxa <- taxon(geometry=as_wkt(region_shp(name="Belgian Exclusive Economic Zone")))
+
+taxa <- taxon(geometry=as_wkt(region_shp(name="World Marine Heritage Sites", maxFeatures=NULL, filter="iSimangaliso Wetland Park")))
 ```
