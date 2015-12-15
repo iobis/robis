@@ -1,4 +1,4 @@
-library(obisclient)
+library(robis)
 context("occurrence")
 
 small_test_species <- "Abra sibogai"

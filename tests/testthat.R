@@ -1,4 +1,4 @@
 library(testthat)
-library(obisclient)
+library(robis)
 
-test_check("obisclient")
+test_check("robis")

@@ -1,4 +1,4 @@
-# obisclient
+# robis
 
 [![Travis-CI Build Status](https://travis-ci.org/iobis/obisclient.svg?branch=master)](https://travis-ci.org/iobis/obisclient)
 [![Coverage Status](https://coveralls.io/repos/iobis/obisclient/badge.svg?branch=master&service=github)](https://coveralls.io/github/iobis/obisclient?branch=master)
@@ -8,7 +8,7 @@ R client for the OBIS API
 ## Installation
 
 ```R
-devtools::install_github("iobis/obisclient")
+devtools::install_github("iobis/robis")
 ```
 
 ## Occurrence
@@ -63,6 +63,5 @@ Get a taxon list for a region in marineregions.org (requires [sckott/mregions](h
 require(mregions)
 
 taxa <- taxon(geometry=as_wkt(region_shp(name="Belgian Exclusive Economic Zone")))
-
 taxa <- taxon(geometry=as_wkt(region_shp(name="World Marine Heritage Sites", maxFeatures=NULL, filter="iSimangaliso Wetland Park")))
 ```

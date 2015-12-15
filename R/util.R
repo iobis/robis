@@ -1,9 +1,9 @@
 obis_url <- function() {
-  getOption("obisclient_url", "http://api.iobis.org/")
+  getOption("robis_url", "http://api.iobis.org/")
 }
 
 max_characters <- function() {
-  getOption("obisclient_max_characters", 50000)
+  getOption("robis_max_characters", 50000)
 }
 
 handle_date <- function(date) {
@@ -32,10 +32,10 @@ log_progress <- function(total, count) {
 
 http_request <- function(method, path, query) {
   if (method == "GET") {
-    httr::GET(obis_url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
+    httr::GET(obis_url(), httr::user_agent("robis - https://github.com/iobis/robis"),
               path = path, query = query)
   } else if (method == "POST") {
-    httr::POST(obis_url(), httr::user_agent("obisclient - https://github.com/iobis/obisclient"),
+    httr::POST(obis_url(), httr::user_agent("robis - https://github.com/iobis/robis"),
                path = path, body = query)
   }
 }
