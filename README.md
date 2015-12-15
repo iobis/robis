@@ -1,6 +1,6 @@
 # robis
 
-[![Travis-CI Build Status](https://travis-ci.org/iobis/obisclient.svg?branch=master)](https://travis-ci.org/iobis/obisclient)
+[![Travis-CI Build Status](https://travis-ci.org/iobis/robis.svg?branch=master)](https://travis-ci.org/iobis/robis)
 [![Coverage Status](https://coveralls.io/repos/iobis/robis/badge.svg?branch=master&service=github)](https://coveralls.io/github/iobis/robis?branch=master)
 
 R client for the OBIS API
