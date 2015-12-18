@@ -63,10 +63,10 @@ occurrence <- function(
       result <- http_request("GET", "occurrence", query)
     }
 
-    httr::stop_for_status(result)
     if (verbose) {
       log_request(result)
     }
+    httr::stop_for_status(result)
     res <- httr::content(result, simplifyVector=TRUE)
 
     if(!is.null(res$message)) {

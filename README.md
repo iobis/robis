@@ -43,18 +43,18 @@ Get occurrences by geometry:
 data <- occurrence("Abra alba", geometry="POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
 ```
 
-## Taxon
+## Taxa
 
 Get a taxon list for a specific group and year:
 
 ```R
-taxa <- taxon("Semelidae", year=2005)
+data <- taxa("Semelidae", year=2005)
 ```
 
 Get a taxon list for a region:
 
 ```R
-taxa <- taxon(geometry="POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
+data <- taxa(geometry="POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
 ```
 
 Get a taxon list for a region in marineregions.org (requires [sckott/mregions](https://github.com/sckott/mregions)):
@@ -62,6 +62,6 @@ Get a taxon list for a region in marineregions.org (requires [sckott/mregions](h
 ```R
 require(mregions)
 
-taxa <- taxon(geometry=as_wkt(region_shp(name="Belgian Exclusive Economic Zone")))
-taxa <- taxon(geometry=as_wkt(region_shp(name="World Marine Heritage Sites", maxFeatures=NULL, filter="iSimangaliso Wetland Park")))
+data <- taxa(geometry=as_wkt(region_shp(name="Belgian Exclusive Economic Zone")))
+data <- taxa(geometry=as_wkt(region_shp(name="World Marine Heritage Sites", maxFeatures=NULL, filter="iSimangaliso Wetland Park")))
 ```

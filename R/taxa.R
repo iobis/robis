@@ -10,7 +10,7 @@
 #' @param qc A vector of qc numbers you want to filter out.
 #' @return The taxon list.
 #' @export
-taxon <- function(
+taxa <- function(
   scientificname = NULL,
   year = NULL,
   obisid = NULL,
@@ -50,15 +50,15 @@ taxon <- function(
 
     # use POST for complex geometries
     if (!is.null(geometry) && nchar(geometry) > max_characters()) {
-      result <- http_request("POST", "taxon", query)
+      result <- http_request("POST", "taxa", query)
     } else {
-      result <- http_request("GET", "taxon", query)
+      result <- http_request("GET", "taxa", query)
     }
 
-    httr::stop_for_status(result)
     if (verbose) {
       log_request(result)
     }
+    httr::stop_for_status(result)
     res <- httr::content(result, simplifyVector=TRUE)
 
     if(!is.null(res$message)) {
