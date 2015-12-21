@@ -44,6 +44,8 @@ occurrence <- function(
   total <- 0
   datalist <- list()
 
+  t <- proc.time()
+
   while (!lastpage) {
     query <- list(scientificname = scientificname,
                   year = year,
@@ -85,6 +87,10 @@ occurrence <- function(
     }
   }
   cat("\n")
+  if (verbose) {
+    cat("Total time:", (proc.time() - t)[["elapsed"]], "seconds\n")
+  }
+
   data <- rbind.fill(datalist)
 
   if(!is.null(fields)) {

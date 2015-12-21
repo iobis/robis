@@ -23,7 +23,7 @@ handle_vector <- function(x) {
 }
 
 log_request <- function(result) {
-  cat("\n", paste(result$request$method, result$request$url, result$status_code, result$headers$age), "\n", sep="")
+  cat("\n", paste(result$request$method, result$request$url, result$status_code, result$headers$age, result$times[["total"]]), "\n", sep="")
 }
 
 log_progress <- function(total, count) {
