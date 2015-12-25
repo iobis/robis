@@ -75,7 +75,7 @@ taxa <- function(
     }
   }
   cat("\n")
-  data <- rbind.fill(datalist)
+  data <- rbind_all(datalist)
   return(data)
 }
 

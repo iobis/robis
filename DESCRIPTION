@@ -6,9 +6,10 @@ Maintainer: Pieter Provoost <pieterprovoost@gmail.com>
 Description: R client for the OBIS API
 Depends:
     R (>= 3.1.3),
+    dplyr
+Imports:
     httr,
-    lubridate,
-    plyr
+    lubridate
 License: MIT
 Suggests:
     testthat

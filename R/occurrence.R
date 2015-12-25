@@ -91,7 +91,7 @@ occurrence <- function(
     cat("Total time:", (proc.time() - t)[["elapsed"]], "seconds\n")
   }
 
-  data <- rbind.fill(datalist)
+  data <- rbind_all(datalist)
 
   if(!is.null(fields)) {
     missing_fields <- setdiff(fields, colnames(data))
