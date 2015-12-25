@@ -4,4 +4,5 @@
 #'
 #' @docType package
 #' @name robis
+#' @import dplyr httr
 NULL

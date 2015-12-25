@@ -58,8 +58,8 @@ taxa <- function(
     if (verbose) {
       log_request(result)
     }
-    httr::stop_for_status(result)
-    res <- httr::content(result, simplifyVector=TRUE)
+    stop_for_status(result)
+    res <- content(result, simplifyVector=TRUE)
 
     if(!is.null(res$message)) {
       lastpage = TRUE

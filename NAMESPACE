@@ -2,3 +2,5 @@
 
 export(occurrence)
 export(taxa)
+import(dplyr)
+import(httr)

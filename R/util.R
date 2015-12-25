@@ -32,10 +32,10 @@ log_progress <- function(total, count) {
 
 http_request <- function(method, path, query) {
   if (method == "GET") {
-    httr::GET(obis_url(), httr::user_agent("robis - https://github.com/iobis/robis"),
+    GET(obis_url(), user_agent("robis - https://github.com/iobis/robis"),
               path = path, query = query)
   } else if (method == "POST") {
-    httr::POST(obis_url(), httr::user_agent("robis - https://github.com/iobis/robis"),
+    POST(obis_url(), user_agent("robis - https://github.com/iobis/robis"),
                path = path, body = query)
   }
 }
