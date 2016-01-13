@@ -99,6 +99,13 @@ test_that("occurrence returns requested fields",{
   expect_equal(colnames(records), fields)
 })
 
+test_that("occurrence returns requested fields even when missing",{
+  fields = c("species", "decimalLongitude", "decimalLatitude", "individualCount")
+  records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)
+  expect_more_than(nrow(records), 0)
+  expect_equal(colnames(records), fields)
+})
+
 test_that("occurrence test warnings",{
   expect_warning({occurrence(aphiaid = -1)})
   expect_warning({occurrence(aphiaid = small_test_aphiaid, year = NA)})

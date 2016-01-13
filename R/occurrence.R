@@ -96,12 +96,13 @@ occurrence <- function(
   if(!is.null(fields)) {
     missing_fields <- setdiff(fields, colnames(data))
     if(length(missing_fields) > 0) {
-      warning("Following fields where not found: ", paste0(missing_fields, collapse = ", "))
+      warning("Following fields where not found and initialized to NA: ", paste0(missing_fields, collapse = ", "))
+      data[,missing_fields] <- NA
     }
     for (extra_col in setdiff(colnames(data), fields)) { # remove fields that were not requested
       data[,extra_col] <- NULL
     }
-    data <- data[,setdiff(fields, missing_fields)] # re-order columns to the expected order
+    data <- data[, fields] # re-order columns to the expected order
   }
   return(data)
 }
