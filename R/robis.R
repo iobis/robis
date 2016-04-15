@@ -4,5 +4,5 @@
 #'
 #' @docType package
 #' @name robis
-#' @import dplyr httr
+#' @import dplyr httr jsonlite
 NULL

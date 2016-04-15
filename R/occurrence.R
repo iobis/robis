@@ -69,7 +69,8 @@ occurrence <- function(
       log_request(result)
     }
     stop_for_status(result)
-    res <- content(result, simplifyVector=TRUE)
+    text <- content(result, "text", encoding="UTF-8")
+    res <- fromJSON(text, simplifyVector=TRUE)
 
     if(!is.null(res$message)) {
       lastpage = TRUE
