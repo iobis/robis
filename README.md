@@ -8,6 +8,7 @@ R client for the OBIS API
 ## Installation
 
 ```R
+install.packages("devtools")
 devtools::install_github("iobis/robis")
 ```
 
