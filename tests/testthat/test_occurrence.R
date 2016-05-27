@@ -107,8 +107,11 @@ test_that("occurrence returns requested fields even when missing",{
 })
 
 test_that("occurrence test warnings",{
-  expect_warning({occurrence(aphiaid = -1)})
   expect_warning({occurrence(aphiaid = small_test_aphiaid, year = NA)})
   expect_warning({occurrence(aphiaid = small_test_aphiaid, year = "test")})
   expect_warning({occurrence(aphiaid = small_test_aphiaid, fields = c("species", "abcdefghij"))})
+})
+
+test_that("occurrence test errors",{
+  expect_error({occurrence(aphiaid = -1)})
 })
