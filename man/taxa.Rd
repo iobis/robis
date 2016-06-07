@@ -5,8 +5,8 @@
 \title{Generate taxon lists.}
 \usage{
 taxa(scientificname = NULL, year = NULL, obisid = NULL, aphiaid = NULL,
-  startdate = NULL, enddate = NULL, geometry = NULL, qc = NULL,
-  verbose = FALSE)
+  resourceid = NULL, startdate = NULL, enddate = NULL, geometry = NULL,
+  qc = NULL, verbose = FALSE)
 }
 \arguments{
 \item{geometry}{A wkt geometry string.}

@@ -4,6 +4,7 @@
 #' @param year
 #' @param obisid
 #' @param aphiaid
+#' @param resourceid
 #' @param startdate
 #' @param enddate
 #' @param geometry A wkt geometry string.
@@ -15,6 +16,7 @@ taxa <- function(
   year = NULL,
   obisid = NULL,
   aphiaid = NULL,
+  resourceid = NULL,
   startdate = NULL,
   enddate = NULL,
   geometry = NULL,
@@ -42,6 +44,7 @@ taxa <- function(
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
+                  resourceid = resourceid,
                   startdate = startdate,
                   enddate = enddate,
                   geometry = geometry,
