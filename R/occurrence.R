@@ -4,6 +4,7 @@
 #' @param year
 #' @param obisid
 #' @param aphiaid
+#' @param resourceid
 #' @param startdate
 #' @param enddate
 #' @param geometry A wkt geometry string.
@@ -22,6 +23,7 @@ occurrence <- function(
   year = NULL,
   obisid = NULL,
   aphiaid = NULL,
+  resourceid = NULL,
   startdate = NULL,
   enddate = NULL,
   geometry = NULL,
@@ -51,6 +53,7 @@ occurrence <- function(
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
+                  resourceid = resourceid,
                   startdate = handle_date(startdate),
                   enddate = handle_date(enddate),
                   geometry = geometry,

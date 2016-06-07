@@ -5,8 +5,8 @@
 \title{Find occurrences.}
 \usage{
 occurrence(scientificname = NULL, year = NULL, obisid = NULL,
-  aphiaid = NULL, startdate = NULL, enddate = NULL, geometry = NULL,
-  qc = NULL, fields = NULL, verbose = FALSE)
+  aphiaid = NULL, resourceid = NULL, startdate = NULL, enddate = NULL,
+  geometry = NULL, qc = NULL, fields = NULL, verbose = FALSE)
 }
 \arguments{
 \item{geometry}{A wkt geometry string.}
