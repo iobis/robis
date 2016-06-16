@@ -49,14 +49,9 @@ taxa <- function(
                   enddate = enddate,
                   geometry = geometry,
                   qc = qc,
-                  offset = format(offset, scientific=FALSE))
+                  offset = format(offset, scientific = FALSE))
 
-    # use POST for complex geometries
-    if (!is.null(geometry) && nchar(geometry) > max_characters()) {
-      result <- http_request("POST", "taxa", query)
-    } else {
-      result <- http_request("GET", "taxa", query)
-    }
+    result <- http_request("POST", "taxa", query)
 
     if (verbose) {
       log_request(result)

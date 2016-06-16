@@ -7,7 +7,7 @@ other_test_aphiaid <- 141438 # Abra segmentum
 
 test_that("occurrence returns small number of records for a scientific name", {
   records <- occurrence(scientificname = small_test_species, verbose = TRUE)
-  expect_more_than(nrow(records), 0)
+  expect_gt(nrow(records), 0)
   expect_true(is.data.frame(records))
   expect_true(all(records$scientificName == small_test_species))
   expect_true(all(records$aphiaID == small_test_aphiaid))
@@ -15,7 +15,7 @@ test_that("occurrence returns small number of records for a scientific name", {
 
 test_that("occurrence returns small number of records for an aphia id", {
   records <- occurrence(aphiaid = small_test_aphiaid)
-  expect_more_than(nrow(records), 0)
+  expect_gt(nrow(records), 0)
   expect_true(is.data.frame(records))
   expect_true(all(records$aphiaID == small_test_aphiaid))
 })
@@ -23,7 +23,7 @@ test_that("occurrence returns small number of records for an aphia id", {
 test_that("occurrence returns small number of records for an obis id", {
   records <- occurrence(aphiaid = small_test_aphiaid) ## obis ids are not stable so taking a detour
   records <- occurrence(obisid = records$obisID[1])
-  expect_more_than(nrow(records), 0)
+  expect_gt(nrow(records), 0)
   expect_true(is.data.frame(records))
   expect_true(all(records$taxonID == records$obisID[1]))
   expect_true(all(records$aphiaID == small_test_aphiaid))
@@ -33,16 +33,16 @@ test_that("occurrence returns records filtered on year",{
   records_original <- occurrence(aphiaid = other_test_aphiaid)
   year <- na.omit(records_original$yearcollected)[1]
   records <- occurrence(aphiaid = other_test_aphiaid, year = year)
-  expect_more_than(year, 0)
-  expect_more_than(nrow(records), 0)
-  expect_less_than(nrow(records), nrow(records_original))
+  expect_gt(year, 0)
+  expect_gt(nrow(records), 0)
+  expect_lt(nrow(records), nrow(records_original))
   expect_true(all(records$yearcollected == year))
 })
 
 expect_filtered <- function(...) {
   records <- occurrence(aphiaid = other_test_aphiaid, ...)
-  expect_more_than(NROW(records), 0)
-  expect_less_than(NROW(records), nrow(occurrence(aphiaid = other_test_aphiaid)))
+  expect_gt(NROW(records), 0)
+  expect_lt(NROW(records), nrow(occurrence(aphiaid = other_test_aphiaid)))
   records
 }
 
@@ -89,20 +89,20 @@ test_that("qc flags in queries are respected", {
   qc_numbers_not_ok <- check_qc_no_zero(records)
   records_with_qc <- occurrence(scientificname = "Abra sibogai", qc=qc_numbers_not_ok)
   expect_equal(length(check_qc_no_zero(records_with_qc)), 0)
-  expect_less_than(nrow(records_with_qc), nrow(records))
+  expect_lt(nrow(records_with_qc), nrow(records))
 })
 
 test_that("occurrence returns requested fields",{
   fields = c("species", "decimalLongitude", "decimalLatitude")
   records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)
-  expect_more_than(nrow(records), 0)
+  expect_gt(nrow(records), 0)
   expect_equal(colnames(records), fields)
 })
 
 test_that("occurrence returns requested fields even when missing",{
   fields = c("species", "decimalLongitude", "decimalLatitude", "individualCount")
   records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)
-  expect_more_than(nrow(records), 0)
+  expect_gt(nrow(records), 0)
   expect_equal(colnames(records), fields)
 })
 
