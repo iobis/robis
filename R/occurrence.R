@@ -7,6 +7,8 @@
 #' @param resourceid
 #' @param startdate
 #' @param enddate
+#' @param startdepth
+#' @param enddepth
 #' @param geometry A wkt geometry string.
 #' @param qc A vector of quality control flags you want to filter on. List of \link[=qc]{QC flags}.
 #' @param fields A vector of field names you want to have returned in order, by default all fields with values are returned.
@@ -26,6 +28,8 @@ occurrence <- function(
   resourceid = NULL,
   startdate = NULL,
   enddate = NULL,
+  startdepth = NULL,
+  enddepth = NULL,
   geometry = NULL,
   qc = NULL,
   fields = NULL,
@@ -56,12 +60,14 @@ occurrence <- function(
                   resourceid = resourceid,
                   startdate = handle_date(startdate),
                   enddate = handle_date(enddate),
+                  startdepth = startdepth,
+                  enddepth = enddepth,
                   geometry = geometry,
                   qc = handle_vector(qc),
                   fields = handle_vector(fields),
                   offset = format(offset, scientific=FALSE))
 
-    # use POST for complex geometries
+    # use POST for complex geometries, only GET is cached
     if (!is.null(geometry) && nchar(geometry) > max_characters()) {
       result <- http_request("POST", "occurrence", query)
     } else {
