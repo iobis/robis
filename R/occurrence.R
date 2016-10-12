@@ -5,6 +5,7 @@
 #' @param obisid
 #' @param aphiaid
 #' @param resourceid
+#' @param nodeid
 #' @param startdate
 #' @param enddate
 #' @param startdepth
@@ -26,6 +27,7 @@ occurrence <- function(
   obisid = NULL,
   aphiaid = NULL,
   resourceid = NULL,
+  nodeid = NULL,
   startdate = NULL,
   enddate = NULL,
   startdepth = NULL,
@@ -40,7 +42,7 @@ occurrence <- function(
     year <- NULL
   }
   if(!is.null(qc)) {
-    qc <- setdiff(qc, c(8,9,20)) # ignore QC 8,9,20 (NOT IMPLEMENTED)
+    qc <- setdiff(qc, c(8, 9, 20)) # ignore QC 8,9,20 (NOT IMPLEMENTED)
     qc <- qc[qc > 1 & qc <= 30] # restrict to valid qcnumbers range
   }
 
@@ -58,6 +60,7 @@ occurrence <- function(
                   obisid = obisid,
                   aphiaid = aphiaid,
                   resourceid = resourceid,
+                  nodeid = nodeid,
                   startdate = handle_date(startdate),
                   enddate = handle_date(enddate),
                   startdepth = startdepth,
@@ -78,8 +81,8 @@ occurrence <- function(
       log_request(result)
     }
     stop_for_status(result)
-    text <- content(result, "text", encoding="UTF-8")
-    res <- fromJSON(text, simplifyVector=TRUE)
+    text <- content(result, "text", encoding = "UTF-8")
+    res <- fromJSON(text, simplifyVector = TRUE )
 
     if(!is.null(res$message)) {
       lastpage = TRUE
@@ -101,16 +104,16 @@ occurrence <- function(
     cat("Total time:", (proc.time() - t)[["elapsed"]], "seconds\n")
   }
 
-  data <- rbind_all(datalist)
+  data <- bind_rows(datalist)
 
   if(!is.null(fields)) {
     missing_fields <- setdiff(fields, colnames(data))
     if(length(missing_fields) > 0) {
       warning("Following fields where not found and initialized to NA: ", paste0(missing_fields, collapse = ", "))
-      data[,missing_fields] <- NA
+      data[, missing_fields] <- NA
     }
     for (extra_col in setdiff(colnames(data), fields)) { # remove fields that were not requested
-      data[,extra_col] <- NULL
+      data[, extra_col] <- NULL
     }
     data <- data[, fields] # re-order columns to the expected order
   }

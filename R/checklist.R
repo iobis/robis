@@ -1,4 +1,4 @@
-#' Generate taxon lists.
+#' Generate checklists.
 #'
 #' @param scientificname
 #' @param year
@@ -9,9 +9,9 @@
 #' @param enddate
 #' @param geometry A wkt geometry string.
 #' @param qc A vector of qc numbers you want to filter out.
-#' @return The taxon list.
+#' @return The checklist.
 #' @export
-taxa <- function(
+checklist <- function(
   scientificname = NULL,
   year = NULL,
   obisid = NULL,
@@ -74,7 +74,7 @@ taxa <- function(
     }
   }
   cat("\n")
-  data <- rbind_all(datalist)
+  data <- bind_rows(datalist)
   return(data)
 }
 
