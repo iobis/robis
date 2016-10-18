@@ -23,11 +23,14 @@ handle_vector <- function(x) {
 }
 
 log_request <- function(result) {
-  cat("\n", paste(result$request$method, result$request$url, result$status_code, result$headers$age, result$times[["total"]]), "\n", sep="")
+  print(result$request)
+  cat(paste0("Status: ", result$status_code))
+  cat(paste0("\nAge: ", result$headers$age))
+  cat(paste0("\nTime: ", result$times[["total"]]), "\n")
 }
 
 log_progress <- function(total, count) {
-  cat("\rRetrieved ", total, " records of ", count, " (", floor(total/count*100),"%)", sep="")
+  cat("\rRetrieved ", total, " records of ", count, " (", floor(total / count * 100), "%)", sep = "")
 }
 
 http_request <- function(method, path, query) {
