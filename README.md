@@ -44,6 +44,12 @@ Get occurrences by geometry:
 data <- occurrence("Abra alba", geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
 ```
 
+Plot occurrences on a Leaflet map:
+
+```R
+leafletmap(data)
+```
+
 ## Checklist
 
 Get a checklist for a specific group and year:
