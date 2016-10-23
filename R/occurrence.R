@@ -46,7 +46,7 @@ occurrence <- function(
     qc <- qc[qc > 1 & qc <= 30] # restrict to valid qcnumbers range
   }
 
-  offset <- 0
+  skipid = -1
   i <- 1
   lastpage <- FALSE
   total <- 0
@@ -68,7 +68,8 @@ occurrence <- function(
                   geometry = geometry,
                   qc = handle_vector(qc),
                   fields = handle_vector(fields),
-                  offset = format(offset, scientific=FALSE))
+                  skipid = format(skipid, scientific = FALSE)
+    )
 
     # use POST for complex geometries, only GET is cached
     if (!is.null(geometry) && nchar(geometry) > max_characters()) {
@@ -89,7 +90,7 @@ occurrence <- function(
       warning(res$message)
     } else {
       limit <- res$limit
-      offset <- offset + limit
+      skipid = res$results$id[nrow(res$results)]
       lastpage <- res$lastpage
       if(res$count > 0) {
         datalist[[i]] <- res$results
