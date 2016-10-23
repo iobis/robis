@@ -7,6 +7,8 @@
 #' @param resourceid
 #' @param startdate
 #' @param enddate
+#' @param startdepth
+#' @param enddepth
 #' @param geometry A wkt geometry string.
 #' @param qc A vector of qc numbers you want to filter out.
 #' @return The checklist.
@@ -19,6 +21,8 @@ checklist <- function(
   resourceid = NULL,
   startdate = NULL,
   enddate = NULL,
+  startdepth = NULL,
+  enddepth = NULL,
   geometry = NULL,
   qc = NULL,
   verbose = FALSE) {
@@ -47,6 +51,8 @@ checklist <- function(
                   resourceid = resourceid,
                   startdate = startdate,
                   enddate = enddate,
+                  startdepth = startdepth,
+                  enddepth = enddepth,
                   geometry = geometry,
                   qc = qc,
                   offset = format(offset, scientific = FALSE))

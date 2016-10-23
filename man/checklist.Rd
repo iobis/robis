@@ -6,7 +6,8 @@
 \usage{
 checklist(scientificname = NULL, year = NULL, obisid = NULL,
   aphiaid = NULL, resourceid = NULL, startdate = NULL, enddate = NULL,
-  geometry = NULL, qc = NULL, verbose = FALSE)
+  startdepth = NULL, enddepth = NULL, geometry = NULL, qc = NULL,
+  verbose = FALSE)
 }
 \arguments{
 \item{geometry}{A wkt geometry string.}
