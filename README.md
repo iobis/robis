@@ -63,12 +63,3 @@ Get a checklist for a region:
 ```R
 data <- checklist(geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
 ```
-
-Get a checklist for a region in marineregions.org (requires [sckott/mregions](https://github.com/sckott/mregions)):
-
-```R
-require(mregions)
-
-data <- checklist(geometry = as_wkt(region_shp(name="Belgian Exclusive Economic Zone")))
-data <- checklist(geometry = as_wkt(region_shp(name="World Marine Heritage Sites", maxFeatures=NULL, filter="iSimangaliso Wetland Park")))
-```
