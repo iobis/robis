@@ -46,6 +46,10 @@ occurrence <- function(
     qc <- qc[qc > 1 & qc <= 30] # restrict to valid qcnumbers range
   }
 
+  if (length(scientificname) > 1) {
+    scientificname <- paste0(scientificname, collapse = ",")
+  }
+
   skipid = -1
   i <- 1
   lastpage <- FALSE
