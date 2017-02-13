@@ -27,10 +27,19 @@ checklist <- function(
   qc = NULL,
   verbose = FALSE) {
 
-  if(!is.null(year) && is.na(as.numeric(year))) {
-    warning(paste("Invalid year:", year))
-    year <- NULL
+  if(!is.null(year)) {
+    invalid_years <- suppressWarnings(is.na(as.numeric(year)))
+    if (sum(invalid_years) > 0) {
+      warning("Invalid years")
+    }
+    year <- year[!invalid_years]
+    if (length(year) > 0) {
+      year <- paste0(year, collapse = ",")
+    } else {
+      year <- NULL
+    }
   }
+
   if(!is.null(qc)) {
     qc <- setdiff(qc, 9) # ignore QC 9 (NOT IMPLEMENTED)
     qc <- qc[qc > 1 & qc <= 30] # restrict to valid qcnumbers range

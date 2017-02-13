@@ -81,13 +81,18 @@ test_that("occurrence returns records filtered on geometry",{
 
 test_that("qc flags in queries are respected", {
   records <- occurrence(scientificname = small_test_species)
-
+  # columns with some QC errors, not all
   check_qc_no_zero <- function(records) {
-    qc_ok <- sapply(1:30, function(qc) { c(row=bitwAnd(records$qc, 2^(qc-1)) > 0) })
-    which(colSums(qc_ok) < nrow(qc_ok) & colSums(qc_ok) != 0)
+    if (nrow(records) > 0) {
+      qc_ok <- sapply(1:30, function(qc) { c(row=bitwAnd(records$qc, 2^(qc-1)) > 0) })
+      return(which(colSums(qc_ok) < nrow(qc_ok) & colSums(qc_ok) != 0))
+    } else {
+      return(NULL)
+    }
   }
   qc_numbers_not_ok <- check_qc_no_zero(records)
-  records_with_qc <- occurrence(scientificname = "Abra sibogai", qc=qc_numbers_not_ok)
+  # tooo: find test species which actually returns records here
+  records_with_qc <- occurrence(scientificname = small_test_species, qc=qc_numbers_not_ok)
   expect_equal(length(check_qc_no_zero(records_with_qc)), 0)
   expect_lt(nrow(records_with_qc), nrow(records))
 })
