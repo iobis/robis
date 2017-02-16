@@ -55,10 +55,6 @@ occurrence <- function(
     qc <- qc[qc > 1 & qc <= 30] # restrict to valid qcnumbers range
   }
 
-  if (length(scientificname) > 1) {
-    scientificname <- paste0(scientificname, collapse = ",")
-  }
-
   skipid = -1
   i <- 1
   lastpage <- FALSE
@@ -68,7 +64,7 @@ occurrence <- function(
   t <- proc.time()
 
   while (!lastpage) {
-    query <- list(scientificname = scientificname,
+    query <- list(scientificname = handle_vector(scientificname),
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
@@ -84,8 +80,8 @@ occurrence <- function(
                   skipid = format(skipid, scientific = FALSE)
     )
 
-    # use POST for complex geometries, only GET is cached
-    if (!is.null(geometry) && nchar(geometry) > max_characters()) {
+    # use POST for large queries, only GET is cached
+    if (sum(nchar(query)) > max_characters()) {
       result <- http_request("POST", "occurrence", query)
     } else {
       result <- http_request("GET", "occurrence", query)
