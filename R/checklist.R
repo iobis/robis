@@ -5,6 +5,7 @@
 #' @param obisid
 #' @param aphiaid
 #' @param resourceid
+#' @param areaid
 #' @param startdate
 #' @param enddate
 #' @param startdepth
@@ -19,6 +20,7 @@ checklist <- function(
   obisid = NULL,
   aphiaid = NULL,
   resourceid = NULL,
+  areaid = NULL,
   startdate = NULL,
   enddate = NULL,
   startdepth = NULL,
@@ -58,6 +60,7 @@ checklist <- function(
                   obisid = obisid,
                   aphiaid = aphiaid,
                   resourceid = resourceid,
+                  areaid = areaid,
                   startdate = startdate,
                   enddate = enddate,
                   startdepth = startdepth,

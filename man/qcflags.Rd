@@ -15,4 +15,3 @@ Number of QC flags set.
 \description{
 Count QC flags set.
 }
-

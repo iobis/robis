@@ -1,6 +1,6 @@
 Package: robis
 Title: R client for the OBIS API
-Version: 0.1.7
+Version: 0.1.8
 Author: Pieter Provoost, Samuel Bosch
 Maintainer: Pieter Provoost <pieterprovoost@gmail.com>
 Description: R client for the OBIS API
@@ -14,4 +14,4 @@ Imports:
 License: MIT
 Suggests:
     testthat
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

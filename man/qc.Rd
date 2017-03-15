@@ -39,6 +39,5 @@ At the moment there are 29 QC flags, numbered from 1 to 30 with disabled flag (q
 }
 }
 \references{
-Vandepitte, L., Bosch, S., Tyberghein, L., Waumans, F., Vanhoorne, B., Hernandez, F., <U+2026> Mees, J. (2015). Fishing for data and sorting the catch: assessing the data quality, completeness and fitness for use of data in marine biogeographic databases. Database, 2015, bau125<U+2013>bau125. doi:10.1093/database/bau125
+Vandepitte, L., Bosch, S., Tyberghein, L., Waumans, F., Vanhoorne, B., Hernandez, F., … Mees, J. (2015). Fishing for data and sorting the catch: assessing the data quality, completeness and fitness for use of data in marine biogeographic databases. Database, 2015, bau125–bau125. doi:10.1093/database/bau125
 }
-

@@ -6,6 +6,7 @@
 #' @param aphiaid
 #' @param resourceid
 #' @param nodeid
+#' @param areaid
 #' @param startdate
 #' @param enddate
 #' @param startdepth
@@ -28,6 +29,7 @@ occurrence <- function(
   aphiaid = NULL,
   resourceid = NULL,
   nodeid = NULL,
+  areaid = NULL,
   startdate = NULL,
   enddate = NULL,
   startdepth = NULL,
@@ -70,6 +72,7 @@ occurrence <- function(
                   aphiaid = aphiaid,
                   resourceid = resourceid,
                   nodeid = nodeid,
+                  areaid = areaid,
                   startdate = handle_date(startdate),
                   enddate = handle_date(enddate),
                   startdepth = startdepth,

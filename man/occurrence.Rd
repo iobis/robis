@@ -5,9 +5,9 @@
 \title{Find occurrences.}
 \usage{
 occurrence(scientificname = NULL, year = NULL, obisid = NULL,
-  aphiaid = NULL, resourceid = NULL, nodeid = NULL, startdate = NULL,
-  enddate = NULL, startdepth = NULL, enddepth = NULL, geometry = NULL,
-  qc = NULL, fields = NULL, verbose = FALSE)
+  aphiaid = NULL, resourceid = NULL, nodeid = NULL, areaid = NULL,
+  startdate = NULL, enddate = NULL, startdepth = NULL, enddepth = NULL,
+  geometry = NULL, qc = NULL, fields = NULL, verbose = FALSE)
 }
 \arguments{
 \item{geometry}{A wkt geometry string.}
@@ -29,4 +29,3 @@ records <- occurrence(aphiaid = 141438, geometry = "POLYGON ((0 0, 0 45, 45 45, 
 records <- occurrence(scientificname = "Abra sibogai", qc = c(1:6, 27))
 records <- occurrence(scientificname = "Abra sibogai", fields = c("species", "decimalLongitude", "decimalLatitude"))
 }
-
