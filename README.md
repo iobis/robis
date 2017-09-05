@@ -63,3 +63,11 @@ Get a checklist for a region:
 ```R
 data <- checklist(geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
 ```
+
+## Dataset
+
+Get dataset information by dataset ID:
+
+```R
+datasets <- datasets(seq(2500, 2520)
+```
