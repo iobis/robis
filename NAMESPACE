@@ -2,6 +2,7 @@
 
 export(area)
 export(checklist)
+export(dataset)
 export(leafletmap)
 export(occurrence)
 export(qcflags)
