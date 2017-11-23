@@ -69,5 +69,5 @@ data <- checklist(geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76
 Get dataset information by dataset ID:
 
 ```R
-datasets <- datasets(seq(2500, 2520))
+datasets <- dataset(seq(2500, 2520))
 ```
