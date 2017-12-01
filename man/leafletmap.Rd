@@ -4,7 +4,10 @@
 \alias{leafletmap}
 \title{Create a Leaflet map.}
 \usage{
-leafletmap(data)
+leafletmap(data, popup = NULL)
+}
+\arguments{
+\item{popup}{Column to be used for popups.}
 }
 \value{
 HTML widget object.
