@@ -79,6 +79,15 @@ test_that("occurrence returns records filtered on geometry",{
   expect_true(all(records$decimalLatitude > 0))
 })
 
+test_that("occurrence returns records filtered on groups", {
+    g <- group()
+    groupid <- g[g$name == "Seagrasses",]$id
+    records <- occurrence(groupid=groupid, startdate = as.Date("2005-10-01"), enddate = as.Date("2005-12-31"))
+    expect_gt(nrow(records), 1)
+    expect_lt(nrow(records), 5000)
+    expect_true(all(c("Zostera", "Posidonia") %in% unique(records$genus)))
+})
+
 test_that("qc flags in queries are respected", {
   records <- occurrence(scientificname = small_test_species)
   # columns with some QC errors, not all

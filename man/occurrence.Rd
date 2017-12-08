@@ -5,9 +5,10 @@
 \title{Find occurrences.}
 \usage{
 occurrence(scientificname = NULL, year = NULL, obisid = NULL,
-  aphiaid = NULL, resourceid = NULL, nodeid = NULL, areaid = NULL,
-  startdate = NULL, enddate = NULL, startdepth = NULL, enddepth = NULL,
-  geometry = NULL, qc = NULL, fields = NULL, verbose = FALSE)
+  aphiaid = NULL, groupid = NULL, resourceid = NULL, nodeid = NULL,
+  areaid = NULL, startdate = NULL, enddate = NULL, startdepth = NULL,
+  enddepth = NULL, geometry = NULL, qc = NULL, fields = NULL,
+  verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{The full scientific name, with authorship and date
@@ -19,9 +20,14 @@ information if known.}
 
 \item{aphiaid}{The WoRMS identifier of the species.}
 
-\item{resourceid}{The dataset identifier.}
+\item{groupid}{The taxonomic group id. See also \code{\link{group}} for the
+list of taxonomic groups.}
 
-\item{nodeid}{The OBIS node identifier.}
+\item{resourceid}{The dataset identifier. See also \code{\link{dataset}} for
+querying the list of datasets.}
+
+\item{nodeid}{The OBIS node identifier. See also \code{\link{node}} for the
+list of nodes.}
 
 \item{areaid}{The OBIS area identifier (country, marine world heritage site,
 ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
@@ -61,4 +67,5 @@ records <- occurrence(scientificname = "Abra sibogai", fields = c("species", "de
 \seealso{
 \code{\link{leafletmao}} \code{\link{qcflags}}
   \code{\link{checklist}} \code{\link{dataset}} \code{\link{area}}
+  \code{\link{node}} \code{\link{group}}
 }

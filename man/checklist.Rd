@@ -19,7 +19,8 @@ information if known.}
 
 \item{aphiaid}{The WoRMS identifier of the species.}
 
-\item{resourceid}{The dataset identifier.}
+\item{resourceid}{The dataset identifier. See also \code{\link{dataset}} for
+querying the list of datasets.}
 
 \item{areaid}{The OBIS area identifier (country, marine world heritage site,
 ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
@@ -39,6 +40,9 @@ ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default
 = \code{FALSE}).}
+
+\item{groupid}{The taxonomic group id. See also \code{\link{group}} for the
+list of taxonomic groups.}
 }
 \value{
 The checklist.

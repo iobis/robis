@@ -1,5 +1,5 @@
 #' Create a Leaflet map.
-#'
+#' @usage leafletmap(data, popup = NULL)
 #' @param data occurrence records you want to map, minimal required fields are
 #'   \code{decimalLongitude} and \code{decimalLatitude}.
 #' @param popup Column to be used for popups.

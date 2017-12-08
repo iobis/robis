@@ -5,7 +5,10 @@
 #' @param year The year in which the Event occurred.
 #' @param obisid The OBIS identifier of the species.
 #' @param aphiaid The WoRMS identifier of the species.
-#' @param resourceid The dataset identifier.
+#' @param groupid The taxonomic group id. See also \code{\link{group}} for the
+#'   list of taxonomic groups.
+#' @param resourceid The dataset identifier. See also \code{\link{dataset}} for
+#'   querying the list of datasets.
 #' @param areaid The OBIS area identifier (country, marine world heritage site,
 #'   ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.
 #' @param startdate The earliest date on which the Event occurred.

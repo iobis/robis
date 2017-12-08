@@ -5,8 +5,12 @@
 #' @param year The year in which the Event occurred.
 #' @param obisid The OBIS identifier of the species.
 #' @param aphiaid The WoRMS identifier of the species.
-#' @param resourceid The dataset identifier.
-#' @param nodeid The OBIS node identifier.
+#' @param groupid The taxonomic group id. See also \code{\link{group}} for the
+#'   list of taxonomic groups.
+#' @param resourceid The dataset identifier. See also \code{\link{dataset}} for
+#'   querying the list of datasets.
+#' @param nodeid The OBIS node identifier. See also \code{\link{node}} for the
+#'   list of nodes.
 #' @param areaid The OBIS area identifier (country, marine world heritage site,
 #'   ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.
 #' @param startdate The earliest date on which the Event occurred.
@@ -29,12 +33,14 @@
 #' records <- occurrence(scientificname = "Abra sibogai", fields = c("species", "decimalLongitude", "decimalLatitude"))
 #' @seealso \code{\link{leafletmao}} \code{\link{qcflags}}
 #'   \code{\link{checklist}} \code{\link{dataset}} \code{\link{area}}
+#'   \code{\link{node}} \code{\link{group}}
 #' @export
 occurrence <- function(
   scientificname = NULL,
   year = NULL,
   obisid = NULL,
   aphiaid = NULL,
+  groupid = NULL,
   resourceid = NULL,
   nodeid = NULL,
   areaid = NULL,
@@ -78,6 +84,7 @@ occurrence <- function(
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
+                  groupid = groupid,
                   resourceid = resourceid,
                   nodeid = nodeid,
                   areaid = areaid,
