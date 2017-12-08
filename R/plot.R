@@ -1,7 +1,7 @@
 #' Create a Leaflet map.
 #'
 #' @param data occurrence records you want to map, minimal required fields are
-#'   \code(decimalLongitude) and \code{decimalLatitude}.
+#'   \code{decimalLongitude} and \code{decimalLatitude}.
 #' @param popup Column to be used for popups.
 #' @return HTML widget object.
 #' @seealso \code{\link{occurrence}}

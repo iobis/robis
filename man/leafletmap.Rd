@@ -8,7 +8,7 @@ leafletmap(data, popup = NULL)
 }
 \arguments{
 \item{data}{occurrence records you want to map, minimal required fields are
-\code(decimalLongitude) and \code{decimalLatitude}.}
+\code{decimalLongitude} and \code{decimalLatitude}.}
 
 \item{popup}{Column to be used for popups.}
 }
