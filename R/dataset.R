@@ -1,6 +1,8 @@
 #' Fetch dataset metadata.
-#'
-#' @param id
+#' @usage dataset(id, verbose = FALSE)
+#' @param id numeric. One or more dataset ids.
+#' @param verbose logical. Optional parameter to enable verbose logging (default
+#'   = \code{FALSE}).
 #' @return The dataset metadata records.
 #' @export
 dataset <- function(id, verbose = FALSE) {

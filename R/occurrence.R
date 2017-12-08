@@ -1,19 +1,25 @@
 #' Find occurrences.
 #'
-#' @param scientificname
-#' @param year
-#' @param obisid
-#' @param aphiaid
-#' @param resourceid
-#' @param nodeid
-#' @param areaid
-#' @param startdate
-#' @param enddate
-#' @param startdepth
-#' @param enddepth
+#' @param scientificname The full scientific name, with authorship and date
+#'   information if known.
+#' @param year The year in which the Event occurred.
+#' @param obisid The OBIS identifier of the species.
+#' @param aphiaid The WoRMS identifier of the species.
+#' @param resourceid The dataset identifier.
+#' @param nodeid The OBIS node identifier.
+#' @param areaid The OBIS area identifier (country, marine world heritage site,
+#'   ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.
+#' @param startdate The earliest date on which the Event occurred.
+#' @param enddate The latest date on which the Event occurred.
+#' @param startdepth The minimum depth below the sea surface.
+#' @param enddepth The maximum depth below the sea surface.
 #' @param geometry A wkt geometry string.
-#' @param qc A vector of quality control flags you want to filter on. List of \link[=qc]{QC flags}.
-#' @param fields A vector of field names you want to have returned in order, by default all fields with values are returned.
+#' @param qc A vector of quality control flags you want to filter on. List of
+#'   \link[=qc]{QC flags}.
+#' @param fields A vector of field names you want to have returned in order, by
+#'   default all fields with values are returned.
+#' @param verbose logical. Optional parameter to enable verbose logging (default
+#'   = \code{FALSE}).
 #' @return The occurrence records.
 #' @examples
 #' records <- occurrence(scientificname = "Abra sibogai")
@@ -21,6 +27,8 @@
 #' records <- occurrence(aphiaid = 141438, geometry = "POLYGON ((0 0, 0 45, 45 45, 45 0, 0 0))")
 #' records <- occurrence(scientificname = "Abra sibogai", qc = c(1:6, 27))
 #' records <- occurrence(scientificname = "Abra sibogai", fields = c("species", "decimalLongitude", "decimalLatitude"))
+#' @seealso \code{\link{leafletmao}} \code{\link{qcflags}}
+#'   \code{\link{checklist}} \code{\link{dataset}} \code{\link{area}}
 #' @export
 occurrence <- function(
   scientificname = NULL,

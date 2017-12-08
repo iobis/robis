@@ -7,6 +7,9 @@
 leafletmap(data, popup = NULL)
 }
 \arguments{
+\item{data}{occurrence records you want to map, minimal required fields are
+\code(decimalLongitude) and \code{decimalLatitude}.}
+
 \item{popup}{Column to be used for popups.}
 }
 \value{
@@ -14,4 +17,7 @@ HTML widget object.
 }
 \description{
 Create a Leaflet map.
+}
+\seealso{
+\code{\link{occurrence}}
 }

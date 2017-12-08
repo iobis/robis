@@ -10,11 +10,40 @@ occurrence(scientificname = NULL, year = NULL, obisid = NULL,
   geometry = NULL, qc = NULL, fields = NULL, verbose = FALSE)
 }
 \arguments{
+\item{scientificname}{The full scientific name, with authorship and date
+information if known.}
+
+\item{year}{The year in which the Event occurred.}
+
+\item{obisid}{The OBIS identifier of the species.}
+
+\item{aphiaid}{The WoRMS identifier of the species.}
+
+\item{resourceid}{The dataset identifier.}
+
+\item{nodeid}{The OBIS node identifier.}
+
+\item{areaid}{The OBIS area identifier (country, marine world heritage site,
+ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
+
+\item{startdate}{The earliest date on which the Event occurred.}
+
+\item{enddate}{The latest date on which the Event occurred.}
+
+\item{startdepth}{The minimum depth below the sea surface.}
+
+\item{enddepth}{The maximum depth below the sea surface.}
+
 \item{geometry}{A wkt geometry string.}
 
-\item{qc}{A vector of quality control flags you want to filter on. List of \link[=qc]{QC flags}.}
+\item{qc}{A vector of quality control flags you want to filter on. List of
+\link[=qc]{QC flags}.}
 
-\item{fields}{A vector of field names you want to have returned in order, by default all fields with values are returned.}
+\item{fields}{A vector of field names you want to have returned in order, by
+default all fields with values are returned.}
+
+\item{verbose}{logical. Optional parameter to enable verbose logging (default
+= \code{FALSE}).}
 }
 \value{
 The occurrence records.
@@ -28,4 +57,8 @@ records <- occurrence(aphiaid = 141438, startdate = as.Date("2007-10-10"))
 records <- occurrence(aphiaid = 141438, geometry = "POLYGON ((0 0, 0 45, 45 45, 45 0, 0 0))")
 records <- occurrence(scientificname = "Abra sibogai", qc = c(1:6, 27))
 records <- occurrence(scientificname = "Abra sibogai", fields = c("species", "decimalLongitude", "decimalLatitude"))
+}
+\seealso{
+\code{\link{leafletmao}} \code{\link{qcflags}}
+  \code{\link{checklist}} \code{\link{dataset}} \code{\link{area}}
 }

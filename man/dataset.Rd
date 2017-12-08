@@ -6,6 +6,12 @@
 \usage{
 dataset(id, verbose = FALSE)
 }
+\arguments{
+\item{id}{numeric. One or more dataset ids.}
+
+\item{verbose}{logical. Optional parameter to enable verbose logging (default
+= \code{FALSE}).}
+}
 \value{
 The dataset metadata records.
 }

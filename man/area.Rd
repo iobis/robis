@@ -6,6 +6,10 @@
 \usage{
 area(verbose = FALSE)
 }
+\arguments{
+\item{verbose}{logical. Optional parameter to enable verbose logging (default
+= \code{FALSE}).}
+}
 \value{
 The areas.
 }

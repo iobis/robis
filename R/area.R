@@ -1,5 +1,8 @@
 #' Fetch areas.
+#' @usage area(verbose = FALSE)
 #'
+#' @param verbose logical. Optional parameter to enable verbose logging (default
+#'   = \code{FALSE}).
 #' @return The areas.
 #' @export
 area <- function(verbose = FALSE) {
