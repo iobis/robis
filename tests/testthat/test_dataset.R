@@ -11,7 +11,8 @@ test_that("dataset returns requested dataset records", {
 })
 
 test_that("datasets query parameter can be used", {
+  skip("TODO implement dataset tests and queries")
   datasets <- dataset(q="sediment")
   datasets <- dataset(startdate="2010-01-01", scientificname="Cetacea")
-  stop("TODO implement dataset tests and queries")
+
 })

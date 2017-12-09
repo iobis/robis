@@ -5,9 +5,9 @@
 \title{Generate checklists.}
 \usage{
 checklist(scientificname = NULL, year = NULL, obisid = NULL,
-  aphiaid = NULL, resourceid = NULL, areaid = NULL, startdate = NULL,
-  enddate = NULL, startdepth = NULL, enddepth = NULL, geometry = NULL,
-  qc = NULL, verbose = FALSE)
+  aphiaid = NULL, groupid = NULL, resourceid = NULL, areaid = NULL,
+  startdate = NULL, enddate = NULL, startdepth = NULL, enddepth = NULL,
+  geometry = NULL, qc = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{The full scientific name, with authorship and date
@@ -18,6 +18,9 @@ information if known.}
 \item{obisid}{The OBIS identifier of the species.}
 
 \item{aphiaid}{The WoRMS identifier of the species.}
+
+\item{groupid}{The taxonomic group id. See also \code{\link{group}} for the
+list of taxonomic groups.}
 
 \item{resourceid}{The dataset identifier. See also \code{\link{dataset}} for
 querying the list of datasets.}
@@ -40,9 +43,6 @@ ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default
 = \code{FALSE}).}
-
-\item{groupid}{The taxonomic group id. See also \code{\link{group}} for the
-list of taxonomic groups.}
 }
 \value{
 The checklist.
