@@ -1,6 +1,6 @@
 #' Count QC flags set.
 #'
-#' @param qc The QC value as returned from the \link{\code{occurrence}} method.
+#' @param qc The QC value as returned from the \code{\link{occurrence}} method.
 #' @param id The QC flag ids.
 #' @return Number of QC flags set.
 #' @details At the moment there are 27 QC flags, numbered from 1 to 30 with disabled flag (qc 8, 9 and 20).

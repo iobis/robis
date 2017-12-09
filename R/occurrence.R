@@ -30,8 +30,9 @@
 #' records <- occurrence(aphiaid = 141438, startdate = as.Date("2007-10-10"))
 #' records <- occurrence(aphiaid = 141438, geometry = "POLYGON ((0 0, 0 45, 45 45, 45 0, 0 0))")
 #' records <- occurrence(scientificname = "Abra sibogai", qc = c(1:6, 27))
-#' records <- occurrence(scientificname = "Abra sibogai", fields = c("species", "decimalLongitude", "decimalLatitude"))
-#' @seealso \code{\link{leafletmao}} \code{\link{qcflags}}
+#' records <- occurrence(scientificname = "Abra sibogai",
+#'                       fields = c("species", "decimalLongitude", "decimalLatitude"))
+#' @seealso \code{\link{leafletmap}} \code{\link{qcflags}}
 #'   \code{\link{checklist}} \code{\link{dataset}} \code{\link{area}}
 #'   \code{\link{node}} \code{\link{group}}
 #' @export
