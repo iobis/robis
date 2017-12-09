@@ -7,7 +7,7 @@
 qcflags(qc, id)
 }
 \arguments{
-\item{qc}{The QC value as returned from the \link{\code{occurrence}} method.}
+\item{qc}{The QC value as returned from the \code{\link{occurrence}} method.}
 
 \item{id}{The QC flag ids.}
 }
