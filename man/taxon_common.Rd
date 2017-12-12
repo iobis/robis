@@ -4,7 +4,7 @@
 \alias{taxon_common}
 \title{Fetch common names.}
 \usage{
-taxon_common(verbose = FALSE)
+taxon_common(obisid, verbose = FALSE)
 }
 \arguments{
 \item{obisid}{numeric. OBIS identifier for the taxon.}

@@ -20,8 +20,9 @@ test_that("taxon api works", {
 
 test_that("taxon failure scenarios", {
   expect_error({taxon()}, "Missing parameter")
-  expect_error({taxon(obisid = test_species$obisid,
+  expect_error({taxon(scientificname = test_species$scientificname,
                       aphiaid = test_species$aphiaid)}, "many")
+  expect_error({taxon(obisid=c(0,1,2))}, "one by one")
   expect_error({taxon(obisid="sldkjdslkf")})
   expect_warning({taxon(obisid=-1)}, "not found")
 })

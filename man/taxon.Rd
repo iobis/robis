@@ -2,18 +2,25 @@
 % Please edit documentation in R/taxon.R
 \name{taxon}
 \alias{taxon}
-\title{Fetch taxon.}
+\title{Fetch one taxon.}
 \usage{
 taxon(obisid = NULL, aphiaid = NULL, scientificname = NULL, verbose = FALSE)
 }
 \arguments{
+\item{obisid}{integer. The OBIS identifier of the species.}
+
+\item{aphiaid}{integer. The WoRMS identifier of the species.}
+
+\item{scientificname}{character. The full scientific name, with authorship and date
+information if known.}
+
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }
 \value{
 The areas.
 }
 \description{
-Fetch taxon.
+\code{taxon} fetches information for a specific taxon.
 }
 \seealso{
 \code{\link{taxon_common}} \code{\link{occurrence}} \code{\link{checklist}} \code{\link{node}} \code{\link{area}}

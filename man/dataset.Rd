@@ -4,13 +4,16 @@
 \alias{dataset}
 \title{Fetch dataset metadata.}
 \usage{
-dataset(id, verbose = FALSE)
+dataset(id = NULL, scientificname = NULL, q = NULL, obisid = NULL, aphiaid =
+  NULL, groupid = NULL, areaid = NULL, nodeid = NULL, startdate = NULL, enddate = NULL,
+  startdepth = NULL, enddepth = NULL, geometry = NULL, verbose = FALSE)
 }
 \arguments{
-\item{id}{integer vector. One or more dataset ids, if provided all the other query parameters will be
-ignored.}
+\item{id}{integer vector. One or more dataset ids, if provided all the other query
+parameters will be ignored.}
 
-\item{scientificname}{character vector. The full scientific name, with authorship and date information if known.}
+\item{scientificname}{character vector. The full scientific name, with authorship and
+date information if known.}
 
 \item{q}{character. The search string.}
 
@@ -18,14 +21,14 @@ ignored.}
 
 \item{aphiaid}{integer vector. The WoRMS identifier of the species.}
 
-\item{groupid}{integer. The taxonomic group id. See also \code{\link{group}} for the list of
-taxonomic groups.}
+\item{groupid}{integer. The taxonomic group id. See also \code{\link{group}} for the
+list of taxonomic groups.}
 
-\item{areaid}{integer vector. The OBIS area identifier (country, marine world heritage site,
-ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
+\item{areaid}{integer vector. The OBIS area identifier (country, marine world heritage
+site, ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
 
-\item{nodeid}{integer vector. The OBIS node identifier. See also \code{\link{node}} for the list
-of nodes.}
+\item{nodeid}{integer vector. The OBIS node identifier. See also \code{\link{node}} for
+the list of nodes.}
 
 \item{startdate}{The earliest date on which the Event occurred.}
 
@@ -37,21 +40,17 @@ of nodes.}
 
 \item{geometry}{A wkt geometry string.}
 
-\item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
-
-\item{year}{integer vector. The year in which the Event occurred.}
-
-\item{resourceid}{integer vector. The dataset identifier. See also \code{\link{dataset}} for
-querying the list of datasets.}
+\item{verbose}{logical. Optional parameter to enable verbose logging (default =
+\code{FALSE}).}
 }
 \value{
 The dataset metadata records.
 }
 \description{
-Fetch dataset metadata.
+\code{dataset} returns dataset metadata based on the id or some query parameters.
 }
 \examples{
 datasets <- dataset(id = 1)
-datasets <- dataset(areaid = c(127, 204))
+datasets <- dataset(q = "MICROBIS")
 datasets <- dataset(nodeid = c(0,1))
 }

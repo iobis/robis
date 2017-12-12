@@ -1,6 +1,13 @@
-#' Fetch taxon.
+#' Fetch one taxon.
+#'
+#' \code{taxon} fetches information for a specific taxon.
+#'
 #' @usage taxon(obisid = NULL, aphiaid = NULL, scientificname = NULL, verbose = FALSE)
 #'
+#' @param obisid integer. The OBIS identifier of the species.
+#' @param aphiaid integer. The WoRMS identifier of the species.
+#' @param scientificname character. The full scientific name, with authorship and date
+#'   information if known.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return The areas.
 #' @seealso \code{\link{taxon_common}} \code{\link{occurrence}} \code{\link{checklist}} \code{\link{node}} \code{\link{area}}
@@ -15,6 +22,9 @@ taxon <- function(obisid = NULL,
   query[["aphiaid"]] <- aphiaid
   query[["scientificname"]] <- scientificname
   if(length(query) == 1) {
+    if(length(unlist(query)) > 1) {
+      stop("robis::taxon should be queried one by one taxon")
+    }
     result <- http_request("GET", "taxon", query)
     if (verbose) {
       log_request(result)
@@ -37,7 +47,8 @@ taxon <- function(obisid = NULL,
 }
 
 #' Fetch common names.
-#' @usage taxon_common(verbose = FALSE)
+#'
+#' @usage taxon_common(obisid, verbose = FALSE)
 #'
 #' @param obisid numeric. OBIS identifier for the taxon.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).

@@ -4,17 +4,17 @@
 \alias{dataset_by_id}
 \title{Fetch dataset metadata by id.}
 \usage{
-dataset(id, verbose = FALSE)
+dataset_by_id(id, verbose = FALSE)
 }
 \arguments{
 \item{id}{numeric. One or more dataset ids.}
 
-\item{verbose}{logical. Optional parameter to enable verbose logging (default
-= \code{FALSE}).}
+\item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }
 \value{
 The dataset metadata records.
 }
 \description{
-Fetch dataset metadata by id.
+\code{dataset_by_id} is an internal method for fetching dataset metadata based on the internal
+identifier.
 }
