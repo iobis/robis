@@ -13,6 +13,9 @@ leafletmap <- function(data, popup = NULL) {
   if (!is.null(popup)) {
     p <- as.character(data[,popup])
   }
-  m <- m %>% addCircleMarkers(~decimalLongitude, ~decimalLatitude, popup = p, radius = 3, weight = 1, fillColor = "red", color = "red", opacity = 1, fillOpacity = 0.1)
+  m <- m %>% addCircleMarkers(~decimalLongitude, ~decimalLatitude, popup = p,
+                              radius = 3, weight = 1,
+                              fillColor = "red", color = "red",
+                              opacity = 1, fillOpacity = 0.1)
   return(m)
 }

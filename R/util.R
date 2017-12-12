@@ -30,7 +30,8 @@ log_request <- function(result) {
 }
 
 log_progress <- function(total, count) {
-  cat("\rRetrieved ", total, " records of ", count, " (", floor(total / count * 100), "%)", sep = "")
+  cat("\rRetrieved ", total, " records of ", count,
+      " (", floor(total / count * 100), "%)", sep = "")
 }
 
 http_request <- function(method, path, query) {
@@ -44,7 +45,7 @@ http_request <- function(method, path, query) {
 }
 
 
-simple_paged <- function(endpoint, verbose) {
+simple_paged <- function(endpoint, verbose, query=list(), resultsfn=identity) {
   offset <- 0
   i <- 1
   lastpage <- FALSE
@@ -52,7 +53,7 @@ simple_paged <- function(endpoint, verbose) {
   datalist <- list()
 
   while (!lastpage) {
-    query <- list(offset = format(offset, scientific = FALSE))
+    query[["offset"]] <- format(offset, scientific = FALSE)
 
     result <- http_request("POST", endpoint, query)
 
@@ -64,13 +65,13 @@ simple_paged <- function(endpoint, verbose) {
     res <- fromJSON(text, simplifyVector=TRUE)
 
     if(!is.null(res$message)) {
-      lastpage = TRUE
+      lastpage <- TRUE
       warning(res$message)
     } else {
       limit <- res$limit
       offset <- offset + limit
       lastpage <- res$lastpage
-      datalist[[i]] <- res$results
+      datalist[[i]] <- resultsfn(res$results)
       total <- total + nrow(res$results)
       log_progress(total, res$count)
       i <- i + 1

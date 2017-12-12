@@ -21,7 +21,8 @@ test_that("occurrence returns small number of records for an aphia id", {
 })
 
 test_that("occurrence returns small number of records for an obis id", {
-  records <- occurrence(aphiaid = small_test_aphiaid) ## obis ids are not stable so taking a detour
+  ## obis ids are not stable so taking a detour
+  records <- occurrence(aphiaid = small_test_aphiaid)
   records <- occurrence(obisid = records$obisID[1])
   expect_gt(nrow(records), 0)
   expect_true(is.data.frame(records))
@@ -93,7 +94,8 @@ test_that("qc flags in queries are respected", {
   # columns with some QC errors, not all
   check_qc_no_zero <- function(records) {
     if (nrow(records) > 0) {
-      qc_ok <- sapply(1:30, function(qc) { c(row=bitwAnd(records$qc, 2^(qc-1)) > 0) })
+      qc_ok <- vapply(1:30, function(qc) { c(row=bitwAnd(records$qc, 2^(qc-1)) > 0) },
+                      FUN.VALUE=c(row=rep(T,nrow(records))))
       return(which(colSums(qc_ok) < nrow(qc_ok) & colSums(qc_ok) != 0))
     } else {
       return(NULL)
@@ -107,15 +109,15 @@ test_that("qc flags in queries are respected", {
 })
 
 test_that("occurrence returns requested fields",{
-  fields = c("species", "decimalLongitude", "decimalLatitude")
+  fields <- c("species", "decimalLongitude", "decimalLatitude")
   records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)
   expect_gt(nrow(records), 0)
   expect_equal(colnames(records), fields)
 })
 
 test_that("occurrence returns requested fields even when missing",{
-  fields = c("species", "decimalLongitude", "decimalLatitude", "individualCount")
-  records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)
+  fields <- c("species", "decimalLongitude", "decimalLatitude", "individualCount")
+  expect_warning({records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)})
   expect_gt(nrow(records), 0)
   expect_equal(colnames(records), fields)
 })
@@ -128,4 +130,19 @@ test_that("occurrence test warnings",{
 
 test_that("occurrence test errors",{
   expect_error({occurrence(aphiaid = -1)})
+})
+
+test_that("occurrence POST works for geometry", {
+  opt <- options(scipen=100)
+  on.exit(options(opt))
+  xy <- paste((1:1000)/1000, (1:1000)/1000, collapse=", ")
+  geom <- paste0("POLYGON((0 0, ", xy, ", 1 0, 0 0))")
+  t <- capture.output({occ <- occurrence(geometry = geom, verbose = TRUE)})
+  expect_true(grepl("POST",paste0(t[1:3], collapse = " ")))
+  expect_gt(NROW(occ), 0)
+})
+
+test_that("occurrence invalid name returns message", {
+  expect_warning({occ <- occurrence(scientificname = "azerty")})
+  expect_equal(NROW(occ), 0)
 })

@@ -41,7 +41,7 @@ checklist <- function(
 
   if(!is.null(year)) {
     invalid_years <- suppressWarnings(is.na(as.numeric(year)))
-    if (sum(invalid_years) > 0) {
+    if (any(invalid_years)) {
       warning("Invalid years")
     }
     year <- year[!invalid_years]
@@ -53,7 +53,7 @@ checklist <- function(
   }
 
   if(!is.null(qc)) {
-    qc <- setdiff(qc, 9) # ignore QC 9 (NOT IMPLEMENTED)
+    qc <- setdiff(qc, c(9,20)) # ignore QC 9 and 20 (NOT IMPLEMENTED)
     qc <- qc[qc > 1 & qc <= 30] # restrict to valid qcnumbers range
     qc <- paste0(qc, collapse = ",")
   }
@@ -90,7 +90,7 @@ checklist <- function(
     res <- fromJSON(text, simplifyVector=TRUE)
 
     if(!is.null(res$message)) {
-      lastpage = TRUE
+      lastpage <- TRUE
       warning(res$message)
     } else {
       limit <- res$limit

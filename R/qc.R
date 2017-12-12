@@ -33,14 +33,14 @@
 #' \item 29. Dataset outliers (geography): is the observation within six MADs from the distance to the geographic centroid of this dataset?
 #' \item 30. Dataset outliers (geography): is the observation within three IQRs from the first & third quartile distance to the geographic centroid of this dataset?
 #' }
-#' @references Vandepitte, L., Bosch, S., Tyberghein, L., Waumans, F., Vanhoorne, B., Hernandez, F., … Mees, J. (2015). Fishing for data and sorting the catch: assessing the data quality, completeness and fitness for use of data in marine biogeographic databases. Database, 2015, bau125–bau125. \url{http://dx.doi.org/10.1093/database/bau125}
+#' @references Vandepitte, L., Bosch, S., Tyberghein, L., Waumans, F., Vanhoorne, B., Hernandez, F., ??? Mees, J. (2015). Fishing for data and sorting the catch: assessing the data quality, completeness and fitness for use of data in marine biogeographic databases. Database, 2015, bau125???bau125. \url{http://dx.doi.org/10.1093/database/bau125}
 #' @seealso \code{\link{occurrence}} \code{\link{leafletmap}}
 #' @export
 qcflags <- function(qc, id) {
   mask <- 2^(id-1)
-  return(sapply(qc, function(x) {
+  return(vapply(qc, function(x) {
     return(sum(bitwAnd(x, mask) > 0))
-  }))
+  }, 0))
 }
 
 #' Quality control flags
@@ -76,6 +76,6 @@ qcflags <- function(qc, id) {
 #' \item 29. Dataset outliers (geography): is the observation within six MADs from the distance to the geographic centroid of this dataset?
 #' \item 30. Dataset outliers (geography): is the observation within three IQRs from the first & third quartile distance to the geographic centroid of this dataset?
 #' }
-#' @references Vandepitte, L., Bosch, S., Tyberghein, L., Waumans, F., Vanhoorne, B., Hernandez, F., … Mees, J. (2015). Fishing for data and sorting the catch: assessing the data quality, completeness and fitness for use of data in marine biogeographic databases. Database, 2015, bau125–bau125. doi:10.1093/database/bau125
+#' @references Vandepitte, L., Bosch, S., Tyberghein, L., Waumans, F., Vanhoorne, B., Hernandez, F., ??? Mees, J. (2015). Fishing for data and sorting the catch: assessing the data quality, completeness and fitness for use of data in marine biogeographic databases. Database, 2015, bau125???bau125. doi:10.1093/database/bau125
 #' @seealso \code{\link{qcflags}}
 NULL

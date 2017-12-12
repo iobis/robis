@@ -7,14 +7,51 @@
 dataset(id, verbose = FALSE)
 }
 \arguments{
-\item{id}{numeric. One or more dataset ids.}
+\item{id}{integer vector. One or more dataset ids, if provided all the other query parameters will be
+ignored.}
 
-\item{verbose}{logical. Optional parameter to enable verbose logging (default
-= \code{FALSE}).}
+\item{scientificname}{character vector. The full scientific name, with authorship and date information if known.}
+
+\item{q}{character. The search string.}
+
+\item{obisid}{integer vector. The OBIS identifier of the species.}
+
+\item{aphiaid}{integer vector. The WoRMS identifier of the species.}
+
+\item{groupid}{integer. The taxonomic group id. See also \code{\link{group}} for the list of
+taxonomic groups.}
+
+\item{areaid}{integer vector. The OBIS area identifier (country, marine world heritage site,
+ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
+
+\item{nodeid}{integer vector. The OBIS node identifier. See also \code{\link{node}} for the list
+of nodes.}
+
+\item{startdate}{The earliest date on which the Event occurred.}
+
+\item{enddate}{The latest date on which the Event occurred.}
+
+\item{startdepth}{The minimum depth below the sea surface.}
+
+\item{enddepth}{The maximum depth below the sea surface.}
+
+\item{geometry}{A wkt geometry string.}
+
+\item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
+
+\item{year}{integer vector. The year in which the Event occurred.}
+
+\item{resourceid}{integer vector. The dataset identifier. See also \code{\link{dataset}} for
+querying the list of datasets.}
 }
 \value{
 The dataset metadata records.
 }
 \description{
 Fetch dataset metadata.
+}
+\examples{
+datasets <- dataset(id = 1)
+datasets <- dataset(areaid = c(127, 204))
+datasets <- dataset(nodeid = c(0,1))
 }
