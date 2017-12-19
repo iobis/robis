@@ -3,13 +3,12 @@ Title: R client for the OBIS API
 Description: An R interface to the webservices provided by the Ocean Biogeographic Information System (OBIS; <http://obis.org>). OBIS is a global open-access data and information clearing-house on marine biodiversity for science, conservation and sustainable development.
 Version: 0.3.0-9003
 Date: 2017-12-12
-Authors@R: c(
-    person("Pieter", "Provoost", role = c("aut", "cre"),
-           email = "pieterprovoost@gmail.com"),
-    person("Samuel", "Bosch", role = "aut",
-           email = "mail@samuelbosch.com"),
-    person("Ward", "Appeltans", role = "ctb")
-  )
+Authors@R: as.person(c(
+    "Pieter Provoost <pieterprovoost@gmail.com> [aut]", 
+    "Samuel Bosch <mail@samuelbosch.com> [aut]",
+    "Ward Appeltans [ctb]",
+    "OBIS <support@obis.org> [cre]"
+  ))
 URL: https://github.com/iobis/robis
 BugReports: https://github.com/iobis/robis/issues
 Depends:
