@@ -3,7 +3,7 @@ obis_url <- function() {
 }
 
 max_characters <- function() {
-  getOption("max_characters", 2048)
+  getOption("robis_max_characters", 2048)
 }
 
 handle_date <- function(date) {
