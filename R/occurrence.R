@@ -1,27 +1,33 @@
 #' Find occurrences.
+#' @usage occurrence(scientificname = NULL, year = NULL, obisid = NULL, aphiaid = NULL,
+#'   groupid = NULL, resourceid = NULL, nodeid = NULL, areaid = NULL, startdate = NULL,
+#'   enddate = NULL, startdepth = NULL, enddepth = NULL, geometry = NULL, qc = NULL,
+#'   fields = NULL, verbose = FALSE)
 #'
-#' @param scientificname character vector. The full scientific name, with authorship and date
-#'   information if known.
+#' @param scientificname character vector. The full scientific name, with authorship and
+#'   date information if known.
 #' @param year integer vector. The year in which the Event occurred.
 #' @param obisid integer vector. The OBIS identifier of the species.
 #' @param aphiaid integer vector. The WoRMS identifier of the species.
-#' @param groupid integer. The taxonomic group id. See also \code{\link{group}} for the list of
-#'   taxonomic groups.
-#' @param resourceid integer vector. The dataset identifier. See also \code{\link{dataset}} for
-#'   querying the list of datasets.
-#' @param nodeid integer vector. The OBIS node identifier. See also \code{\link{node}} for the list
-#'   of nodes.
-#' @param areaid integer vector. The OBIS area identifier (country, marine world heritage site,
-#'   ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.
+#' @param groupid integer. The taxonomic group id. See also \code{\link{group}} for the
+#'   list of taxonomic groups.
+#' @param resourceid integer vector. The dataset identifier. See also
+#'   \code{\link{dataset}} for querying the list of datasets.
+#' @param nodeid integer vector. The OBIS node identifier. See also \code{\link{node}} for
+#'   the list of nodes.
+#' @param areaid integer vector. The OBIS area identifier (country, marine world heritage
+#'   site, ABNJ, EBSA, ...). See also \code{\link{area}} for the list of areas.
 #' @param startdate The earliest date on which the Event occurred.
 #' @param enddate The latest date on which the Event occurred.
 #' @param startdepth The minimum depth below the sea surface.
 #' @param enddepth The maximum depth below the sea surface.
 #' @param geometry A wkt geometry string.
-#' @param qc A vector of quality control flags you want to filter on. List of \link[=qc]{QC flags}.
-#' @param fields A vector of field names you want to have returned in order, by default all fields
-#'   with values are returned.
-#' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
+#' @param qc A vector of quality control flags you want to filter on. List of
+#'   \link[=qc]{QC flags}.
+#' @param fields A vector of field names you want to have returned in order, by default
+#'   all fields with values are returned.
+#' @param verbose logical. Optional parameter to enable verbose logging (default =
+#'   \code{FALSE}).
 #' @return The occurrence records.
 #' @examples
 #' records <- occurrence(scientificname = "Abra sibogai")
@@ -126,22 +132,7 @@ occurrence <- function(
   if (verbose) {
     cat("Total time:", (proc.time() - t)[["elapsed"]], "seconds\n")
   }
-
   data <- bind_rows(datalist)
-
-  if (!is.null(fields) & nrow(data) > 0) {
-    missing_fields <- setdiff(fields, colnames(data))
-    if (length(missing_fields) > 0) {
-      warning("Following fields where not found and initialized to NA: ",
-              paste0(missing_fields, collapse = ", "))
-      data[, missing_fields] <- NA
-    }
-    # remove fields that were not requested
-    for (extra_col in setdiff(colnames(data), fields)) {
-      data[, extra_col] <- NULL
-    }
-    data <- data[, fields] # re-order columns to the expected order
-  }
-
+  data <- handle_fields(data, fields)
   return(data)
 }

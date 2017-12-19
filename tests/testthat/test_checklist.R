@@ -43,6 +43,22 @@ test_that("checklist allow multiple scientific names https://github.com/iobis/ro
   expect_equal(NROW(taxa), 2)
 })
 
+test_that("checklist returns requested fields https://github.com/iobis/robis/issues/33",{
+  fields <- c("species", "records")
+  taxa <- checklist(scientificname = "Pterois volitans", fields = fields)
+  expect_equal(NROW(taxa), 1)
+  expect_equal(colnames(taxa), fields)
+})
+
+test_that("checklist returns requested fields even when missing https://github.com/iobis/robis/issues/33",{
+  fields <- c("species", "records", "JustAMissingTestField")
+  expect_warning({
+    taxa <- checklist(scientificname = "Pterois volitans", fields = fields)})
+  expect_equal(NROW(taxa), 1)
+  expect_equal(colnames(taxa), fields)
+})
+
+
 test_that("checklist WKT accross dateline slow https://github.com/iobis/robis/issues/24", {
   skip_on_cran()
   # only run test on Travis (sloooow test)

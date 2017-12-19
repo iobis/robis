@@ -4,29 +4,29 @@
 \alias{checklist}
 \title{Generate checklists.}
 \usage{
-checklist(scientificname = NULL, year = NULL, obisid = NULL,
-  aphiaid = NULL, groupid = NULL, resourceid = NULL, areaid = NULL,
-  startdate = NULL, enddate = NULL, startdepth = NULL, enddepth = NULL,
-  geometry = NULL, qc = NULL, verbose = FALSE)
+checklist(scientificname = NULL, year = NULL, obisid = NULL, aphiaid = NULL,
+  groupid = NULL, resourceid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
+  startdepth = NULL, enddepth = NULL, geometry = NULL, qc = NULL, fields = NULL,
+  verbose = FALSE)
 }
 \arguments{
-\item{scientificname}{The full scientific name, with authorship and date
-information if known.}
+\item{scientificname}{character vector. The full scientific name, with authorship and
+date information if known.}
 
-\item{year}{The year in which the Event occurred.}
+\item{year}{integer vector. The year in which the Event occurred.}
 
-\item{obisid}{The OBIS identifier of the species.}
+\item{obisid}{integer vector. The OBIS identifier of the species.}
 
-\item{aphiaid}{The WoRMS identifier of the species.}
+\item{aphiaid}{integer vector. The WoRMS identifier of the species.}
 
-\item{groupid}{The taxonomic group id. See also \code{\link{group}} for the
+\item{groupid}{integer. The taxonomic group id. See also \code{\link{group}} for the
 list of taxonomic groups.}
 
-\item{resourceid}{The dataset identifier. See also \code{\link{dataset}} for
-querying the list of datasets.}
+\item{resourceid}{integer vector. The dataset identifier. See also
+\code{\link{dataset}} for querying the list of datasets.}
 
-\item{areaid}{The OBIS area identifier (country, marine world heritage site,
-ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
+\item{areaid}{integer vector. The OBIS area identifier (country, marine world heritage
+site, ABNJ, EBSA, ...). See also \code{\link{area}} for the list of areas.}
 
 \item{startdate}{The earliest date on which the Event occurred.}
 
@@ -41,14 +41,21 @@ ABNJ, EBSA, ...). See also \code{\link{area}} for the list areas.}
 \item{qc}{A vector of quality control flags you want to filter on. List of
 \link[=qc]{QC flags}.}
 
-\item{verbose}{logical. Optional parameter to enable verbose logging (default
-= \code{FALSE}).}
+\item{fields}{A vector of field names you want to have returned in order, by default
+all fields with values are returned.}
+
+\item{verbose}{logical. Optional parameter to enable verbose logging (default =
+\code{FALSE}).}
 }
 \value{
 The checklist.
 }
 \description{
 Generate checklists.
+}
+\examples{
+taxa <- checklist(scientificname = c("Pterois volitans", "Voluta musica"))
+taxa <- checklist(aphiaid = 137091, year = 1980:1989, fields = c("species", "records"))
 }
 \seealso{
 \code{\link{occurrence}} \code{\link{dataset}} \code{\link{area}}

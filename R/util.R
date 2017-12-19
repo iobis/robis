@@ -22,6 +22,23 @@ handle_vector <- function(x) {
   }
 }
 
+handle_fields <- function(data, fields) {
+  if (!is.null(fields) & nrow(data) > 0) {
+    missing_fields <- setdiff(fields, colnames(data))
+    if (length(missing_fields) > 0) {
+      warning("Following fields where not found and initialized to NA: ",
+              paste0(missing_fields, collapse = ", "))
+      data[, missing_fields] <- NA
+    }
+    # remove fields that were not requested
+    for (extra_col in setdiff(colnames(data), fields)) {
+      data[, extra_col] <- NULL
+    }
+    data <- data[, fields] # re-order columns to the expected order
+  }
+  data
+}
+
 log_request <- function(result) {
   print(result$request)
   cat(paste0("Status: ", result$status_code))
