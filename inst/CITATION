@@ -3,7 +3,7 @@ citHeader("To cite package 'robis' in publications use:")
 year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
 bibentry(bibtype = "TechReport",
-         title = "robis: R client to access data from the OBIS API",
+         title = "robis: R Client to access data from the OBIS API",
          author = personList(person("Pieter", "Provoost"),
                              person("Samuel", "Bosch")),
          year = year,
