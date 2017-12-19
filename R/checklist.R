@@ -65,7 +65,7 @@ checklist <- function(
   datalist <- list()
 
   while (!lastpage) {
-    query <- list(scientificname = scientificname,
+    query <- list(scientificname = handle_vector(scientificname),
                   year = year,
                   obisid = obisid,
                   aphiaid = aphiaid,
