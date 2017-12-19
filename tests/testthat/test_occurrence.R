@@ -38,6 +38,14 @@ test_that("occurrence returns records filtered on year",{
   expect_gt(nrow(records), 0)
   expect_lt(nrow(records), nrow(records_original))
   expect_true(all(records$yearcollected == year))
+  # multiple years
+  year <- unique(na.omit(records_original$yearcollected))[1:3]
+  records <- occurrence(aphiaid = other_test_aphiaid, year = year)
+  expect_gt(length(year), 0)
+  expect_gt(nrow(records), 0)
+  expect_lt(nrow(records), nrow(records_original))
+  expect_true(all(unique(records$yearcollected) %in% year))
+  expect_true(all(year %in% records$yearcollected))
 })
 
 expect_filtered <- function(...) {
