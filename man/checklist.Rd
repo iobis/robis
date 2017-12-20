@@ -55,7 +55,7 @@ Generate checklists.
 }
 \examples{
 taxa <- checklist(scientificname = c("Pterois volitans", "Voluta musica"))
-taxa <- checklist(aphiaid = 137091, year = 1980:1989, fields = c("species", "records"))
+taxa <- checklist(aphiaid = 137091, year = 2000:2002, fields = c("species", "records"))
 }
 \seealso{
 \code{\link{occurrence}} \code{\link{dataset}} \code{\link{area}}
