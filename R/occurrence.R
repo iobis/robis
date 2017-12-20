@@ -120,9 +120,9 @@ occurrence <- function(
       limit <- res$limit
       skipid <- res$results$id[nrow(res$results)]
       lastpage <- res$lastpage
-      if(res$count > 0) {
+      if(res$count > 0 && NROW(res$results) > 0) {
         datalist[[i]] <- res$results
-        total <- total + nrow(res$results)
+        total <- total + NROW(res$results)
         log_progress(total, res$count)
         i <- i + 1
       }
