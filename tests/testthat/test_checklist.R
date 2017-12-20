@@ -61,12 +61,10 @@ test_that("checklist returns requested fields even when missing https://github.c
 
 test_that("checklist WKT accross dateline slow https://github.com/iobis/robis/issues/24", {
   skip_on_cran()
-  # only run test on Travis (sloooow test)
-  if (identical(Sys.getenv("TRAVIS"), "true")) {
-    al <- RCurl::getURLContent("https://gist.githubusercontent.com/jebyrnes/329f09b0ce2abc8710bade92f126d5e8/raw/345e93b90b9ab9d13fc8806c3d333d0d646806bc/aleutians.wkt")
-    al_check <- checklist(geometry = al, verbose = TRUE)
-    expect_gt(nrow(al_check), 500)
-  } else {
-    skip("Only run this slow test on TRAVIS but check once we are on OBIS 2.0")
-  }
+  skip_on_travis()
+  skip("Only run this slow test once in a while and check it once we are on OBIS 2.0")
+
+  al <- RCurl::getURLContent("https://gist.githubusercontent.com/jebyrnes/329f09b0ce2abc8710bade92f126d5e8/raw/345e93b90b9ab9d13fc8806c3d333d0d646806bc/aleutians.wkt")
+  al_check <- checklist(geometry = al, verbose = TRUE)
+  expect_gt(nrow(al_check), 500)
 })
