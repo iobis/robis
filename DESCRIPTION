@@ -1,6 +1,6 @@
 Package: robis
-Title: R Client for the OBIS API
-Description: An R interface to the web services provided by the Ocean Biogeographic Information System (OBIS; <http://obis.org>). OBIS is a global open-access data and information clearing-house on marine biodiversity for science, conservation and sustainable development.
+Title: Ocean Biogeographic Information System (OBIS) Client
+Description: Client for the Ocean Biogeographic Information System (<http://iobis.org>). Includes functions for each of the API methods, including searching for occurrences, creating a checklist, searching for datasets and for visualizing the results.
 Version: 1.0.0
 Date: 2017-12-20
 Authors@R: c(
