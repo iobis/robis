@@ -130,6 +130,14 @@ test_that("occurrence returns requested fields even when missing",{
   expect_equal(colnames(records), fields)
 })
 
+test_that("occurrence returns dataframe when only 1 field requested",{
+  fields <- c("species")
+  records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)
+  expect_gt(nrow(records), 0)
+  expect_equal(colnames(records), fields)
+  expect_true(is.data.frame(records))
+})
+
 test_that("occurrence test warnings",{
   expect_warning({occurrence(aphiaid = small_test_aphiaid, year = NA)})
   expect_warning({occurrence(aphiaid = small_test_aphiaid, year = "test")})

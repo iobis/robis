@@ -34,7 +34,7 @@ handle_fields <- function(data, fields) {
     for (extra_col in setdiff(colnames(data), fields)) {
       data[, extra_col] <- NULL
     }
-    data <- data[, fields] # re-order columns to the expected order
+    data <- data[, fields, drop = FALSE] # re-order columns to the expected order
   }
   data
 }
