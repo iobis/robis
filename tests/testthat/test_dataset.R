@@ -11,14 +11,14 @@ test_that("dataset returns requested dataset records", {
 })
 
 test_that("datasets query parameter can be used", {
-  d2 <- dataset(q="MICROBIS")
-  d1 <- dataset(id=d2$id[1])
+  d2 <- dataset(q = "MICROBIS")
+  d1 <- dataset(id = d2$id[1])
 
-  expect_equal(d1,d2)
-  d3 <- dataset(startdate="2015-01-01", scientificname="Cetacea")
+  expect_equal(d1, d2)
+  d3 <- dataset(startdate = "2015-01-01", scientificname = "Cetacea")
   expect_gt(nrow(d3), 10)
 })
 
 test_that("datasets id + query fails", {
-  expect_error(dataset(id=52, q="MICROBIS"))
+  expect_error(dataset(id = 52, q = "MICROBIS"))
 })

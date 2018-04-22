@@ -1,6 +1,8 @@
 extract_dataset <- function(res) {
   dataset <- list(
     "id" = res$id,
+    "node_id" = res$node$id,
+    "node_name" = res$node$name,
     "digirname" = res$digirname,
     "website" = res$website,
     "citation" = res$citation,
@@ -108,6 +110,6 @@ dataset <- function(id = NULL, scientificname = NULL, q = NULL,
     }
   } else {
     return(simple_paged("resource", verbose,
-                        query=query, resultsfn = extract_dataset))
+                        query = query, resultsfn = extract_dataset))
   }
 }
