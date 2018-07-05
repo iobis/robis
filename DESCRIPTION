@@ -1,7 +1,7 @@
 Package: robis
 Title: Ocean Biogeographic Information System (OBIS) Client
 Description: Client for the Ocean Biogeographic Information System (<http://iobis.org>). Includes functions for each of the API methods, including searching for occurrences, creating a checklist, searching for datasets and for visualizing the results.
-Version: 1.0.1
+Version: 1.0.1-9001
 Date: 2018-06-02
 Authors@R: c(
     person("Pieter", "Provoost", , "pieterprovoost@gmail.com", role = "aut"),
