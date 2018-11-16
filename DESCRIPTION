@@ -5,7 +5,7 @@ Version: 1.0.2
 Date: 2018-06-02
 Authors@R: c(
     person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut")),
-    person("Samuel", "Bosch", , "mail@samuelbosch.com", role = aut"),
+    person("Samuel", "Bosch", , "mail@samuelbosch.com", role = "aut"),
     person("Ward", "Appeltans", role = "ctb"),
     person(, "OBIS", , "support@iobis.org", role = "cph")
     )
