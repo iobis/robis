@@ -2,10 +2,12 @@
 % Please edit documentation in R/map.R
 \name{map_leaflet}
 \alias{map_leaflet}
-\title{Create a Leaflet map.}
+\title{Create a leaflet map.}
 \usage{
-map_leaflet(data, popup = NULL)
+map_leaflet(data, color = "#ff3399",
+  provider_tiles = "OpenStreetMap.BlackAndWhite", popup = function(x) {
+      x["id"] })
 }
 \description{
-Create a Leaflet map.
+Create a leaflet map.
 }
