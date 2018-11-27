@@ -1,14 +1,14 @@
 Package: robis
-Title: Ocean Biogeographic Information System (OBIS) Client
-Description: Client for the Ocean Biogeographic Information System (<http://iobis.org>). Includes functions for each of the API methods, including searching for occurrences, creating a checklist, searching for datasets and for visualizing the results.
-Version: 1.0.3
-Date: 2018-11-15
+Title: Ocean Biogeographic Information System (OBIS) client
+Description: Client for the Ocean Biogeographic Information System (<https://obis.org>).
+Version: 1.0.3.9000
+Date: 2018-11-25
 Authors@R: c(
     person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut")),
     person("Samuel", "Bosch", , "mail@samuelbosch.com", role = "aut"),
     person("Ward", "Appeltans", role = "ctb"),
     person(, "OBIS", , "support@iobis.org", role = "cph")
-    )
+  )
 URL: https://github.com/iobis/robis
 BugReports: https://github.com/iobis/robis/issues
 Depends:
@@ -21,4 +21,4 @@ Imports:
 License: MIT + file LICENSE
 Suggests:
     testthat
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

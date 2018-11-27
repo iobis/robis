@@ -1,164 +1,43 @@
 library(robis)
 context("occurrence")
 
-small_test_species <- "Abra sibogai"
-small_test_aphiaid <- 345684
-other_test_aphiaid <- 141438 # Abra segmentum
+small_species <- "Abra sibogai"
+small_taxonid <- 345684
+small_datasetid <- "7d73a408-cb0b-48d3-8b08-ae1f25b0b729"
+medium_species <- "Abra alba"
+medium_taxonid <- 141433
+small_record_limit <- 100000
 
 test_that("occurrence returns small number of records for a scientific name", {
-  records <- occurrence(scientificname = small_test_species, verbose = TRUE)
+  records <- occurrence(scientificname = small_species, verbose = TRUE)
   expect_gt(nrow(records), 0)
-  expect_true(is.data.frame(records))
-  expect_true(all(records$scientificName == small_test_species))
-  expect_true(all(records$aphiaID == small_test_aphiaid))
+  expect_lt(nrow(records), small_record_limit)
+  expect_true(all(records$species == small_species))
+  expect_true(all(records$aphiaID == small_taxonid))
 })
 
 test_that("occurrence returns small number of records for an aphia id", {
-  records <- occurrence(aphiaid = small_test_aphiaid)
+  records <- occurrence(taxonid = small_taxonid)
   expect_gt(nrow(records), 0)
-  expect_true(is.data.frame(records))
-  expect_true(all(records$aphiaID == small_test_aphiaid))
+  expect_lt(nrow(records), small_record_limit)
+  expect_true(all(records$species == small_species))
+  expect_true(all(records$aphiaID == small_taxonid))
 })
 
-test_that("occurrence returns small number of records for an obis id", {
-  ## obis ids are not stable so taking a detour
-  records <- occurrence(aphiaid = small_test_aphiaid)
-  records <- occurrence(obisid = records$obisID[1])
+test_that("startdate restricts results by date", {
+  records <- occurrence(taxonid = medium_taxonid, startdate = "2010-01-01")
   expect_gt(nrow(records), 0)
-  expect_true(is.data.frame(records))
-  expect_true(all(records$taxonID == records$obisID[1]))
-  expect_true(all(records$aphiaID == small_test_aphiaid))
+  expect_true(all(records$date_year >= 2010))
 })
 
-test_that("occurrence returns records filtered on year",{
-  records_original <- occurrence(aphiaid = other_test_aphiaid)
-  year <- na.omit(records_original$yearcollected)[1]
-  records <- occurrence(aphiaid = other_test_aphiaid, year = year)
-  expect_gt(year, 0)
+test_that("startdate restricts results by date", {
+  records <- occurrence(taxonid = medium_taxonid, enddate = "2009-12-31")
   expect_gt(nrow(records), 0)
-  expect_lt(nrow(records), nrow(records_original))
-  expect_true(all(records$yearcollected == year))
-  # multiple years
-  year <- unique(na.omit(records_original$yearcollected))[1:3]
-  records <- occurrence(aphiaid = other_test_aphiaid, year = year)
-  expect_gt(length(year), 0)
+  expect_true(all(records$date_year <= 2009))
+})
+
+test_that("datasetid restricts results by dateset", {
+  records <- occurrence(datasetid = small_datasetid)
   expect_gt(nrow(records), 0)
-  expect_lt(nrow(records), nrow(records_original))
-  expect_true(all(unique(records$yearcollected) %in% year))
-  expect_true(all(year %in% records$yearcollected))
-})
-
-expect_filtered <- function(...) {
-  records <- occurrence(aphiaid = other_test_aphiaid, ...)
-  expect_gt(NROW(records), 0)
-  expect_lt(NROW(records), nrow(occurrence(aphiaid = other_test_aphiaid)))
-  records
-}
-
-test_that("occurrence returns records filtered on startdate",{
-  start <- as.Date("2007-06-22")
-  records <- expect_filtered(startdate = start)
-  expect_true(all(as.Date(records$eventDate) > start))
-})
-
-test_that("occurrence returns records filtered on enddate",{
-  end <- as.Date("2007-06-22")
-  records <- expect_filtered(enddate = end)
-  expect_true(all(as.Date(records$eventDate) < end))
-})
-
-test_that("occurrence returns records filtered on start and enddate",{
-  start <- as.Date("2007-06-22")
-  end <- as.Date("2011-1-1")
-  records <- expect_filtered(startdate = start, enddate = end)
-  expect_true(all(as.Date(records$eventDate) > start))
-  expect_true(all(as.Date(records$eventDate) < end))
-})
-
-test_that("occurrence returns 0 records then no errors occur",{
-  records <- occurrence(aphiaid = other_test_aphiaid, startdate = as.Date("3210-1-1"))
-  expect_equal(NROW(records), 0)
-})
-
-test_that("occurrence returns records filtered on geometry",{
-  records <- expect_filtered(geometry = "POLYGON ((0 0, 0 45, 45 45, 45 0, 0 0))")
-  expect_true(all(records$decimalLongitude < 45))
-  expect_true(all(records$decimalLatitude < 45))
-  expect_true(all(records$decimalLongitude > 0))
-  expect_true(all(records$decimalLatitude > 0))
-})
-
-test_that("occurrence returns records filtered on groups", {
-    g <- group()
-    groupid <- g[g$name == "Seagrasses",]$id
-    records <- occurrence(groupid=groupid, startdate = as.Date("2005-10-01"), enddate = as.Date("2005-12-31"))
-    expect_gt(nrow(records), 1)
-    expect_lt(nrow(records), 5000)
-    expect_true(all(c("Zostera", "Posidonia") %in% unique(records$genus)))
-})
-
-test_that("qc flags in queries are respected", {
-  records <- occurrence(scientificname = small_test_species)
-  # columns with some QC errors, not all
-  check_qc_no_zero <- function(records) {
-    if (nrow(records) > 0) {
-      qc_ok <- vapply(1:30, function(qc) { c(row=bitwAnd(records$qc, 2^(qc-1)) > 0) },
-                      FUN.VALUE=c(row=rep(T,nrow(records))))
-      return(which(colSums(qc_ok) < nrow(qc_ok) & colSums(qc_ok) != 0))
-    } else {
-      return(NULL)
-    }
-  }
-  qc_numbers_not_ok <- check_qc_no_zero(records)
-  # tooo: find test species which actually returns records here
-  records_with_qc <- occurrence(scientificname = small_test_species, qc=qc_numbers_not_ok)
-  expect_equal(length(check_qc_no_zero(records_with_qc)), 0)
-  expect_lt(nrow(records_with_qc), nrow(records))
-})
-
-test_that("occurrence returns requested fields",{
-  fields <- c("species", "decimalLongitude", "decimalLatitude")
-  records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)
-  expect_gt(nrow(records), 0)
-  expect_equal(colnames(records), fields)
-})
-
-test_that("occurrence returns requested fields even when missing",{
-  fields <- c("species", "decimalLongitude", "decimalLatitude", "individualCount")
-  expect_warning({records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)})
-  expect_gt(nrow(records), 0)
-  expect_equal(colnames(records), fields)
-})
-
-test_that("occurrence returns dataframe when only 1 field requested",{
-  fields <- c("species")
-  records <- occurrence(aphiaid = small_test_aphiaid, fields = fields)
-  expect_gt(nrow(records), 0)
-  expect_equal(colnames(records), fields)
-  expect_true(is.data.frame(records))
-})
-
-test_that("occurrence test warnings",{
-  expect_warning({occurrence(aphiaid = small_test_aphiaid, year = NA)})
-  expect_warning({occurrence(aphiaid = small_test_aphiaid, year = "test")})
-  expect_warning({occurrence(aphiaid = small_test_aphiaid, fields = c("species", "abcdefghij"))})
-})
-
-test_that("occurrence test errors",{
-  expect_error({occurrence(aphiaid = -1)})
-})
-
-test_that("occurrence POST works for geometry", {
-  opt <- options(scipen=100)
-  on.exit(options(opt))
-  xy <- paste((1:1000)/1000, (1:1000)/1000, collapse=", ")
-  geom <- paste0("POLYGON((0 0, ", xy, ", 1 0, 0 0))")
-  t <- capture.output({occ <- occurrence(geometry = geom, verbose = TRUE)})
-  expect_true(grepl("POST",paste0(t[1:3], collapse = " ")))
-  expect_gt(NROW(occ), 0)
-})
-
-test_that("occurrence invalid name returns message", {
-  expect_warning({occ <- occurrence(scientificname = "azerty")})
-  expect_equal(NROW(occ), 0)
+  expect_lt(nrow(records), small_record_limit)
 })
