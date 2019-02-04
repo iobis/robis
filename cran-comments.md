@@ -1,7 +1,7 @@
 ## Test environments
 
 * macOS Mojave, R version 3.5.1
-* Ubuntu 14.04.5 LTS (on travis-ci.org), R 3.5.0
+* Ubuntu 14.04.5 LTS (on travis-ci.org), R 3.5.2
 * win-builder (devel and release)
  
 ## devtools::check() results
