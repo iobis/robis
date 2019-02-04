@@ -23,57 +23,38 @@ devtools::install_github("iobis/robis")
 Get occurrences by scientific name:
 
 ```R
-data <- occurrence("Abra alba")
+records <- occurrence("Abra alba")
 ```
 
 Get occurrences by AphiaID:
 
 ```R
-data <- occurrence(aphiaid = 141433)
-```
-
-Restrict fields in result set:
-
-```R
-data <- occurrence("Abra alba", fields = c("decimalLongitude", "decimalLatitude"))
-```
-
-Filter occurrences by [QC flags](http://www.ncbi.nlm.nih.gov/pubmed/25632106):
-
-```R
-data <- occurrence("Abra nitida", qc = c(22, 23))
+records <- occurrence(taxonid = 141433)
 ```
 
 Get occurrences by geometry:
 
 ```R
-data <- occurrence("Abra alba", geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
+records <- occurrence("Abra alba", geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
 ```
 
-Plot occurrences on a Leaflet map:
+Plot occurrences on a Leaflet or ggplot2 map:
 
 ```R
-leafletmap(data)
+map_leaflet(records)
+map_ggplot(records)
 ```
 
 ## Checklist
 
-Get a checklist for a specific group and year:
+Get a checklist for a taxonomic group:
 
 ```R
-data <- checklist("Semelidae", year = 2005)
+taxa <- checklist("Semelidae")
 ```
 
 Get a checklist for a region:
 
 ```R
-data <- checklist(geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
-```
-
-## Dataset
-
-Get dataset information by dataset ID:
-
-```R
-datasets <- dataset(seq(2500, 2520))
+taxa <- checklist(geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
 ```

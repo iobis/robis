@@ -5,8 +5,16 @@
 \title{Create a leaflet map.}
 \usage{
 map_leaflet(data, color = "#ff3399",
-  provider_tiles = "OpenStreetMap.BlackAndWhite", popup = function(x) {
-      x["id"] })
+  provider_tiles = "OpenStreetMap.BlackAndWhite", popup = function(x) { x["id"] })
+}
+\arguments{
+\item{data}{the occurrences from \code{occurrence()}.}
+
+\item{color}{color to be used for the dots.}
+
+\item{provider_tiles}{the base map provider.}
+
+\item{popup}{function generating the popup content.}
 }
 \description{
 Create a leaflet map.

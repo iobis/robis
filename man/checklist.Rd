@@ -5,10 +5,40 @@
 \title{Create a checklist.}
 \usage{
 checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
-  nodeid = NULL, startdate = NULL, enddate = NULL,
-  startdepth = NULL, enddepth = NULL, geometry = NULL,
-  verbose = FALSE)
+  nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
+  startdepth = NULL, enddepth = NULL, geometry = NULL, verbose = FALSE)
+}
+\arguments{
+\item{scientificname}{the scientific name.}
+
+\item{taxonid}{the taxon identifier (WoRMS AphiaID).}
+
+\item{datasetid}{the dataset identifier.}
+
+\item{nodeid}{the OBIS node identifier.}
+
+\item{areaid}{the OBIS area identifier.}
+
+\item{startdate}{the earliest date on which occurrence took place.}
+
+\item{enddate}{the latest date on which the occurrence took place.}
+
+\item{startdepth}{the minimum depth below the sea surface.}
+
+\item{enddepth}{the maximum depth below the sea surface.}
+
+\item{geometry}{a WKT geometry string.}
+
+\item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
+}
+\value{
+The checklist.
 }
 \description{
 Create a checklist.
+}
+\examples{
+taxa <- checklist(scientificname = "Tellinidae")
+taxa <- checklist(geometry = "POLYGON ((2.3 51.8, 2.3 51.6, 2.6 51.6, 2.6 51.8, 2.3 51.8))")
+taxa <- checklist(areaid = 1)
 }

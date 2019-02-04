@@ -6,6 +6,11 @@
 \usage{
 map_ggplot(data, color = "#ff3399")
 }
+\arguments{
+\item{data}{the occurrences from \code{occurrence()}.}
+
+\item{color}{color to be used for the dots.}
+}
 \description{
 Create a ggplot2 map.
 }

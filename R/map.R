@@ -1,5 +1,11 @@
 #' Create a leaflet map.
 #'
+#' @usage map_leaflet(data, color = "#ff3399",
+#'   provider_tiles = "OpenStreetMap.BlackAndWhite", popup = function(x) { x["id"] })
+#' @param data the occurrences from \code{occurrence()}.
+#' @param color color to be used for the dots.
+#' @param provider_tiles the base map provider.
+#' @param popup function generating the popup content.
 #' @export
 map_leaflet <- function(data, color = "#ff3399", provider_tiles = "OpenStreetMap.BlackAndWhite", popup = function(x) { x["id"] }) {
   m <- leaflet(data) %>%
@@ -14,12 +20,15 @@ map_leaflet <- function(data, color = "#ff3399", provider_tiles = "OpenStreetMap
 
 #' Create a ggplot2 map.
 #'
+#' @usage map_ggplot(data, color = "#ff3399")
+#' @param data the occurrences from \code{occurrence()}.
+#' @param color color to be used for the dots.
 #' @export
 map_ggplot <- function(data, color = "#ff3399") {
   world <- borders("world", colour = "gray80", fill = "gray80")
   m <- ggplot() +
     world +
-    geom_point(data = data, aes(x = decimalLongitude, y = decimalLatitude), size = 1.5, stroke = 0.8, alpha = 0.3, colour = color) +
+    geom_point(data = data, aes_string(x = "decimalLongitude", y = "decimalLatitude"), size = 1.5, stroke = 0.8, alpha = 0.3, colour = color) +
     xlab("longitude") +
     ylab("latitude") +
     coord_quickmap()

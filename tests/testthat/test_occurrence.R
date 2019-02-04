@@ -36,7 +36,7 @@ test_that("startdate restricts results by date", {
   expect_true(all(records$date_year <= 2009))
 })
 
-test_that("datasetid restricts results by dateset", {
+test_that("datasetid restricts results by dataset", {
   records <- occurrence(datasetid = small_datasetid)
   expect_gt(nrow(records), 0)
   expect_lt(nrow(records), small_record_limit)

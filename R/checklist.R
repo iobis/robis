@@ -1,11 +1,31 @@
 #' Create a checklist.
 #'
+#' @usage checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
+#'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
+#'   startdepth = NULL, enddepth = NULL, geometry = NULL, verbose = FALSE)
+#' @param scientificname the scientific name.
+#' @param taxonid the taxon identifier (WoRMS AphiaID).
+#' @param datasetid the dataset identifier.
+#' @param nodeid the OBIS node identifier.
+#' @param areaid the OBIS area identifier.
+#' @param startdate the earliest date on which occurrence took place.
+#' @param enddate the latest date on which the occurrence took place.
+#' @param startdepth the minimum depth below the sea surface.
+#' @param enddepth the maximum depth below the sea surface.
+#' @param geometry a WKT geometry string.
+#' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
+#' @return The checklist.
+#' @examples
+#' taxa <- checklist(scientificname = "Tellinidae")
+#' taxa <- checklist(geometry = "POLYGON ((2.3 51.8, 2.3 51.6, 2.6 51.6, 2.6 51.8, 2.3 51.8))")
+#' taxa <- checklist(areaid = 1)
 #' @export
 checklist <- function(
   scientificname = NULL,
   taxonid = NULL,
   datasetid = NULL,
   nodeid = NULL,
+  areaid = NULL,
   startdate = NULL,
   enddate = NULL,
   startdepth = NULL,
@@ -27,6 +47,7 @@ checklist <- function(
       taxonid = handle_vector(taxonid),
       datasetid = handle_vector(datasetid),
       nodeid = handle_vector(nodeid),
+      areaid = handle_vector(areaid),
       startdate = handle_date(startdate),
       enddate = handle_date(enddate),
       startdepth = startdepth,
@@ -61,8 +82,5 @@ checklist <- function(
   }
 
   data <- bind_rows(result_list)
-  #data <- data[,!empty_cols(data)]
-
   return(data)
-
 }

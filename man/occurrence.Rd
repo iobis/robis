@@ -5,10 +5,40 @@
 \title{Find occurrences.}
 \usage{
 occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
-  nodeid = NULL, startdate = NULL, enddate = NULL,
-  startdepth = NULL, enddepth = NULL, geometry = NULL,
-  verbose = FALSE)
+  nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
+  startdepth = NULL, enddepth = NULL, geometry = NULL, verbose = FALSE)
+}
+\arguments{
+\item{scientificname}{the scientific name.}
+
+\item{taxonid}{the taxon identifier (WoRMS AphiaID).}
+
+\item{datasetid}{the dataset identifier.}
+
+\item{nodeid}{the OBIS node identifier.}
+
+\item{areaid}{the OBIS area identifier.}
+
+\item{startdate}{the earliest date on which occurrence took place.}
+
+\item{enddate}{the latest date on which the occurrence took place.}
+
+\item{startdepth}{the minimum depth below the sea surface.}
+
+\item{enddepth}{the maximum depth below the sea surface.}
+
+\item{geometry}{a WKT geometry string.}
+
+\item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
+}
+\value{
+The occurrence records.
 }
 \description{
 Find occurrences.
+}
+\examples{
+records <- occurrence(scientificname = "Abra sibogai")
+records <- occurrence(taxonid = 141438, startdate = as.Date("2007-10-10"))
+records <- occurrence(taxon = 141438, geometry = "POLYGON ((0 0, 0 45, 45 45, 45 0, 0 0))")
 }

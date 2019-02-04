@@ -1,5 +1,5 @@
 api_url <- function() {
-  getOption("robis_api_url", "https://api.iobis.org/v3/")
+  getOption("robis_api_url", "https://api.obis.org/v3/")
 }
 
 page_size <- function() {
@@ -45,5 +45,7 @@ empty_cols <- function(df) {
 }
 
 log_progress <- function(total, count) {
-  message(paste0("\rRetrieved ", total, " records of ", count, " (", floor(total / count * 100), "%)", sep = ""), appendLF = FALSE)
+  pct <- floor(total / count * 100)
+  if (pct > 100) pct <- 100
+  message(paste0("\rRetrieved ", total, " records of ", count, " (", pct, "%)", sep = ""), appendLF = FALSE)
 }
