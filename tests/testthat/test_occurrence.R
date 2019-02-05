@@ -4,8 +4,8 @@ context("occurrence")
 small_species <- "Abra sibogai"
 small_taxonid <- 345684
 small_datasetid <- "7d73a408-cb0b-48d3-8b08-ae1f25b0b729"
-medium_species <- "Abra alba"
-medium_taxonid <- 141433
+medium_species <- "Abra nitida"
+medium_taxonid <- 141435
 small_record_limit <- 100000
 
 test_that("occurrence returns small number of records for a scientific name", {
@@ -30,10 +30,10 @@ test_that("startdate restricts results by date", {
   expect_true(all(records$date_year >= 2010))
 })
 
-test_that("startdate restricts results by date", {
-  records <- occurrence(taxonid = medium_taxonid, enddate = "2009-12-31")
+test_that("enddate restricts results by date", {
+  records <- occurrence(taxonid = medium_taxonid, enddate = "2002-12-31")
   expect_gt(nrow(records), 0)
-  expect_true(all(records$date_year <= 2009))
+  expect_true(all(records$date_year <= 2002))
 })
 
 test_that("datasetid restricts results by dataset", {
