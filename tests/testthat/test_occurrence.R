@@ -25,18 +25,21 @@ test_that("occurrence returns small number of records for an aphia id", {
 })
 
 test_that("startdate restricts results by date", {
+  skip_on_cran()
   records <- occurrence(taxonid = medium_taxonid, startdate = "2010-01-01")
   expect_gt(nrow(records), 0)
   expect_true(all(records$date_year >= 2010))
 })
 
 test_that("enddate restricts results by date", {
+  skip_on_cran()
   records <- occurrence(taxonid = medium_taxonid, enddate = "2002-12-31")
   expect_gt(nrow(records), 0)
   expect_true(all(records$date_year <= 2002))
 })
 
 test_that("datasetid restricts results by dataset", {
+  skip_on_cran()
   records <- occurrence(datasetid = small_datasetid)
   expect_gt(nrow(records), 0)
   expect_lt(nrow(records), small_record_limit)
