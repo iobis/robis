@@ -40,5 +40,5 @@ Create a checklist.
 \examples{
 taxa <- checklist(scientificname = "Tellinidae")
 taxa <- checklist(geometry = "POLYGON ((2.3 51.8, 2.3 51.6, 2.6 51.6, 2.6 51.8, 2.3 51.8))")
-taxa <- checklist(areaid = 1)
+taxa <- checklist(areaid = 10181)
 }
