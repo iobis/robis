@@ -13,6 +13,7 @@
 #' @param startdepth the minimum depth below the sea surface.
 #' @param enddepth the maximum depth below the sea surface.
 #' @param geometry a WKT geometry string.
+#' @param redlist include only IUCN Red List species.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return The occurrence records.
 #' @examples
@@ -31,6 +32,7 @@ occurrence <- function(
   startdepth = NULL,
   enddepth = NULL,
   geometry = NULL,
+  redlist = NULL,
   verbose = FALSE
 ) {
 
@@ -53,6 +55,7 @@ occurrence <- function(
       startdepth = startdepth,
       enddepth = enddepth,
       geometry = geometry,
+      redlist = handle_logical(redlist),
       after = after,
       size = page_size()
     )

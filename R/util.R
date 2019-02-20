@@ -14,6 +14,14 @@ handle_date <- function(date) {
   }
 }
 
+handle_logical <- function(b) {
+  if (!is.null(b)) {
+    return(tolower(as.character(b)))
+  } else {
+    return(NULL)
+  }
+}
+
 handle_vector <- function(x) {
   if (!is.null(x)) {
     return(paste0(x, collapse = ","))
