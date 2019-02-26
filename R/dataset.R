@@ -1,6 +1,6 @@
-#' Create a checklist.
+#' Create a list of datasets.
 #'
-#' @usage checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
+#' @usage dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
 #'   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
 #'   verbose = FALSE)
@@ -16,13 +16,13 @@
 #' @param geometry a WKT geometry string.
 #' @param redlist include only IUCN Red List species.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
-#' @return The checklist.
+#' @return The datasets.
 #' @examples
-#' taxa <- checklist(scientificname = "Tellinidae")
-#' taxa <- checklist(geometry = "POLYGON ((2.3 51.8, 2.3 51.6, 2.6 51.6, 2.6 51.8, 2.3 51.8))")
-#' taxa <- checklist(areaid = 10181)
+#' datasets <- dataset(scientificname = "Tellinidae")
+#' datasets <- dataset(geometry = "POLYGON ((2.3 51.8, 2.3 51.6, 2.6 51.6, 2.6 51.8, 2.3 51.8))")
+#' datasets <- dataset(areaid = 10181)
 #' @export
-checklist <- function(
+dataset <- function(
   scientificname = NULL,
   taxonid = NULL,
   datasetid = NULL,
@@ -61,7 +61,7 @@ checklist <- function(
       size = page_size()
     )
 
-    result <- http_request("GET", "checklist", query)
+    result <- http_request("GET", "dataset", query)
 
     if (verbose) {
       log_request(result)
@@ -75,6 +75,9 @@ checklist <- function(
     skip <- skip + page_size()
 
     if (!is.null(res$results) && is.data.frame(res$results) && nrow(res$results) > 0) {
+      res$results$node_id <- apply(res$results$node, 1, function(x) { return(x["id"]) })
+      res$results$node_name <- apply(res$results$node, 1, function(x) { return(x["name"]) })
+      res$results <- res$results[,!(names(res$results) %in% c("node", "feed", "institutes", "contacts"))]
       result_list[[i]] <- res$results
       fetched <- fetched + nrow(res$results)
       log_progress(fetched, total)

@@ -2,7 +2,8 @@
 #'
 #' @usage occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
-#'   startdepth = NULL, enddepth = NULL, geometry = NULL, verbose = FALSE)
+#'   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
+#'   verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
 #' @param datasetid the dataset identifier.
