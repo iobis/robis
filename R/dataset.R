@@ -15,6 +15,7 @@
 #' @param enddepth the maximum depth below the sea surface.
 #' @param geometry a WKT geometry string.
 #' @param redlist include only IUCN Red List species.
+#' @param exclude quality flags to be excluded from the results.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return The datasets.
 #' @examples
@@ -34,6 +35,7 @@ dataset <- function(
   enddepth = NULL,
   geometry = NULL,
   redlist = NULL,
+  exclude = NULL,
   verbose = FALSE
 ) {
 
@@ -57,6 +59,7 @@ dataset <- function(
       enddepth = enddepth,
       geometry = geometry,
       redlist = handle_logical(redlist),
+      exclude = handle_vector(exclude),
       skip = skip,
       size = page_size()
     )
