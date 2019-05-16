@@ -32,6 +32,8 @@ dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 
 \item{redlist}{include only IUCN Red List species.}
 
+\item{exclude}{quality flags to be excluded from the results.}
+
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }
 \value{
