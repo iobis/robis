@@ -62,7 +62,7 @@ occurrence <- function(
       geometry = geometry,
       redlist = handle_logical(redlist),
       exclude = handle_vector(exclude),
-      fields = handle_vector(fields),
+      fields = handle_fields(fields),
       after = after,
       size = page_size()
     )

@@ -30,6 +30,17 @@ handle_vector <- function(x) {
   }
 }
 
+handle_fields <- function(x) {
+  if (!is.null(x)) {
+    if (!("id" %in% x)) {
+      x <- c("id", x)
+    }
+    return(paste0(x, collapse = ","))
+  } else {
+    return(x)
+  }
+}
+
 http_request <- function(method, path, query) {
   url <- paste0(api_url(), path)
   if (method == "GET") {

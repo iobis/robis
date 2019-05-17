@@ -50,4 +50,7 @@ test_that("fields restricts the fields returned", {
   records <- occurrence(datasetid = small_datasetid, fields = c("id", "scientificName"))
   expect_gt(nrow(records), 0)
   expect_true(length(names(records)) == 2)
+  records <- occurrence(datasetid = small_datasetid, fields = c("scientificName"))
+  expect_gt(nrow(records), 0)
+  expect_true(length(names(records)) == 2)
 })
