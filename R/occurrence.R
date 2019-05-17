@@ -92,5 +92,12 @@ occurrence <- function(
   }
 
   data <- bind_rows(result_list)
+
+  depthFields <- intersect(c("minimumDepthInMeters", "maximumDepthInMeters"), names(data))
+  if (length(depthFields) > 0) {
+    data$depth <- rowMeans(data[depthFields], na.rm = TRUE)
+    data$depth[which(is.nan(data$depth))] <- NA
+  }
+
   return(data)
 }
