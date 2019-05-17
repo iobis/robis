@@ -7,7 +7,7 @@
 occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
-  exclude = NULL, verbose = FALSE)
+  exclude = NULL, fields = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}
@@ -33,6 +33,8 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{redlist}{include only IUCN Red List species.}
 
 \item{exclude}{quality flags to be excluded from the results.}
+
+\item{fields}{fields to be included in the results.}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }
