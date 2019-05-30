@@ -7,7 +7,7 @@
 checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
-  verbose = FALSE)
+  exclude = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}

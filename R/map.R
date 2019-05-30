@@ -8,7 +8,8 @@
 #' @param popup function generating the popup content.
 #' @param antarctic use antarctic polar stereographic projection.
 #' @export
-map_leaflet <- function(data, color = "#ff3399", provider_tiles = "OpenStreetMap.BlackAndWhite", popup = function(x) { x["id"] }, antarctic = FALSE) {
+map_leaflet <- function(data, color = "#ff3399", provider_tiles = "OpenStreetMap.BlackAndWhite",
+                        popup = function(x) { x["id"] }, antarctic = FALSE) {
   p <- NULL
   if (!is.null(popup)) {
     p <- apply(data, 1, popup)
@@ -26,7 +27,7 @@ map_leaflet <- function(data, color = "#ff3399", provider_tiles = "OpenStreetMap
       origin = c(-extent, extent),
       bounds = list( c(-extent, -extent), c(extent, extent) )
     )
-    m <- leaflet(occ, options = leafletOptions(crs = crsAntartica, minZoom = 0, maxZoom = 16)) %>%
+    m <- leaflet(data, options = leafletOptions(crs = crsAntartica, minZoom = 0, maxZoom = 16)) %>%
       setView(0, -90, 0) %>%
       addTiles(
         urlTemplate = "https://tile.gbif.org/3031/omt/{z}/{x}/{y}@1x.png?style=gbif-light",

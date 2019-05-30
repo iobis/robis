@@ -3,7 +3,7 @@
 #' @usage dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
 #'   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
-#'   verbose = FALSE)
+#'   exclude = NULL, verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
 #' @param datasetid the dataset identifier.
@@ -78,8 +78,8 @@ dataset <- function(
     skip <- skip + page_size()
 
     if (!is.null(res$results) && is.data.frame(res$results) && nrow(res$results) > 0) {
-      res$results$node_id <- apply(res$results$node, 1, function(x) { return(x["id"]) })
-      res$results$node_name <- apply(res$results$node, 1, function(x) { return(x["name"]) })
+      res$results$node_id <- sapply(res$results$nodes, function(x) { return(paste0(x$id, collapse = ",")) })
+      res$results$node_name <- sapply(res$results$nodes, function(x) { return(paste0(x$name, collapse = ",")) })
       res$results <- res$results[,!(names(res$results) %in% c("node", "feed", "institutes", "contacts"))]
       result_list[[i]] <- res$results
       fetched <- fetched + nrow(res$results)
