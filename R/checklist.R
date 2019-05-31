@@ -85,6 +85,7 @@ checklist <- function(
 
   }
 
-  data <- bind_rows(result_list) %>% arrange(desc(records))
+  data <- bind_rows(result_list)
+  data <- data[order(data$records, decreasing = TRUE),]
   return(data)
 }
