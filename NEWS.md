@@ -1,3 +1,7 @@
+# robis 2.1.7
+
+Fix for duplicate rows in `checklist()`.
+
 # robis 2.1.6
 
 Fix for `dataset()`.

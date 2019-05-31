@@ -39,10 +39,10 @@ checklist <- function(
   verbose = FALSE
 ) {
 
-  skip <- 0
+
   result_list <- list()
   last_page <- FALSE
-  i <- 1
+  partition <- 0
   fetched <- 0
 
   while (!last_page) {
@@ -60,8 +60,7 @@ checklist <- function(
       geometry = geometry,
       redlist = handle_logical(redlist),
       exclude = handle_vector(exclude),
-      skip = skip,
-      size = page_size()
+      partition = partition
     )
 
     result <- http_request("GET", "checklist", query)
@@ -75,19 +74,17 @@ checklist <- function(
     text <- content(result, "text", encoding = "UTF-8")
     res <- fromJSON(text, simplifyVector = TRUE)
     total <- res$total
-    skip <- skip + page_size()
-
-    if (!is.null(res$results) && is.data.frame(res$results) && nrow(res$results) > 0) {
-      result_list[[i]] <- res$results
-      fetched <- fetched + nrow(res$results)
-      log_progress(fetched, total)
-      i <- i + 1
-    } else {
+    partition = partition + 1
+    if (partition >= res$partitions) {
       last_page <- TRUE
     }
 
+    result_list[[partition + 1]] <- res$results
+    fetched <- fetched + nrow(res$results)
+    log_progress(fetched, total)
+
   }
 
-  data <- bind_rows(result_list)
+  data <- bind_rows(result_list) %>% arrange(desc(records))
   return(data)
 }
