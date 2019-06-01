@@ -1,3 +1,7 @@
+# robis 2.1.8
+
+Critical fix for `occurrence()` bug introduced in version 2.1.7.
+
 # robis 2.1.7
 
 Fix for duplicate rows in `checklist()`.

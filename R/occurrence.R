@@ -81,6 +81,9 @@ occurrence <- function(
     after <- res$results$id[nrow(res$results)]
 
     if (!is.null(res$results) && is.data.frame(res$results) && nrow(res$results) > 0) {
+      if ("node_id" %in% names(res$results)) {
+        res$results$node_id <- sapply(res$results$node_id, paste0, collapse = ",")
+      }
       result_list[[i]] <- res$results
       fetched <- fetched + nrow(res$results)
       log_progress(fetched, total)
