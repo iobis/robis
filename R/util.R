@@ -64,7 +64,11 @@ empty_cols <- function(df) {
 }
 
 log_progress <- function(total, count) {
-  pct <- floor(total / count * 100)
-  if (pct > 100) pct <- 100
+  if (count > 0) {
+    pct <- floor(total / count * 100)
+    if (pct > 100) pct <- 100
+  } else {
+    pct <- 100
+  }
   message(paste0("\rRetrieved ", total, " records of approximately ", count, " (", pct, "%)", sep = ""), appendLF = FALSE)
 }

@@ -1,3 +1,7 @@
+# robis 2.1.9
+
+Fix for empty checklists.
+
 # robis 2.1.8
 
 Critical fix for `occurrence()` bug introduced in version 2.1.7.

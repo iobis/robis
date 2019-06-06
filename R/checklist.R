@@ -39,7 +39,6 @@ checklist <- function(
   verbose = FALSE
 ) {
 
-
   result_list <- list()
   last_page <- FALSE
   partition <- 0
@@ -79,13 +78,19 @@ checklist <- function(
       last_page <- TRUE
     }
 
-    result_list[[partition + 1]] <- res$results
-    fetched <- fetched + nrow(res$results)
+    if (is.data.frame(res$results)) {
+      result_list[[partition + 1]] <- res$results
+      fetched <- fetched + nrow(res$results)
+    }
     log_progress(fetched, total)
 
   }
 
-  data <- bind_rows(result_list)
-  data <- data[order(data$records, decreasing = TRUE),]
-  return(data)
+  if (length(result_list) > 0) {
+    data <- bind_rows(result_list)
+    data <- data[order(data$records, decreasing = TRUE),]
+    return(data)
+  } else {
+    return(data.frame())
+  }
 }
