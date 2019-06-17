@@ -7,7 +7,7 @@
 checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
-  exclude = NULL, verbose = FALSE)
+  hab = NULL, exclude = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}
@@ -31,6 +31,8 @@ checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{geometry}{a WKT geometry string.}
 
 \item{redlist}{include only IUCN Red List species.}
+
+\item{hab}{include only IOC-UNESCO HAB species.}
 
 \item{exclude}{quality flags to be excluded from the results.}
 

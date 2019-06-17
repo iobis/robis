@@ -3,7 +3,7 @@
 #' @usage occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
 #'   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
-#'   exclude = NULL, fields = NULL, verbose = FALSE)
+#'   hab = NULL, exclude = NULL, fields = NULL, verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
 #' @param datasetid the dataset identifier.
@@ -15,6 +15,7 @@
 #' @param enddepth the maximum depth below the sea surface.
 #' @param geometry a WKT geometry string.
 #' @param redlist include only IUCN Red List species.
+#' @param hab include only IOC-UNESCO HAB species.
 #' @param exclude quality flags to be excluded from the results.
 #' @param fields fields to be included in the results.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
@@ -36,6 +37,7 @@ occurrence <- function(
   enddepth = NULL,
   geometry = NULL,
   redlist = NULL,
+  hab = NULL,
   exclude = NULL,
   fields = NULL,
   verbose = FALSE
@@ -61,6 +63,7 @@ occurrence <- function(
       enddepth = enddepth,
       geometry = geometry,
       redlist = handle_logical(redlist),
+      hab = handle_logical(hab),
       exclude = handle_vector(exclude),
       fields = handle_fields(fields),
       after = after,

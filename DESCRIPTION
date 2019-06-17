@@ -1,8 +1,8 @@
 Package: robis
 Title: Ocean Biogeographic Information System (OBIS) Client
 Description: Client for the Ocean Biogeographic Information System (<https://obis.org>).
-Version: 2.1.9
-Date: 2019-06-06
+Version: 2.1.10
+Date: 2019-06-17
 Authors@R: c(
     person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut")),
     person("Samuel", "Bosch", , "mail@samuelbosch.com", role = "aut"),
