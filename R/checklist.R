@@ -77,7 +77,7 @@ checklist <- function(
     res <- fromJSON(text, simplifyVector = TRUE)
     total <- res$total
     partition = partition + 1
-    if (partition >= res$partitions) {
+    if (!("partitions" %in% names(res)) || partition >= res$partitions) {
       last_page <- TRUE
     }
 

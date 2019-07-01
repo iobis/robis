@@ -5,6 +5,7 @@ family <- "Pectinariidae"
 family_taxa_lower_limit <- 10
 family_taxa_upper_limit <- 1000
 redlist_area <- 21
+unknown_aphiaid <- 999999999
 
 test_that("scientificname restricts the checklist by scientificname", {
   taxa <- checklist(scientificname = family, verbose = TRUE)
@@ -16,4 +17,10 @@ test_that("scientificname restricts the checklist by scientificname", {
 test_that("checklist only returns taxa with IUCN Red List category when redlist = TRUE", {
   taxa <- checklist(areaid = redlist_area, redlist = TRUE, verbose = TRUE)
   expect_true(all(!is.na(taxa$category)))
+})
+
+test_that("checklist for an unknown Aphia ID is empty", {
+  taxa <- checklist(taxonid = unknown_aphiaid)
+  expect_true(is.data.frame(taxa))
+  expect_true(nrow(taxa) == 0)
 })

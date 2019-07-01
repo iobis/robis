@@ -1,3 +1,7 @@
+# robis 2.1.11
+
+Bugfix for checklist of unknown taxon.
+
 # robis 2.1.10
 
 Added hab parameter for IOC-UNESCO HAB species.
