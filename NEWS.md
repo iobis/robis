@@ -1,3 +1,7 @@
+# robis 2.1.12
+
+Improved dataset usage metrics.
+
 # robis 2.1.11
 
 Bugfix for checklist of unknown taxon.

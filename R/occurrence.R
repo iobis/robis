@@ -49,28 +49,35 @@ occurrence <- function(
   i <- 1
   fetched <- 0
 
+  query <- list(
+    scientificname = handle_vector(scientificname),
+    taxonid = handle_vector(taxonid),
+    datasetid = handle_vector(datasetid),
+    nodeid = handle_vector(nodeid),
+    areaid = handle_vector(areaid),
+    startdate = handle_date(startdate),
+    enddate = handle_date(enddate),
+    startdepth = startdepth,
+    enddepth = enddepth,
+    geometry = geometry,
+    redlist = handle_logical(redlist),
+    hab = handle_logical(hab),
+    exclude = handle_vector(exclude),
+    fields = handle_fields(fields)
+  )
+
+  result <- http_request("GET", "metrics/logusage", c(query, list(agent = "robis")))
+
+  if (verbose) {
+    log_request(result)
+  }
+
   while (!last_page) {
 
-    query <- list(
-      scientificname = handle_vector(scientificname),
-      taxonid = handle_vector(taxonid),
-      datasetid = handle_vector(datasetid),
-      nodeid = handle_vector(nodeid),
-      areaid = handle_vector(areaid),
-      startdate = handle_date(startdate),
-      enddate = handle_date(enddate),
-      startdepth = startdepth,
-      enddepth = enddepth,
-      geometry = geometry,
-      redlist = handle_logical(redlist),
-      hab = handle_logical(hab),
-      exclude = handle_vector(exclude),
-      fields = handle_fields(fields),
+    result <- http_request("GET", "occurrence", c(query, list(
       after = after,
       size = page_size()
-    )
-
-    result <- http_request("GET", "occurrence", query)
+    )))
 
     if (verbose) {
       log_request(result)
