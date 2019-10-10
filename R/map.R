@@ -63,4 +63,5 @@ map_ggplot <- function(data, color = "#ff3399") {
     xlab("longitude") +
     ylab("latitude") +
     coord_quickmap()
+  m
 }
