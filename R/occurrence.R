@@ -2,7 +2,10 @@
 #'
 #' @usage occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
-#'   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
+#'   startdepth = NULL, enddepth = NULL,
+#'   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
+#'   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
+#'   geometry = NULL, redlist = NULL, mof = FALSE,
 #'   hab = NULL, exclude = NULL, fields = NULL, verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
@@ -13,9 +16,16 @@
 #' @param enddate the latest date on which the occurrence took place.
 #' @param startdepth the minimum depth below the sea surface.
 #' @param enddepth the maximum depth below the sea surface.
+#' @param measurementtype the measurement type to be included in the measurements data.
+#' @param measurementtypeid the measurement type ID to be included in the measurements data.
+#' @param measurementvalue the measurement value to be included in the measurements data.
+#' @param measurementvalueid the measurement value ID to be included in the measurements data.
+#' @param measurementunit the measurement unit to be included in the measurements data.
+#' @param measurementunitid the measurement unit ID to be included in the measurements data.
 #' @param geometry a WKT geometry string.
 #' @param redlist include only IUCN Red List species.
 #' @param hab include only IOC-UNESCO HAB species.
+#' @param mof include measurements data (default = \code{FALSE}).
 #' @param exclude quality flags to be excluded from the results.
 #' @param fields fields to be included in the results.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
@@ -36,11 +46,18 @@ occurrence <- function(
   startdepth = NULL,
   enddepth = NULL,
   geometry = NULL,
+  measurementtype = NULL,
+  measurementtypeid = NULL,
+  measurementvalue = NULL,
+  measurementvalueid = NULL,
+  measurementunit = NULL,
+  measurementunitid = NULL,
   redlist = NULL,
   hab = NULL,
   exclude = NULL,
   fields = NULL,
-  verbose = FALSE
+  verbose = FALSE,
+  mof = FALSE
 ) {
 
   after <- "-1"
@@ -60,8 +77,15 @@ occurrence <- function(
     startdepth = startdepth,
     enddepth = enddepth,
     geometry = geometry,
+    measurementtype = measurementtype,
+    measurementtypeid = measurementtypeid,
+    measurementvalue = measurementvalue,
+    measurementvalueid = measurementvalueid,
+    measurementunit = measurementunit,
+    measurementunitid = measurementunitid,
     redlist = handle_logical(redlist),
     hab = handle_logical(hab),
+    mof = handle_logical(mof),
     exclude = handle_vector(exclude),
     fields = handle_fields(fields)
   )

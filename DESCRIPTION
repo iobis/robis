@@ -1,8 +1,8 @@
 Package: robis
 Title: Ocean Biogeographic Information System (OBIS) Client
 Description: Client for the Ocean Biogeographic Information System (<https://obis.org>).
-Version: 2.1.13
-Date: 2019-10-10
+Version: 2.2.1
+Date: 2019-10-11
 Authors@R: c(
     person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut")),
     person("Samuel", "Bosch", , "mail@samuelbosch.com", role = "aut"),
@@ -18,7 +18,8 @@ Imports:
     dplyr,
     jsonlite,
     leaflet,
-    ggplot2
+    ggplot2,
+    tidyr
 License: MIT + file LICENSE
 Suggests:
     testthat

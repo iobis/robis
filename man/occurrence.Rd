@@ -6,7 +6,10 @@
 \usage{
 occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
-  startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
+  startdepth = NULL, enddepth = NULL,
+  measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
+  measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
+  geometry = NULL, redlist = NULL, mof = FALSE,
   hab = NULL, exclude = NULL, fields = NULL, verbose = FALSE)
 }
 \arguments{
@@ -30,6 +33,18 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 
 \item{geometry}{a WKT geometry string.}
 
+\item{measurementtype}{the measurement type to be included in the measurements data.}
+
+\item{measurementtypeid}{the measurement type ID to be included in the measurements data.}
+
+\item{measurementvalue}{the measurement value to be included in the measurements data.}
+
+\item{measurementvalueid}{the measurement value ID to be included in the measurements data.}
+
+\item{measurementunit}{the measurement unit to be included in the measurements data.}
+
+\item{measurementunitid}{the measurement unit ID to be included in the measurements data.}
+
 \item{redlist}{include only IUCN Red List species.}
 
 \item{hab}{include only IOC-UNESCO HAB species.}
@@ -39,6 +54,8 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{fields}{fields to be included in the results.}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
+
+\item{mof}{include measurements data (default = \code{FALSE}).}
 }
 \value{
 The occurrence records.
