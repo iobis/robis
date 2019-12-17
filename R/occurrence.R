@@ -5,7 +5,7 @@
 #'   startdepth = NULL, enddepth = NULL,
 #'   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
 #'   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
-#'   geometry = NULL, redlist = NULL, mof = FALSE,
+#'   geometry = NULL, redlist = NULL, mof = FALSE, absence = FALSE,
 #'   hab = NULL, exclude = NULL, fields = NULL, verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
@@ -26,6 +26,7 @@
 #' @param redlist include only IUCN Red List species.
 #' @param hab include only IOC-UNESCO HAB species.
 #' @param mof include measurements data (default = \code{FALSE}).
+#' @param absence only include absence records (default = \code{FALSE}).
 #' @param exclude quality flags to be excluded from the results.
 #' @param fields fields to be included in the results.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
@@ -54,10 +55,11 @@ occurrence <- function(
   measurementunitid = NULL,
   redlist = NULL,
   hab = NULL,
+  mof = FALSE,
+  absence = FALSE,
   exclude = NULL,
   fields = NULL,
-  verbose = FALSE,
-  mof = FALSE
+  verbose = FALSE
 ) {
 
   after <- "-1"
@@ -86,6 +88,7 @@ occurrence <- function(
     redlist = handle_logical(redlist),
     hab = handle_logical(hab),
     mof = handle_logical(mof),
+    absence = handle_logical(absence),
     exclude = handle_vector(exclude),
     fields = handle_fields(fields)
   )

@@ -3,7 +3,6 @@
 \docType{package}
 \name{robis}
 \alias{robis}
-\alias{robis-package}
 \title{robis: R client for the OBIS API}
 \description{
 Work in progress

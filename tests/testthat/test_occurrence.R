@@ -7,6 +7,7 @@ small_datasetid <- "7d73a408-cb0b-48d3-8b08-ae1f25b0b729"
 medium_species <- "Abra nitida"
 medium_taxonid <- 141435
 small_record_limit <- 100000
+absence_species <- "Hippocampus erectus"
 
 test_that("occurrence returns small number of records for a scientific name", {
   records <- occurrence(scientificname = small_species, verbose = TRUE)
@@ -22,6 +23,12 @@ test_that("occurrence returns small number of records for an aphia id", {
   expect_lt(nrow(records), small_record_limit)
   expect_true(all(records$species == small_species))
   expect_true(all(records$aphiaID == small_taxonid))
+})
+
+test_that("occurrence with absence = TRUE returns only absence records", {
+  records <- occurrence(scientificname = absence_species, absence = TRUE)
+  expect_gt(nrow(records), 0)
+  expect_true(all(records$absence == TRUE))
 })
 
 test_that("startdate restricts results by date", {

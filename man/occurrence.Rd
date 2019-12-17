@@ -9,7 +9,7 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   startdepth = NULL, enddepth = NULL,
   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
-  geometry = NULL, redlist = NULL, mof = FALSE,
+  geometry = NULL, redlist = NULL, mof = FALSE, absence = FALSE,
   hab = NULL, exclude = NULL, fields = NULL, verbose = FALSE)
 }
 \arguments{
@@ -49,13 +49,15 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 
 \item{hab}{include only IOC-UNESCO HAB species.}
 
+\item{mof}{include measurements data (default = \code{FALSE}).}
+
+\item{absence}{only include absence records (default = \code{FALSE}).}
+
 \item{exclude}{quality flags to be excluded from the results.}
 
 \item{fields}{fields to be included in the results.}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
-
-\item{mof}{include measurements data (default = \code{FALSE}).}
 }
 \value{
 The occurrence records.
