@@ -5,10 +5,15 @@
 #' @param fields columns from the occurrence dataframe to include.
 #' @return The measurements.
 #' @export
-measurements <- function(df, fields = c("id")) {
+measurements <- function(df, fields = "id") {
   if ("id" %in% names(df) & "mof" %in% names(df)) {
     if (class(df$mof) == "list") {
-      return(unnest(df %>% select(c(fields, "mof")), cols = "mof"))
+      m <- unnest_legacy(
+        df %>%
+          select(c(fields, "mof")) %>%
+          filter(!sapply(mof, is.null))
+      , mof)
+      return(m)
     } else {
       return(data.frame())
     }
