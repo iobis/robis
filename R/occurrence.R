@@ -121,6 +121,10 @@ occurrence <- function(
       if ("node_id" %in% names(res$results)) {
         res$results$node_id <- sapply(res$results$node_id, paste0, collapse = ",")
       }
+      if ("flags" %in% names(res$results)) {
+        res$results$flags <- sapply(res$results$flags, paste0, collapse = ",")
+        res$results$flags[res$results$flags == ""] <- NA
+      }
       result_list[[i]] <- res$results
       fetched <- fetched + nrow(res$results)
       log_progress(fetched, total)

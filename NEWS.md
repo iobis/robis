@@ -1,3 +1,7 @@
+# robis 2.3.0
+
+Added quality flags to occurrence results.
+
 # robis 2.1.12
 
 Improved dataset usage metrics.
