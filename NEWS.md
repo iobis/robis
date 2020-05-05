@@ -1,3 +1,7 @@
+# robis 2.3.1
+
+Fixed the Leaflet base map.
+
 # robis 2.3.0
 
 Added quality flags to occurrence results.

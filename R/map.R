@@ -9,7 +9,7 @@
 #' @param popup function generating the popup content.
 #' @param antarctic use antarctic polar stereographic projection.
 #' @export
-map_leaflet <- function(data, color = "#ff3399", provider_tiles = "OpenStreetMap.BlackAndWhite",
+map_leaflet <- function(data, color = "#ff3399", provider_tiles = "Esri.WorldGrayCanvas",
                         popup = function(x) { x["id"] }, antarctic = FALSE) {
   p <- NULL
   if (!is.null(popup)) {
