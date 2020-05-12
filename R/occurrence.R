@@ -6,7 +6,7 @@
 #'   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
 #'   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
 #'   geometry = NULL, redlist = NULL, mof = FALSE, absence = FALSE,
-#'   hab = NULL, exclude = NULL, fields = NULL, verbose = FALSE)
+#'   dropped = NULL, hab = NULL, exclude = NULL, fields = NULL, verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
 #' @param datasetid the dataset identifier.
@@ -27,6 +27,7 @@
 #' @param hab include only IOC-UNESCO HAB species.
 #' @param mof include measurements data (default = \code{FALSE}).
 #' @param absence only include absence records (default = \code{FALSE}).
+#' @param dropped only include dropped records (\code{TRUE}), exclude dropped records (\code{FALSE}) or include dropped records (\code{include}).
 #' @param exclude quality flags to be excluded from the results.
 #' @param fields fields to be included in the results.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
@@ -57,6 +58,7 @@ occurrence <- function(
   hab = NULL,
   mof = FALSE,
   absence = FALSE,
+  dropped = NULL,
   exclude = NULL,
   fields = NULL,
   verbose = FALSE
@@ -89,6 +91,7 @@ occurrence <- function(
     hab = handle_logical(hab),
     mof = handle_logical(mof),
     absence = handle_logical(absence),
+    dropped = dropped,
     exclude = handle_vector(exclude),
     fields = handle_fields(fields)
   )

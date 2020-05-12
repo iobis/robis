@@ -10,7 +10,7 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
   geometry = NULL, redlist = NULL, mof = FALSE, absence = FALSE,
-  hab = NULL, exclude = NULL, fields = NULL, verbose = FALSE)
+  dropped = NULL, hab = NULL, exclude = NULL, fields = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}
@@ -52,6 +52,8 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{mof}{include measurements data (default = \code{FALSE}).}
 
 \item{absence}{only include absence records (default = \code{FALSE}).}
+
+\item{dropped}{only include dropped records (\code{TRUE}), exclude dropped records (\code{FALSE}) or include dropped records (\code{include}).}
 
 \item{exclude}{quality flags to be excluded from the results.}
 

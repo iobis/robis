@@ -1,3 +1,7 @@
+# robis 2.3.2
+
+Added support for dropped records.
+
 # robis 2.3.1
 
 Fixed the Leaflet base map.
