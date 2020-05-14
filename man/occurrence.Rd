@@ -51,7 +51,7 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 
 \item{mof}{include measurements data (default = \code{FALSE}).}
 
-\item{absence}{only include absence records (default = \code{FALSE}).}
+\item{absence}{only include absence records (\code{TRUE}), exclude absence records (\code{FALSE}) or include absence records (\code{include}).}
 
 \item{dropped}{only include dropped records (\code{TRUE}), exclude dropped records (\code{FALSE}) or include dropped records (\code{include}).}
 

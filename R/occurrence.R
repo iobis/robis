@@ -26,7 +26,7 @@
 #' @param redlist include only IUCN Red List species.
 #' @param hab include only IOC-UNESCO HAB species.
 #' @param mof include measurements data (default = \code{FALSE}).
-#' @param absence only include absence records (default = \code{FALSE}).
+#' @param absence only include absence records (\code{TRUE}), exclude absence records (\code{FALSE}) or include absence records (\code{include}).
 #' @param dropped only include dropped records (\code{TRUE}), exclude dropped records (\code{FALSE}) or include dropped records (\code{include}).
 #' @param exclude quality flags to be excluded from the results.
 #' @param fields fields to be included in the results.
@@ -57,7 +57,7 @@ occurrence <- function(
   redlist = NULL,
   hab = NULL,
   mof = FALSE,
-  absence = FALSE,
+  absence = NULL,
   dropped = NULL,
   exclude = NULL,
   fields = NULL,
@@ -90,7 +90,7 @@ occurrence <- function(
     redlist = handle_logical(redlist),
     hab = handle_logical(hab),
     mof = handle_logical(mof),
-    absence = handle_logical(absence),
+    absence = absence,
     dropped = dropped,
     exclude = handle_vector(exclude),
     fields = handle_fields(fields)

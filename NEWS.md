@@ -1,6 +1,6 @@
-# robis 2.3.2
+# robis 2.3.3
 
-Added support for dropped records.
+Added support for dropped and absence records.
 
 # robis 2.3.1
 
