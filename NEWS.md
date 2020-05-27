@@ -1,3 +1,7 @@
+# robis 2.3.4
+
+Added the option to filter on quality flags.
+
 # robis 2.3.3
 
 Added support for dropped and absence records.

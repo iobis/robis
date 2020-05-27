@@ -34,6 +34,8 @@ checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 
 \item{hab}{include only IOC-UNESCO HAB species.}
 
+\item{flags}{quality flags which need to be set.}
+
 \item{exclude}{quality flags to be excluded from the results.}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}

@@ -16,6 +16,7 @@
 #' @param geometry a WKT geometry string.
 #' @param redlist include only IUCN Red List species.
 #' @param hab include only IOC-UNESCO HAB species.
+#' @param flags quality flags which need to be set.
 #' @param exclude quality flags to be excluded from the results.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return The checklist.
@@ -37,6 +38,7 @@ checklist <- function(
   geometry = NULL,
   redlist = NULL,
   hab = NULL,
+  flags = NULL,
   exclude = NULL,
   verbose = FALSE
 ) {
@@ -61,6 +63,7 @@ checklist <- function(
       geometry = geometry,
       redlist = handle_logical(redlist),
       hab = handle_logical(hab),
+      flags = handle_vector(flags),
       exclude = handle_vector(exclude),
       partition = partition
     )
