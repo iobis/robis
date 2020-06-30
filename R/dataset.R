@@ -95,5 +95,5 @@ dataset <- function(
   }
 
   data <- bind_rows(result_list)
-  return(data)
+  return(as_tibble(data))
 }

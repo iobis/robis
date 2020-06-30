@@ -19,7 +19,9 @@ Imports:
     jsonlite,
     leaflet,
     ggplot2,
-    tidyr
+    tidyr,
+    httpcache,
+    tibble
 License: MIT + file LICENSE
 Suggests:
     testthat

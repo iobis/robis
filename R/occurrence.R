@@ -153,5 +153,5 @@ occurrence <- function(
     data$depth[which(is.nan(data$depth))] <- NA
   }
 
-  return(data)
+  return(as_tibble(data))
 }

@@ -95,8 +95,8 @@ checklist <- function(
   if (length(result_list) > 0) {
     data <- bind_rows(result_list)
     data <- data[order(data$records, decreasing = TRUE),]
-    return(data)
+    return(as_tibble(data))
   } else {
-    return(data.frame())
+    return(tibble())
   }
 }

@@ -13,9 +13,9 @@ measurements <- function(df, fields = "id") {
           select(c(fields, "mof")) %>%
           filter(!sapply(mof, is.null))
       , mof)
-      return(m)
+      return(as_tibble(m))
     } else {
-      return(data.frame())
+      return(tibble())
     }
   } else {
     warning("Missing columns id or mof")

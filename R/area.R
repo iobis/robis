@@ -14,5 +14,5 @@ area <- function() {
   data <- res$results
   fetched <- nrow(res$results)
   log_progress(fetched, total)
-  return(data)
+  return(as_tibble(data))
 }

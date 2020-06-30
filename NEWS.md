@@ -1,3 +1,7 @@
+# robis 2.3.7
+
+Returning tibbles instead of dataframes.
+
 # robis 2.3.6
 
 Added option to cache HTTP requests.
