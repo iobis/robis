@@ -1,3 +1,11 @@
+# robis 2.3.6
+
+Added option to cache HTTP requests.
+
+# robis 2.3.5
+
+Added the option to include pure event records in the occurrence response.
+
 # robis 2.3.4
 
 Added the option to filter on quality flags.

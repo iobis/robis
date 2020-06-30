@@ -5,7 +5,7 @@
 #'   startdepth = NULL, enddepth = NULL,
 #'   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
 #'   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
-#'   geometry = NULL, redlist = NULL, mof = FALSE, absence = FALSE,
+#'   geometry = NULL, redlist = NULL, mof = FALSE, absence = FALSE, event = FALSE,
 #'   dropped = NULL, hab = NULL, flags = NULL, exclude = NULL, fields = NULL,
 #'   verbose = FALSE)
 #' @param scientificname the scientific name.
@@ -28,6 +28,7 @@
 #' @param hab include only IOC-UNESCO HAB species.
 #' @param mof include measurements data (default = \code{FALSE}).
 #' @param absence only include absence records (\code{TRUE}), exclude absence records (\code{FALSE}) or include absence records (\code{include}).
+#' @param event only include pure event records (\code{TRUE}), exclude pure event records (\code{FALSE}) or include event records (\code{include}).
 #' @param dropped only include dropped records (\code{TRUE}), exclude dropped records (\code{FALSE}) or include dropped records (\code{include}).
 #' @param flags quality flags which need to be set.
 #' @param exclude quality flags to be excluded from the results.
@@ -60,6 +61,7 @@ occurrence <- function(
   hab = NULL,
   mof = FALSE,
   absence = NULL,
+  event = NULL,
   dropped = NULL,
   flags = NULL,
   exclude = NULL,
@@ -94,6 +96,7 @@ occurrence <- function(
     hab = handle_logical(hab),
     mof = handle_logical(mof),
     absence = absence,
+    event = event,
     dropped = dropped,
     flags = handle_vector(flags),
     exclude = handle_vector(exclude),

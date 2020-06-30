@@ -9,7 +9,7 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   startdepth = NULL, enddepth = NULL,
   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
-  geometry = NULL, redlist = NULL, mof = FALSE, absence = FALSE,
+  geometry = NULL, redlist = NULL, mof = FALSE, absence = FALSE, event = FALSE,
   dropped = NULL, hab = NULL, flags = NULL, exclude = NULL, fields = NULL,
   verbose = FALSE)
 }
@@ -53,6 +53,8 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{mof}{include measurements data (default = \code{FALSE}).}
 
 \item{absence}{only include absence records (\code{TRUE}), exclude absence records (\code{FALSE}) or include absence records (\code{include}).}
+
+\item{event}{only include pure event records (\code{TRUE}), exclude pure event records (\code{FALSE}) or include event records (\code{include}).}
 
 \item{dropped}{only include dropped records (\code{TRUE}), exclude dropped records (\code{FALSE}) or include dropped records (\code{include}).}
 
