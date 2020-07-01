@@ -65,3 +65,16 @@ map_ggplot <- function(data, color = "#ff3399") {
     coord_quickmap()
   m
 }
+
+#' Get a WKT geometry by drawing on a map.
+#'
+#' @usage get_geometry()
+#' @param provider_tiles the base map provider.
+#' @export
+get_geometry <- function(provider_tiles = "Esri.WorldGrayCanvas") {
+  s <- editMap(leaflet() %>% addProviderTiles(provider_tiles), editorOptions = list(polylineOptions = FALSE, markerOptions = FALSE, circleOptions = FALSE, circleMarkerOptions = FALSE), title = "Draw geometry")$all
+  if (!is.null(s)) {
+    return(st_as_text(st_combine(s$geometry)))
+  }
+  return(NULL)
+}

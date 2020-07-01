@@ -4,5 +4,5 @@
 #'
 #' @docType package
 #' @name robis
-#' @import dplyr jsonlite leaflet ggplot2 tidyr tibble httr
+#' @import dplyr jsonlite leaflet ggplot2 tidyr tibble httr mapedit sf
 NULL
