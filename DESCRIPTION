@@ -1,6 +1,6 @@
 Package: robis
-Title: Ocean Biogeographic Information System (OBIS) Client
-Description: Client for the Ocean Biogeographic Information System (<https://obis.org>).
+Title: Ocean Biodiversity Information System (OBIS) Client
+Description: Client for the Ocean Biodiversity Information System (<https://obis.org>).
 Version: 2.3.9
 Date: 2020-07-01
 Authors@R: c(
