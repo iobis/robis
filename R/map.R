@@ -1,7 +1,7 @@
 #' Create a leaflet map.
 #'
 #' @usage map_leaflet(data, color = "#ff3399",
-#'   provider_tiles = "OpenStreetMap.BlackAndWhite", popup = function(x) { x["id"] },
+#'   provider_tiles = "Esri.WorldGrayCanvas", popup = function(x) { x["id"] },
 #'   antarctic = FALSE)
 #' @param data the occurrences from \code{occurrence()}.
 #' @param color color to be used for the dots.
@@ -68,7 +68,7 @@ map_ggplot <- function(data, color = "#ff3399") {
 
 #' Get a WKT geometry by drawing on a map.
 #'
-#' @usage get_geometry()
+#' @usage get_geometry(provider_tiles = "Esri.WorldGrayCanvas")
 #' @param provider_tiles the base map provider.
 #' @export
 get_geometry <- function(provider_tiles = "Esri.WorldGrayCanvas") {

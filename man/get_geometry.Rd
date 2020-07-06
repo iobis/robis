@@ -4,7 +4,7 @@
 \alias{get_geometry}
 \title{Get a WKT geometry by drawing on a map.}
 \usage{
-get_geometry()
+get_geometry(provider_tiles = "Esri.WorldGrayCanvas")
 }
 \arguments{
 \item{provider_tiles}{the base map provider.}

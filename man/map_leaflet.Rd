@@ -5,7 +5,7 @@
 \title{Create a leaflet map.}
 \usage{
 map_leaflet(data, color = "#ff3399",
-  provider_tiles = "OpenStreetMap.BlackAndWhite", popup = function(x) { x["id"] },
+  provider_tiles = "Esri.WorldGrayCanvas", popup = function(x) { x["id"] },
   antarctic = FALSE)
 }
 \arguments{

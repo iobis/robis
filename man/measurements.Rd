@@ -4,7 +4,7 @@
 \alias{measurements}
 \title{Extract measurements or facts from occurrence data with a mof column.}
 \usage{
-measurements(df, fields = c("id"))
+measurements(df, fields = "id")
 }
 \arguments{
 \item{df}{the occurrence dataframe.}

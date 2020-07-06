@@ -3,7 +3,7 @@
 #' @usage checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
 #'   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
-#'   hab = NULL, exclude = NULL, verbose = FALSE)
+#'   hab = NULL, flags = NULL, exclude = NULL, verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
 #' @param datasetid the dataset identifier.
@@ -95,7 +95,7 @@ checklist <- function(
   if (length(result_list) > 0) {
     data <- bind_rows(result_list)
     data <- data[order(data$records, decreasing = TRUE),]
-    return(as_tibble(data))
+    return(as_tibble(data %>% arrange(desc(.data$records))))
   } else {
     return(tibble())
   }

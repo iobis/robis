@@ -2,11 +2,11 @@
 #'
 #' @usage occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
-#'   startdepth = NULL, enddepth = NULL,
+#'   startdepth = NULL, enddepth = NULL, geometry = NULL,
 #'   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
 #'   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
-#'   geometry = NULL, redlist = NULL, mof = FALSE, absence = FALSE, event = FALSE,
-#'   dropped = NULL, hab = NULL, flags = NULL, exclude = NULL, fields = NULL,
+#'   redlist = NULL, hab = NULL, mof = NULL, absence = NULL, event = NULL,
+#'   dropped = NULL, flags = NULL, exclude = NULL, fields = NULL,
 #'   verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
@@ -26,10 +26,10 @@
 #' @param geometry a WKT geometry string.
 #' @param redlist include only IUCN Red List species.
 #' @param hab include only IOC-UNESCO HAB species.
-#' @param mof include measurements data (default = \code{FALSE}).
-#' @param absence only include absence records (\code{TRUE}), exclude absence records (\code{FALSE}) or include absence records (\code{include}).
-#' @param event only include pure event records (\code{TRUE}), exclude pure event records (\code{FALSE}) or include event records (\code{include}).
-#' @param dropped only include dropped records (\code{TRUE}), exclude dropped records (\code{FALSE}) or include dropped records (\code{include}).
+#' @param mof include measurements data (default = \code{NULL}).
+#' @param absence only include absence records (\code{TRUE}), exclude absence records (\code{NULL}) or include absence records (\code{include}).
+#' @param event only include pure event records (\code{TRUE}), exclude pure event records (\code{NULL}) or include event records (\code{include}).
+#' @param dropped only include dropped records (\code{TRUE}), exclude dropped records (\code{NULL}) or include dropped records (\code{include}).
 #' @param flags quality flags which need to be set.
 #' @param exclude quality flags to be excluded from the results.
 #' @param fields fields to be included in the results.
@@ -59,7 +59,7 @@ occurrence <- function(
   measurementunitid = NULL,
   redlist = NULL,
   hab = NULL,
-  mof = FALSE,
+  mof = NULL,
   absence = NULL,
   event = NULL,
   dropped = NULL,
