@@ -10,7 +10,7 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
   redlist = NULL, hab = NULL, mof = NULL, absence = NULL, event = NULL,
-  dropped = NULL, flags = NULL, exclude = NULL, fields = NULL,
+  dropped = NULL, flags = NULL, exclude = NULL, fields = NULL, qcfields = NULL,
   verbose = FALSE)
 }
 \arguments{
@@ -63,6 +63,8 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{exclude}{quality flags to be excluded from the results.}
 
 \item{fields}{fields to be included in the results.}
+
+\item{qcfields}{include lists of missing and invalid fields (default = \code{NULL}).}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }

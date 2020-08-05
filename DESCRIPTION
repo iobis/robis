@@ -1,8 +1,8 @@
 Package: robis
 Title: Ocean Biodiversity Information System (OBIS) Client
 Description: Client for the Ocean Biodiversity Information System (<https://obis.org>).
-Version: 2.3.9
-Date: 2020-07-01
+Version: 2.3.10
+Date: 2020-08-04
 Authors@R: c(
     person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut")),
     person("Samuel", "Bosch", , "mail@samuelbosch.com", role = "aut"),
@@ -28,4 +28,4 @@ Imports:
 License: MIT + file LICENSE
 Suggests:
     testthat
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0

@@ -6,7 +6,7 @@
 #'   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
 #'   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
 #'   redlist = NULL, hab = NULL, mof = NULL, absence = NULL, event = NULL,
-#'   dropped = NULL, flags = NULL, exclude = NULL, fields = NULL,
+#'   dropped = NULL, flags = NULL, exclude = NULL, fields = NULL, qcfields = NULL,
 #'   verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
@@ -33,6 +33,7 @@
 #' @param flags quality flags which need to be set.
 #' @param exclude quality flags to be excluded from the results.
 #' @param fields fields to be included in the results.
+#' @param qcfields include lists of missing and invalid fields (default = \code{NULL}).
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return The occurrence records.
 #' @examples
@@ -66,6 +67,7 @@ occurrence <- function(
   flags = NULL,
   exclude = NULL,
   fields = NULL,
+  qcfields = NULL,
   verbose = FALSE
 ) {
 
@@ -100,7 +102,8 @@ occurrence <- function(
     dropped = dropped,
     flags = handle_vector(flags),
     exclude = handle_vector(exclude),
-    fields = handle_fields(fields)
+    fields = handle_fields(fields),
+    qcfields = handle_logical(qcfields)
   )
 
   result <- http_request("GET", "metrics/logusage", c(query, list(agent = "robis")))
@@ -134,6 +137,14 @@ occurrence <- function(
       if ("flags" %in% names(res$results)) {
         res$results$flags <- sapply(res$results$flags, paste0, collapse = ",")
         res$results$flags[res$results$flags == ""] <- NA
+      }
+      if ("invalid" %in% names(res$results)) {
+        res$results$invalid <- sapply(res$results$invalid, paste0, collapse = ",")
+        res$results$invalid[res$results$invalid == ""] <- NA
+      }
+      if ("missing" %in% names(res$results)) {
+        res$results$missing <- sapply(res$results$missing, paste0, collapse = ",")
+        res$results$missing[res$results$missing == ""] <- NA
       }
       result_list[[i]] <- res$results
       fetched <- fetched + nrow(res$results)
