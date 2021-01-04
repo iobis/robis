@@ -131,6 +131,9 @@ occurrence <- function(
     after <- res$results$id[nrow(res$results)]
 
     if (!is.null(res$results) && is.data.frame(res$results) && nrow(res$results) > 0) {
+
+      # handle array values
+
       if ("node_id" %in% names(res$results)) {
         res$results$node_id <- sapply(res$results$node_id, paste0, collapse = ",")
       }
@@ -146,6 +149,14 @@ occurrence <- function(
         res$results$missing <- sapply(res$results$missing, paste0, collapse = ",")
         res$results$missing[res$results$missing == ""] <- NA
       }
+
+      # force class character
+
+      character_cols <- c("sex", "testing")
+
+      res$results <- res$results %>%
+        mutate_at(intersect(names(res$results), character_cols), as.character)
+
       result_list[[i]] <- res$results
       fetched <- fetched + nrow(res$results)
       log_progress(fetched, total)

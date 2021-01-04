@@ -1,3 +1,7 @@
+# robis 2.3.11
+
+Fix for https://github.com/iobis/robis/issues/71.
+
 # robis 2.3.10
 
 Added the `qcfields` parameter.
