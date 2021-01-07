@@ -14,47 +14,5 @@ R client for the OBIS API
 install.packages("robis")
 
 # latest development version
-install.packages("devtools")
-devtools::install_github("iobis/robis")
-```
-
-## Occurrence
-
-Get occurrences by scientific name:
-
-```R
-records <- occurrence("Abra alba")
-```
-
-Get occurrences by AphiaID:
-
-```R
-records <- occurrence(taxonid = 141433)
-```
-
-Get occurrences by geometry:
-
-```R
-records <- occurrence("Abra alba", geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
-```
-
-Plot occurrences on a Leaflet or ggplot2 map:
-
-```R
-map_leaflet(records)
-map_ggplot(records)
-```
-
-## Checklist
-
-Get a checklist for a taxonomic group:
-
-```R
-taxa <- checklist("Semelidae")
-```
-
-Get a checklist for a region:
-
-```R
-taxa <- checklist(geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
+remotes::install_github("iobis/robis")
 ```

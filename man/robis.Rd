@@ -3,7 +3,18 @@
 \docType{package}
 \name{robis}
 \alias{robis}
-\title{robis: R client for the OBIS API}
-\description{
-Work in progress
+\title{R client for the OBIS API}
+\section{About}{
+
+
+This is an R client for the Ocean Biodiversity Information System (OBIS) API
+which is documented at \link{https://api.obis.org}.
+
+Code and issues for this package are managed at \link{https://github.com/iobis/robis}.
+}
+
+\author{
+Pieter Provoost, \email{p.provoost@unesco.org}
+
+Samuel Bosch
 }

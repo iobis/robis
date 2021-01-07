@@ -4,3 +4,6 @@
 **/.DS_Store
 ..Rcheck
 CRAN-RELEASE
+inst/doc
+doc
+Meta

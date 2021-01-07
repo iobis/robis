@@ -1,0 +1,85 @@
+---
+title: "Getting started with the robis package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{getting-started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+First load the package:
+
+```{r setup}
+library(robis)
+```
+
+## Occurrences
+
+The `occurrence()` function provides access to raw occurrence data. For example, to fetch all occurrences by scientific name:
+
+```{r message = FALSE}
+occurrence("Abra aequalis")
+```
+
+Alternatively, occurrences can be fetched by AphiaID:
+
+```{r message = FALSE}
+occurrence(taxonid = 293683)
+```
+
+Other parameters include `geometry`, which accepts polygons in WKT format:
+
+```{r message = FALSE}
+occurrence("Abra alba", geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
+```
+
+A convenience function `map_leaflet()` is provided to visualize occurrences on an interactive map:
+
+```{r eval = FALSE}
+map_leaflet(occurrence("Abra sibogai"))
+```
+
+## Checklists
+
+The `checklist()` function returns all taxa observed for a given set of filters.
+
+```{r message = FALSE}
+checklist("Semelidae")
+```
+
+Just like the `occurrence()` function, `checklist()` accepts WKT geometries:
+
+```{r message = FALSE}
+checklist(geometry = "POLYGON ((2.59689 51.16772, 2.62436 51.14059, 2.76066 51.19225, 2.73216 51.20946, 2.59689 51.16772))")
+```
+
+## Measurements and facts
+
+The package also provides access to `MeasurementOrFact` records associated with occurrences. When calling `occurrence()`, `MeasurementOrFact` records can be included by setting `mof = true`.
+
+```{r message = FALSE}
+occ <- occurrence("Abra tenuis", mof = TRUE)
+```
+
+`MeasurementOrFact` records are nested in the occurrence, but the `measurements()` function allows you to extract them to a flat data frame. Use the `fields` parameter to indicate which occurrence fields need to be preserved in the measurements table.
+
+```{r message = FALSE}
+mof <- measurements(occ, fields = c("scientificName", "decimalLongitude", "decimalLatitude"))
+mof
+```
+
+Note that the `MeasurementOrFact` fields can be used as parameters to the `occurrence()` function. For example, to only get occurrences with associated biomass measurements:
+
+```{r message = FALSE}
+library(dplyr)
+
+occurrence("Abra tenuis", mof = TRUE, measurementtype = "biomass") %>%
+  measurements()
+```
