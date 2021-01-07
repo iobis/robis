@@ -19,4 +19,4 @@ remotes::install_github("iobis/robis")
 
 ## Getting started
 
-See the [Getting started vignette](http://iobis.github.io/robis/articles/getting-started.html).
+See the [Getting started vignette](https://iobis.github.io/robis/articles/getting-started.html).
