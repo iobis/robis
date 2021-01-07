@@ -16,3 +16,7 @@ install.packages("robis")
 # latest development version
 remotes::install_github("iobis/robis")
 ```
+
+## Getting started
+
+See the [Getting started vignette](http://iobis.github.io/robis/articles/getting-started.html).
