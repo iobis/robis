@@ -1,8 +1,7 @@
 ## Test environments
 
-* macOS Catalina, R 3.6.1
-* Ubuntu 16.04.6 LTS, R 4.0.0 (travis-ci.org)
-* x86_64-w64-mingw32, R 4.0.2 (win-builder)
+* R 4.0.2, macOS Big Sur, x86_64-apple-darwin17.0 (64-bit)
+* winbuilder, x86_64-w64-mingw32 (64-bit)
  
 ## devtools::check() results
 
