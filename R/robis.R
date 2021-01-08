@@ -1,7 +1,6 @@
 #' @title R client for the OBIS API
 #'
-#' @section About:
-#'
+#' @description
 #' This is an R client for the Ocean Biodiversity Information System (OBIS) API
 #' which is documented at \link{https://api.obis.org}.
 #'
