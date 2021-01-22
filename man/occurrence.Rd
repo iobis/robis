@@ -9,9 +9,9 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   startdepth = NULL, enddepth = NULL, geometry = NULL,
   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
-  redlist = NULL, hab = NULL, mof = NULL, absence = NULL, event = NULL,
-  dropped = NULL, flags = NULL, exclude = NULL, fields = NULL, qcfields = NULL,
-  verbose = FALSE)
+  redlist = NULL, hab = NULL, wrims = NULL, mof = NULL, absence = NULL,
+  event = NULL, dropped = NULL, flags = NULL, exclude = NULL, fields = NULL,
+  qcfields = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}
@@ -48,7 +48,7 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 
 \item{redlist}{include only IUCN Red List species.}
 
-\item{hab}{include only IOC-UNESCO HAB species.}
+\item{hab}{include only WRiMS species.}
 
 \item{mof}{include measurements data (default = \code{NULL}).}
 

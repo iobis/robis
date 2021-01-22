@@ -7,7 +7,7 @@
 dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
-  hab = NULL, exclude = NULL, verbose = FALSE)
+  hab = NULL, wrims = NULL, exclude = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}
@@ -33,6 +33,8 @@ dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{redlist}{include only IUCN Red List species.}
 
 \item{hab}{include only IOC-UNESCO HAB species.}
+
+\item{wrims}{include only WRiMS species.}
 
 \item{exclude}{quality flags to be excluded from the results.}
 

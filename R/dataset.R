@@ -3,7 +3,7 @@
 #' @usage dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
 #'   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
-#'   hab = NULL, exclude = NULL, verbose = FALSE)
+#'   hab = NULL, wrims = NULL, exclude = NULL, verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
 #' @param datasetid the dataset identifier.
@@ -16,6 +16,7 @@
 #' @param geometry a WKT geometry string.
 #' @param redlist include only IUCN Red List species.
 #' @param hab include only IOC-UNESCO HAB species.
+#' @param wrims include only WRiMS species.
 #' @param exclude quality flags to be excluded from the results.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return The datasets.
@@ -37,6 +38,7 @@ dataset <- function(
   geometry = NULL,
   redlist = NULL,
   hab = NULL,
+  wrims = NULL,
   exclude = NULL,
   verbose = FALSE
 ) {
@@ -62,6 +64,7 @@ dataset <- function(
       geometry = geometry,
       redlist = handle_logical(redlist),
       hab = handle_logical(hab),
+      wrims = handle_logical(wrims),
       exclude = handle_vector(exclude),
       skip = skip,
       size = page_size()
