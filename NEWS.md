@@ -1,3 +1,7 @@
+# robis 2.4.0
+
+Added `taxon()`.
+
 # robis 2.3.11
 
 Fix for https://github.com/iobis/robis/issues/71.
