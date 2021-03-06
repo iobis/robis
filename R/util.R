@@ -3,7 +3,7 @@ use_cache <- function() {
 }
 
 api_url <- function() {
-  getOption("robis_api_url", "https://api.obis.org/v3/")
+  getOption("robis_api_url", "https://api.obis.org/")
 }
 
 page_size <- function() {
@@ -74,12 +74,12 @@ empty_cols <- function(df) {
   }))
 }
 
-log_progress <- function(total, count) {
-  if (count > 0) {
-    pct <- floor(total / count * 100)
+log_progress <- function(count, total) {
+  if (total > 0) {
+    pct <- floor(count / total * 100)
     if (pct > 100) pct <- 100
   } else {
     pct <- 100
   }
-  message(paste0("\rRetrieved ", total, " records of approximately ", count, " (", pct, "%)", sep = ""), appendLF = FALSE)
+  message(paste0("\rRetrieved ", count, " records of approximately ", total, " (", pct, "%)", sep = ""), appendLF = FALSE)
 }

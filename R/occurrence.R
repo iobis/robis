@@ -115,11 +115,14 @@ occurrence <- function(
     log_request(result)
   }
 
+  total <- NA
+
   while (!last_page) {
 
     result <- http_request("GET", "occurrence", c(query, list(
       after = after,
-      size = page_size()
+      size = page_size(),
+      total = FALSE # needs to be set explicitely to not track counts for subsequent pages
     )))
 
     if (verbose) {
@@ -130,7 +133,7 @@ occurrence <- function(
 
     text <- content(result, "text", encoding = "UTF-8")
     res <- fromJSON(text, simplifyVector = TRUE)
-    total <- res$total
+    if (is.na(total)) total <- res$total
     after <- res$results$id[nrow(res$results)]
 
     if (!is.null(res$results) && is.data.frame(res$results) && nrow(res$results) > 0) {

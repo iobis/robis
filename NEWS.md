@@ -1,3 +1,7 @@
+# robis 2.5.0
+
+Performance improvement by only fetching total hits on the first request.
+
 # robis 2.4.0
 
 Added `taxon()`.
