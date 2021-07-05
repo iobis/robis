@@ -32,6 +32,8 @@ License: MIT + file LICENSE
 Suggests:
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    spelling
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
+Language: en-US
