@@ -4,7 +4,7 @@
 \alias{taxon}
 \title{Get taxon by taxon ID.}
 \usage{
-taxon(taxonID, verbose = FALSE)
+taxon(taxonid, verbose = FALSE)
 }
 \arguments{
 \item{taxonid}{the taxon identifier (WoRMS AphiaID).}

@@ -33,7 +33,9 @@ checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 
 \item{redlist}{include only IUCN Red List species.}
 
-\item{hab}{include only WRiMS species.}
+\item{hab}{include only IOC-UNESCO HAB species.}
+
+\item{wrims}{include only WRiMS species.}
 
 \item{dropped}{only include dropped records (\code{TRUE}), exclude dropped records (\code{NULL}) or include dropped records (\code{include}).}
 

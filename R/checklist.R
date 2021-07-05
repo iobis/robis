@@ -17,7 +17,7 @@
 #' @param geometry a WKT geometry string.
 #' @param redlist include only IUCN Red List species.
 #' @param hab include only IOC-UNESCO HAB species.
-#' @param hab include only WRiMS species.
+#' @param wrims include only WRiMS species.
 #' @param dropped only include dropped records (\code{TRUE}), exclude dropped records (\code{NULL}) or include dropped records (\code{include}).
 #' @param flags quality flags which need to be set.
 #' @param exclude quality flags to be excluded from the results.

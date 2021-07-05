@@ -6,9 +6,9 @@
 \title{R client for the OBIS API}
 \description{
 This is an R client for the Ocean Biodiversity Information System (OBIS) API
-which is documented at \link{https://api.obis.org}.
+which is documented at \url{https://api.obis.org}.
 
-Code and issues for this package are managed at \link{https://github.com/iobis/robis}.
+Code and issues for this package are managed at \url{https://github.com/iobis/robis}.
 }
 \author{
 Pieter Provoost, \email{p.provoost@unesco.org}

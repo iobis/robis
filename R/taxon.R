@@ -1,6 +1,6 @@
 #' Get taxon by taxon ID.
 #'
-#' @usage taxon(taxonID, verbose = FALSE)
+#' @usage taxon(taxonid, verbose = FALSE)
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return Tibble containing taxon records.

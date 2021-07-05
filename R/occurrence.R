@@ -26,7 +26,7 @@
 #' @param geometry a WKT geometry string.
 #' @param redlist include only IUCN Red List species.
 #' @param hab include only IOC-UNESCO HAB species.
-#' @param hab include only WRiMS species.
+#' @param wrims include only WRiMS species.
 #' @param mof include measurements data (default = \code{NULL}).
 #' @param absence only include absence records (\code{TRUE}), exclude absence records (\code{NULL}) or include absence records (\code{include}).
 #' @param event only include pure event records (\code{TRUE}), exclude pure event records (\code{NULL}) or include event records (\code{include}).
