@@ -4,7 +4,10 @@
 \alias{area}
 \title{Fetch a list of areas}
 \usage{
-area()
+area(verbose = FALSE)
+}
+\arguments{
+\item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }
 \value{
 The areas.
@@ -13,5 +16,5 @@ The areas.
 Fetch a list of areas
 }
 \examples{
-areas <- area()
+areas <- area(verbose = FALSE)
 }

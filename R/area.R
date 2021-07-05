@@ -1,13 +1,14 @@
 #' Fetch a list of areas
 #'
-#' @usage area()
+#' @usage area(verbose = FALSE)
+#' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return The areas.
 #' @examples
-#' areas <- area()
+#' areas <- area(verbose = FALSE)
 #' @export
 area <- function() {
-  result <- http_request("GET", "area", NULL)
-  stop_for_status(result)
+  result <- http_request("GET", "area", NULL, verbose)
+  if (is.null(result)) return(invisible(NULL))
   text <- content(result, "text", encoding = "UTF-8")
   res <- fromJSON(text, simplifyVector = TRUE)
   total <- res$total

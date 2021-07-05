@@ -4,7 +4,10 @@
 \alias{node}
 \title{Fetch a list of nodes}
 \usage{
-node()
+node(verbose = FALSE)
+}
+\arguments{
+\item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }
 \value{
 The nodes

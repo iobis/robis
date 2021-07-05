@@ -70,13 +70,8 @@ dataset <- function(
       size = page_size()
     )
 
-    result <- http_request("GET", "dataset", query)
-
-    if (verbose) {
-      log_request(result)
-    }
-
-    stop_for_status(result)
+    result <- http_request("GET", "dataset", query, verbose)
+    if (is.null(result)) return(invisible(NULL))
 
     text <- content(result, "text", encoding = "UTF-8")
     res <- fromJSON(text, simplifyVector = TRUE)

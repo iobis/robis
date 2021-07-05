@@ -10,6 +10,7 @@
 #' @name robis
 #' @import dplyr jsonlite leaflet ggplot2 tidyr tibble httr mapedit sf
 #' @importFrom rlang .data
+#' @importFrom curl has_internet
 #' @author Pieter Provoost, \email{p.provoost@unesco.org}
 #' @author Samuel Bosch
 NULL

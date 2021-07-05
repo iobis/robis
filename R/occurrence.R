@@ -109,11 +109,8 @@ occurrence <- function(
     qcfields = handle_logical(qcfields)
   )
 
-  result <- http_request("GET", "metrics/logusage", c(query, list(agent = "robis")))
-
-  if (verbose) {
-    log_request(result)
-  }
+  result <- http_request("GET", "metrics/logusage", c(query, list(agent = "robis")), verbose)
+  if (is.null(result)) return(invisible(NULL))
 
   total <- NA
 
@@ -124,12 +121,7 @@ occurrence <- function(
       size = page_size(),
       total = FALSE # needs to be set explicitely to not track counts for subsequent pages
     )))
-
-    if (verbose) {
-      log_request(result)
-    }
-
-    stop_for_status(result)
+    if (is.null(result)) return(invisible(NULL))
 
     text <- content(result, "text", encoding = "UTF-8")
     res <- fromJSON(text, simplifyVector = TRUE)

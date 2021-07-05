@@ -45,7 +45,16 @@ handle_fields <- function(x) {
   }
 }
 
-http_request <- function(method, path, query) {
+handle_request_error <- function(e) {
+  message("Error: Failed to connect to the OBIS API. If the problem persists, please contact helpdesk@obis.org.")
+  return(invisible(NULL))
+}
+
+http_request <- function(method, path, query, verbose=FALSE) {
+  if (!curl::has_internet()) {
+    message("Error: No internet connection.")
+    return(invisible(NULL))
+  }
   if (use_cache()) {
     get <- httpcache::GET
     post <- httpcache::POST
@@ -55,10 +64,18 @@ http_request <- function(method, path, query) {
   }
   url <- paste0(api_url(), path)
   if (method == "GET") {
-    get(url, user_agent("robis - https://github.com/iobis/robis"), query = query)
+    result <- tryCatch(get(url, user_agent("robis - https://github.com/iobis/robis"), query = query), error = handle_request_error)
   } else if (method == "POST") {
-    post(url, user_agent("robis - https://github.com/iobis/robis"), body = query)
+    result <- tryCatch(post(url, user_agent("robis - https://github.com/iobis/robis"), body = query), error = handle_request_error)
   }
+  if (httr::http_error(result)) {
+    message("Error: The OBIS API was not able to process your request. If the problem persists, please contact helpdesk@obis.org.")
+    return(invisible(NULL))
+  }
+  if (verbose) {
+    log_request(result)
+  }
+  return(result)
 }
 
 log_request <- function(result) {

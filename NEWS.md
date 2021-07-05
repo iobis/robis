@@ -1,3 +1,7 @@
+# robis 2.6.0
+
+Improved handling of API connection errors.
+
 # robis 2.5.0
 
 Performance improvement by only fetching total hits on the first request.
