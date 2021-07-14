@@ -68,12 +68,12 @@ http_request <- function(method, path, query, verbose=FALSE) {
   } else if (method == "POST") {
     result <- tryCatch(post(url, user_agent("robis - https://github.com/iobis/robis"), body = query), error = handle_request_error)
   }
+  if (verbose) {
+    log_request(result)
+  }
   if (httr::http_error(result)) {
     message("Error: The OBIS API was not able to process your request. If the problem persists, please contact helpdesk@obis.org.")
     return(invisible(NULL))
-  }
-  if (verbose) {
-    log_request(result)
   }
   return(result)
 }

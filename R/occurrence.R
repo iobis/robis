@@ -109,8 +109,7 @@ occurrence <- function(
     qcfields = handle_logical(qcfields)
   )
 
-  result <- http_request("GET", "metrics/logusage", c(query, list(agent = "robis")), verbose)
-  if (is.null(result)) return(invisible(NULL))
+  http_request("GET", "metrics/logusage", c(query, list(agent = "robis")), verbose)
 
   total <- NA
 
@@ -120,7 +119,7 @@ occurrence <- function(
       after = after,
       size = page_size(),
       total = FALSE # needs to be set explicitely to not track counts for subsequent pages
-    )))
+    )), verbose)
     if (is.null(result)) return(invisible(NULL))
 
     text <- content(result, "text", encoding = "UTF-8")

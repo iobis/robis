@@ -1,3 +1,7 @@
+# robis 2.6.1
+
+Improved handling of API connection errors.
+
 # robis 2.6.0
 
 Improved handling of API connection errors.
