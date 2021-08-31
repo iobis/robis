@@ -5,7 +5,7 @@
 \title{Create a checklist.}
 \usage{
 checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
-  nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
+  nodeid = NULL, instituteid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
   startdepth = NULL, enddepth = NULL, geometry = NULL, redlist = NULL,
   hab = NULL, wrims = NULL, dropped = NULL, flags = NULL, exclude = NULL,
   verbose = FALSE)
@@ -18,6 +18,8 @@ checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{datasetid}{the dataset identifier.}
 
 \item{nodeid}{the OBIS node identifier.}
+
+\item{instituteid}{the OBIS institute identifier.}
 
 \item{areaid}{the OBIS area identifier.}
 

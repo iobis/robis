@@ -5,7 +5,7 @@
 \title{Find occurrences.}
 \usage{
 occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
-  nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
+  nodeid = NULL, instituteid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
   startdepth = NULL, enddepth = NULL, geometry = NULL,
   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
@@ -21,6 +21,8 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{datasetid}{the dataset identifier.}
 
 \item{nodeid}{the OBIS node identifier.}
+
+\item{instituteid}{the OBIS institute identifier.}
 
 \item{areaid}{the OBIS area identifier.}
 

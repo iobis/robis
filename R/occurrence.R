@@ -1,7 +1,7 @@
 #' Find occurrences.
 #'
 #' @usage occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
-#'   nodeid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
+#'   nodeid = NULL, instituteid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
 #'   startdepth = NULL, enddepth = NULL, geometry = NULL,
 #'   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
 #'   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
@@ -12,6 +12,7 @@
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
 #' @param datasetid the dataset identifier.
 #' @param nodeid the OBIS node identifier.
+#' @param instituteid the OBIS institute identifier.
 #' @param areaid the OBIS area identifier.
 #' @param startdate the earliest date on which occurrence took place.
 #' @param enddate the latest date on which the occurrence took place.
@@ -47,6 +48,7 @@ occurrence <- function(
   taxonid = NULL,
   datasetid = NULL,
   nodeid = NULL,
+  instituteid = NULL,
   areaid = NULL,
   startdate = NULL,
   enddate = NULL,
@@ -84,6 +86,7 @@ occurrence <- function(
     taxonid = handle_vector(taxonid),
     datasetid = handle_vector(datasetid),
     nodeid = handle_vector(nodeid),
+    instituteid = handle_vector(instituteid),
     areaid = handle_vector(areaid),
     startdate = handle_date(startdate),
     enddate = handle_date(enddate),

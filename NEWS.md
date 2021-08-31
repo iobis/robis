@@ -1,3 +1,7 @@
+# robis 2.7.0
+
+Added the `instituteid` parameter.
+
 # robis 2.6.1
 
 Improved handling of API connection errors.
