@@ -1,3 +1,7 @@
+# robis 2.7.1
+
+Faster extraction of measurements with `measurements()`.
+
 # robis 2.7.0
 
 Added the `instituteid` parameter.
