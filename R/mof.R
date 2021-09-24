@@ -1,6 +1,9 @@
+utils::globalVariables("where")
+
 mof_cols <- c("measurementID", "occurrenceID", "measurementType", "measurementTypeID", "measurementValue", "measurementValueID", "measurementAccuracy", "measurementUnit", "measurementUnitID", "measurementDeterminedDate", "measurementDeterminedBy", "measurementMethod", "measurementRemarks")
 
 fast_unnest <- function(dt, cols) {
+  mof <- NULL
   dt[, unlist(mof, recursive = FALSE), by = mget(cols)]
 }
 
@@ -25,6 +28,7 @@ clean_mof_table <- function(m) {
 #' @return The measurements.
 #' @export
 measurements <- function(df, fields = "id") {
+  mof <- NULL
   fields <- unique(c("id", fields))
   if ("id" %in% names(df) & "mof" %in% names(df)) {
     if (class(df$mof) == "list") {

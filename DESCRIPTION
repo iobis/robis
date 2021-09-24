@@ -28,7 +28,8 @@ Imports:
     purrr,
     stringr,
     curl,
-    data.table
+    data.table,
+    tidyselect
 License: MIT + file LICENSE
 Suggests:
     testthat,
