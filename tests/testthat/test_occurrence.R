@@ -1,6 +1,8 @@
 library(robis)
 context("occurrence")
 
+options(robis_log_usage = FALSE)
+
 small_species <- "Abra sibogai"
 small_taxonid <- 345684
 small_datasetid <- "7d73a408-cb0b-48d3-8b08-ae1f25b0b729"
@@ -10,6 +12,7 @@ small_record_limit <- 100000
 absence_species <- "Hippocampus erectus"
 
 test_that("occurrence returns small number of records for a scientific name", {
+  skip_on_cran()
   records <- occurrence(scientificname = small_species, verbose = TRUE)
   expect_gt(nrow(records), 0)
   expect_lt(nrow(records), small_record_limit)
@@ -18,6 +21,7 @@ test_that("occurrence returns small number of records for a scientific name", {
 })
 
 test_that("occurrence returns small number of records for an aphia id", {
+  skip_on_cran()
   records <- occurrence(taxonid = small_taxonid)
   expect_gt(nrow(records), 0)
   expect_lt(nrow(records), small_record_limit)
@@ -26,6 +30,7 @@ test_that("occurrence returns small number of records for an aphia id", {
 })
 
 test_that("occurrence with absence = TRUE returns only absence records", {
+  skip_on_cran()
   records <- occurrence(scientificname = absence_species, absence = TRUE)
   expect_gt(nrow(records), 0)
   expect_true(all(records$absence == TRUE))

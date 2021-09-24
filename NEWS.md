@@ -1,3 +1,7 @@
+# robis 2.7.2
+
+Improved handling of API connection errors. Skip tests that fail when the API is down on CRAN.
+
 # robis 2.7.1
 
 Faster extraction of measurements with `measurements()`.

@@ -112,7 +112,9 @@ occurrence <- function(
     qcfields = handle_logical(qcfields)
   )
 
-  http_request("GET", "metrics/logusage", c(query, list(agent = "robis")), verbose)
+  if (getOption("robis_log_usage", TRUE)) {
+    http_request("GET", "metrics/logusage", c(query, list(agent = "robis")), verbose)
+  }
 
   total <- NA
 
