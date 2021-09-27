@@ -9,7 +9,7 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   startdepth = NULL, enddepth = NULL, geometry = NULL,
   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
-  redlist = NULL, hab = NULL, wrims = NULL, mof = NULL, absence = NULL,
+  redlist = NULL, hab = NULL, wrims = NULL, mof = NULL, dna = NULL, absence = NULL,
   event = NULL, dropped = NULL, flags = NULL, exclude = NULL, fields = NULL,
   qcfields = NULL, verbose = FALSE)
 }
@@ -55,6 +55,8 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{wrims}{include only WRiMS species.}
 
 \item{mof}{include measurements data (default = \code{NULL}).}
+
+\item{dna}{include DNA data (default = \code{NULL}).}
 
 \item{absence}{only include absence records (\code{TRUE}), exclude absence records (\code{NULL}) or include absence records (\code{include}).}
 

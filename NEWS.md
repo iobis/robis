@@ -1,3 +1,7 @@
+# robis 2.8.0
+
+Added support for DNADerivedData records.
+
 # robis 2.7.2
 
 Improved handling of API connection errors. Skip tests that fail when the API is down on CRAN.

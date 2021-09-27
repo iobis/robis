@@ -108,3 +108,11 @@ log_progress <- function(count, total) {
   }
   message(paste0("\rRetrieved ", count, " records of approximately ", total, " (", pct, "%)", sep = ""), appendLF = FALSE)
 }
+
+get_dwc_fields <- function(url) {
+  cont <- xml2::read_xml(content(GET(url), "text"))
+  cont %>%
+    xml_ns_strip() %>%
+    xml_find_all("//property") %>%
+    xml_attr("name")
+}

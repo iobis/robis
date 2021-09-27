@@ -1,8 +1,8 @@
 utils::globalVariables("where")
 
-mof_cols <- c("measurementID", "occurrenceID", "measurementType", "measurementTypeID", "measurementValue", "measurementValueID", "measurementAccuracy", "measurementUnit", "measurementUnitID", "measurementDeterminedDate", "measurementDeterminedBy", "measurementMethod", "measurementRemarks")
+mof_cols <- get_dwc_fields("https://rs.gbif.org/extension/obis/extended_measurement_or_fact.xml")
 
-fast_unnest <- function(dt, cols) {
+fast_unnest_mof <- function(dt, cols) {
   mof <- NULL
   dt[, unlist(mof, recursive = FALSE), by = mget(cols)]
 }
@@ -38,7 +38,7 @@ measurements <- function(df, fields = "id") {
         mutate(mof = lapply(mof, clean_mof_table)) %>%
         as.data.table()
       dt %>%
-        fast_unnest(fields) %>%
+        fast_unnest_mof(fields) %>%
         as_tibble()
     } else {
       tibble()

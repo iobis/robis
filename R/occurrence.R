@@ -5,7 +5,7 @@
 #'   startdepth = NULL, enddepth = NULL, geometry = NULL,
 #'   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
 #'   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
-#'   redlist = NULL, hab = NULL, wrims = NULL, mof = NULL, absence = NULL,
+#'   redlist = NULL, hab = NULL, wrims = NULL, mof = NULL, dna = NULL, absence = NULL,
 #'   event = NULL, dropped = NULL, flags = NULL, exclude = NULL, fields = NULL,
 #'   qcfields = NULL, verbose = FALSE)
 #' @param scientificname the scientific name.
@@ -29,6 +29,7 @@
 #' @param hab include only IOC-UNESCO HAB species.
 #' @param wrims include only WRiMS species.
 #' @param mof include measurements data (default = \code{NULL}).
+#' @param dna include DNA data (default = \code{NULL}).
 #' @param absence only include absence records (\code{TRUE}), exclude absence records (\code{NULL}) or include absence records (\code{include}).
 #' @param event only include pure event records (\code{TRUE}), exclude pure event records (\code{NULL}) or include event records (\code{include}).
 #' @param dropped only include dropped records (\code{TRUE}), exclude dropped records (\code{NULL}) or include dropped records (\code{include}).
@@ -65,6 +66,7 @@ occurrence <- function(
   hab = NULL,
   wrims = NULL,
   mof = NULL,
+  dna = NULL,
   absence = NULL,
   event = NULL,
   dropped = NULL,
@@ -103,6 +105,7 @@ occurrence <- function(
     hab = handle_logical(hab),
     wrims = handle_logical(wrims),
     mof = handle_logical(mof),
+    dna = handle_logical(dna),
     absence = absence,
     event = event,
     dropped = dropped,

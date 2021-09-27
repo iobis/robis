@@ -8,7 +8,7 @@
 #'
 #' @docType package
 #' @name robis
-#' @import dplyr jsonlite leaflet ggplot2 tidyr tibble httr mapedit sf stringr tidyselect
+#' @import dplyr jsonlite leaflet ggplot2 tidyr tibble httr mapedit sf stringr tidyselect xml2
 #' @importFrom rlang .data
 #' @importFrom curl has_internet
 #' @importFrom data.table as.data.table
