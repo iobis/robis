@@ -11,6 +11,9 @@ map_ggplot(data, color = "#ff3399")
 
 \item{color}{color to be used for the dots.}
 }
+\value{
+A ggplot object.
+}
 \description{
 Create a ggplot2 map.
 }

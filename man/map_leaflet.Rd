@@ -19,6 +19,9 @@ map_leaflet(data, color = "#ff3399",
 
 \item{antarctic}{use antarctic polar stereographic projection.}
 }
+\value{
+A leaflet object.
+}
 \description{
 Create a leaflet map.
 }

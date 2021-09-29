@@ -8,6 +8,7 @@
 #' @param provider_tiles the base map provider.
 #' @param popup function generating the popup content.
 #' @param antarctic use antarctic polar stereographic projection.
+#' @return A leaflet object.
 #' @export
 map_leaflet <- function(data, color = "#ff3399", provider_tiles = "Esri.WorldGrayCanvas",
                         popup = function(x) { x["id"] }, antarctic = FALSE) {
@@ -54,6 +55,7 @@ map_leaflet <- function(data, color = "#ff3399", provider_tiles = "Esri.WorldGra
 #' @usage map_ggplot(data, color = "#ff3399")
 #' @param data the occurrences from \code{occurrence()}.
 #' @param color color to be used for the dots.
+#' @return A ggplot object.
 #' @export
 map_ggplot <- function(data, color = "#ff3399") {
   world <- borders("world", colour = "gray80", fill = "gray80")
@@ -70,6 +72,7 @@ map_ggplot <- function(data, color = "#ff3399") {
 #'
 #' @usage get_geometry(provider_tiles = "Esri.WorldGrayCanvas")
 #' @param provider_tiles the base map provider.
+#' @return A WKT representation of a geometry.
 #' @export
 get_geometry <- function(provider_tiles = "Esri.WorldGrayCanvas") {
   s <- editMap(leaflet() %>% addProviderTiles(provider_tiles), editorOptions = list(polylineOptions = FALSE, markerOptions = FALSE, circleOptions = FALSE, circleMarkerOptions = FALSE), title = "Draw geometry")$all

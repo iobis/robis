@@ -9,6 +9,9 @@ get_geometry(provider_tiles = "Esri.WorldGrayCanvas")
 \arguments{
 \item{provider_tiles}{the base map provider.}
 }
+\value{
+A WKT representation of a geometry.
+}
 \description{
 Get a WKT geometry by drawing on a map.
 }
