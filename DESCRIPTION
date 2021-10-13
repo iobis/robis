@@ -1,13 +1,13 @@
 Package: robis
 Title: Ocean Biodiversity Information System (OBIS) Client
 Description: Client for the Ocean Biodiversity Information System (<https://obis.org>).
-Version: 2.8.1
-Date: 2021-09-29
+Version: 2.8.2
+Date: 2021-10-13
 Authors@R: c(
     person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut")),
     person("Samuel", "Bosch", , "mail@samuelbosch.com", role = "aut"),
     person("Ward", "Appeltans", role = "ctb"),
-    person(, "OBIS", , "support@iobis.org", role = "cph")
+    person(, "OBIS", , "helpdesk@obis.org", role = "cph")
   )
 URL: https://github.com/iobis/robis
 BugReports: https://github.com/iobis/robis/issues

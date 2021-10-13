@@ -1,3 +1,7 @@
+# robis 2.8.2
+
+Updated vignette so the code is not evaluated during CRAN checks.
+
 # robis 2.8.1
 
 Documentation fixes.
