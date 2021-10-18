@@ -9,9 +9,9 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   startdepth = NULL, enddepth = NULL, geometry = NULL,
   measurementtype = NULL, measurementtypeid = NULL, measurementvalue = NULL,
   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
-  redlist = NULL, hab = NULL, wrims = NULL, mof = NULL, dna = NULL, absence = NULL,
-  event = NULL, dropped = NULL, flags = NULL, exclude = NULL, fields = NULL,
-  qcfields = NULL, verbose = FALSE)
+  redlist = NULL, hab = NULL, wrims = NULL, extensions = NULL, hasextensions = NULL,
+  mof = NULL, dna = NULL, absence = NULL, event = NULL, dropped = NULL,
+  flags = NULL, exclude = NULL, fields = NULL, qcfields = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}
@@ -53,6 +53,10 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{hab}{include only IOC-UNESCO HAB species.}
 
 \item{wrims}{include only WRiMS species.}
+
+\item{extensions}{which extensions to include (e.g. MeasurementOrFact, DNADerivedData, default = \code{NULL}).}
+
+\item{hasextensions}{which extensions need to be present (e.g. MeasurementOrFact, DNADerivedData, default = \code{NULL}).}
 
 \item{mof}{include measurements data (default = \code{NULL}).}
 

@@ -7,7 +7,8 @@
 dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   nodeid = NULL, instituteid = NULL, areaid = NULL, startdate = NULL,
   enddate = NULL, startdepth = NULL, enddepth = NULL, geometry = NULL,
-  redlist = NULL, hab = NULL, wrims = NULL, exclude = NULL, verbose = FALSE)
+  redlist = NULL, hab = NULL, wrims = NULL, hasextensions = NULL,
+  exclude = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}
@@ -37,6 +38,8 @@ dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{hab}{include only IOC-UNESCO HAB species.}
 
 \item{wrims}{include only WRiMS species.}
+
+\item{hasextensions}{which extensions need to be present (e.g. MeasurementOrFact, DNADerivedData, default = \code{NULL}).}
 
 \item{exclude}{quality flags to be excluded from the results.}
 

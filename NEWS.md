@@ -1,3 +1,7 @@
+# robis 2.9.0
+
+Added `extensions` and `hasextensions` parameters.
+
 # robis 2.8.2
 
 Updated vignette so the code is not evaluated during CRAN checks.
