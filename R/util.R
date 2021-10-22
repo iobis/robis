@@ -110,9 +110,65 @@ log_progress <- function(count, total) {
 }
 
 get_dwc_fields <- function(url) {
-  cont <- xml2::read_xml(content(GET(url), "text"))
+  cont <- xml2::read_xml(content(GET(url), "text", encoding = "utf-8"))
   cont %>%
     xml_ns_strip() %>%
     xml_find_all("//property") %>%
     xml_attr("name")
+}
+
+fast_unnest <- function(dt, fields, column) {
+  dt[, unlist(get(column), recursive = FALSE), by = mget(fields)]
+}
+
+extension_cols = list(
+  "DNADerivedData" = get_dwc_fields("https://rs.gbif.org/extension/gbif/1.0/dna_derived_data_2021-07-05.xml"),
+  "MeasurementOrFact" = get_dwc_fields("https://rs.gbif.org/extension/obis/extended_measurement_or_fact.xml")
+)
+
+utils::globalVariables("where")
+
+clean_extension_table <- function(df, extension) {
+  cols <- extension_cols[[extension]]
+  if (is.data.frame(df)) {
+    df <- df %>%
+      select(where(~!all(is.na(.x))))
+    missing_cols <- setdiff(cols, names(df))
+    df[missing_cols] <- as.character(NA)
+    df %>%
+      select(all_of(c(cols, "level")))
+  } else {
+    NULL
+  }
+}
+
+#' Extract extension records from occurrence data with nested extension column.
+#'
+#' @usage unnest_extension(df, fields = "id")
+#' @param df the occurrence dataframe.
+#' @param extension the extension type (e.g. `MeasurementOrFact`, `DNADerivedData`).
+#' @param fields columns from the occurrence dataframe to include.
+#' @return The extension records.
+#' @export
+unnest_extension <- function(df, extension, fields = "id") {
+  if (extension == "MeasurementOrFact") {
+    column <- "mof"
+  } else if (extension == "DNADerivedData") {
+    column <- "dna"
+  }
+  fields <- unique(c("id", fields))
+  if ("id" %in% names(df) & column %in% names(df)) {
+    if (is.list(df[,column])) {
+      dt <- df %>%
+        select(all_of(c(fields, column))) %>%
+        filter(!sapply(.data[[column]], is.null)) %>%
+        mutate({{column}} := lapply(.data[[column]], clean_extension_table, extension)) %>%
+        as.data.table()
+      dt %>%
+        fast_unnest(fields, column) %>%
+        as_tibble()
+    } else {
+      tibble()
+    }
+  }
 }

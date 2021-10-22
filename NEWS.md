@@ -1,3 +1,7 @@
+# robis 2.10.0
+
+Added the `unnest_extension()` function for extracting extension records.
+
 # robis 2.9.0
 
 Added `extensions` and `hasextensions` parameters.
