@@ -96,10 +96,10 @@ The package also provides access to MeasurementOrFact records associated with oc
 occ <- occurrence("Abra tenuis", mof = TRUE)
 ```
 
-MeasurementOrFact records are nested in the occurrence, but the `measurements()` function allows you to extract them to a flat data frame. Use the `fields` parameter to indicate which occurrence fields need to be preserved in the measurements table.
+MeasurementOrFact records are nested in the occurrence, but the `unnest_extension()` function allows you to extract them to a flat data frame. Use the `fields` parameter to indicate which occurrence fields need to be preserved in the measurements table.
 
 ```{r message = FALSE}
-mof <- measurements(occ, fields = c("scientificName", "decimalLongitude", "decimalLatitude"))
+mof <- unnest_extension(occ, extension = "MeasurementOrFact", fields = c("scientificName", "decimalLongitude", "decimalLatitude"))
 mof
 ```
 
@@ -109,7 +109,7 @@ Note that the MeasurementOrFact fields can be used as parameters to the `occurre
 library(dplyr)
 
 occurrence("Abra tenuis", mof = TRUE, measurementtype = "biomass") %>%
-  measurements()
+  unnest_extension(extension = "MeasurementOrFact")
 ```
 
 ## DNADerivedData records
@@ -122,7 +122,7 @@ occ
 ```
 
 ```{r message = FALSE}
-dna <- dna_records(occ, fields = c("scientificName"))
+dna <- unnest_extension(occ, extension = "DNADerivedData", fields = c("scientificName"))
 
 dna %>%
   select(scientificName, target_gene, DNA_sequence)
