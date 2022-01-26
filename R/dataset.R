@@ -88,7 +88,7 @@ dataset <- function(
     if (!is.null(res$results) && is.data.frame(res$results) && nrow(res$results) > 0) {
       res$results$node_id <- sapply(res$results$nodes, function(x) { return(paste0(x$id, collapse = ",")) })
       res$results$node_name <- sapply(res$results$nodes, function(x) { return(paste0(x$name, collapse = ",")) })
-      res$results <- res$results[,!(names(res$results) %in% c("node", "feed", "institutes", "contacts"))]
+      res$results <- res$results[,!(names(res$results) %in% c("node", "feed", "institutes"))]
       result_list[[i]] <- res$results
       fetched <- fetched + nrow(res$results)
       log_progress(fetched, total)

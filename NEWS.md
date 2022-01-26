@@ -1,3 +1,7 @@
+# robis 2.10.1
+
+Added contacts to `dataset()`.
+
 # robis 2.10.0
 
 Added the `unnest_extension()` function for extracting extension records.
