@@ -1,4 +1,4 @@
-# robis <a href="https://github.com/iobis/robis"><img src="man/figures/logo.png"" align="right" height="139" /></a>
+# robis <a href="https://github.com/iobis/robis"><img src="man/figures/logo.png" align="right" height="139" /></a>
 
 [![CRAN robis](http://www.r-pkg.org/badges/version-last-release/robis)](https://cran.r-project.org/package=robis)
 [![Travis-CI Build Status](https://api.travis-ci.org/iobis/robis.svg?branch=master&kill_cache=1)](https://travis-ci.org/iobis/robis)
