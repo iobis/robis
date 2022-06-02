@@ -40,6 +40,7 @@
 #' @param fields fields to be included in the results.
 #' @param qcfields include lists of missing and invalid fields (default = \code{NULL}).
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
+#' @param limit integer. Number of records to return. Default: All records.
 #' @return The occurrence records.
 #' @examples
 #' records <- occurrence(scientificname = "Abra sibogai")
