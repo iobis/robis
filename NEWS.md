@@ -1,3 +1,7 @@
+# rovis 2.11.0
+
+Added `generate_citation()`.
+
 # robis 2.10.1
 
 Added contacts to `dataset()`.

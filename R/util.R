@@ -172,3 +172,29 @@ unnest_extension <- function(df, extension, fields = "id") {
     }
   }
 }
+
+#' Generate a citation from metadata elements.
+#'
+#' @usage generate_citation(title, published, url, contacts)
+#' @param title the dataset title.
+#' @param published the dataset published date.
+#' @param url the dataset url.
+#' @param contacts the dataset contacts as a dataframe.
+#' @return A citation string.
+#' @export
+generate_citation <- function(title, published, url, contacts) {
+  title <- gsub("\\.$", "", title)
+  published <- substr(published, 1, 10)
+  url <- url
+  names_list <- contacts %>%
+    select(givenname, surname, organization) %>%
+    distinct() %>%
+    arrange(surname) %>%
+    mutate(givenname = ifelse(!is.na(givenname), paste0(substr(givenname, 1, 1), "."), NA)) %>%
+    rowwise() %>%
+    mutate(name = ifelse(is.na(surname), organization, paste0(na.omit(c(surname, givenname)), collapse = ", "))) %>%
+    pull(name) %>%
+    paste0(collapse = ", ")
+  names_list <- gsub("\\.$", "", names_list)
+  glue("{names_list}. {title}. Published {published}. {url}.")
+}
