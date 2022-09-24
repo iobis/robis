@@ -121,15 +121,20 @@ fast_unnest <- function(dt, fields, column) {
   dt[, unlist(get(column), recursive = FALSE), by = mget(fields)]
 }
 
-extension_cols = list(
-  "DNADerivedData" = get_dwc_fields("https://rs.gbif.org/extension/gbif/1.0/dna_derived_data_2021-07-05.xml"),
-  "MeasurementOrFact" = get_dwc_fields("https://rs.gbif.org/extension/obis/extended_measurement_or_fact.xml")
-)
+get_extension_cols = function(extension) {
+  if (extension == "DNADerivedData") {
+    return(get_dwc_fields("https://rs.gbif.org/extension/gbif/1.0/dna_derived_data_2021-07-05.xml"))
+  } else if (extension == "MeasurementOrFact") {
+    return(get_dwc_fields("https://rs.gbif.org/extension/obis/extended_measurement_or_fact.xml"))
+  }
+}
+
+get_extension_cols_cached <- memoise::memoise(get_extension_cols)
 
 utils::globalVariables("where")
 
 clean_extension_table <- function(df, extension) {
-  cols <- extension_cols[[extension]]
+  cols <- get_extension_cols_cached(extension)
   if (is.data.frame(df)) {
     df <- df %>%
       select(where(~!all(is.na(.x))))

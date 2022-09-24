@@ -1,4 +1,8 @@
-# rovis 2.11.0
+# robis 2.11.1
+
+Do not download extension definitions on package load.
+
+# robis 2.11.0
 
 Added `generate_citation()`.
 
