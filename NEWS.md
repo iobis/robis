@@ -1,3 +1,7 @@
+# robis 2.11.2
+
+Warnings and notes fixes.
+
 # robis 2.11.1
 
 Do not download extension definitions on package load.

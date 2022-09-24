@@ -131,7 +131,7 @@ get_extension_cols = function(extension) {
 
 get_extension_cols_cached <- memoise::memoise(get_extension_cols)
 
-utils::globalVariables("where")
+utils::globalVariables(c("where", "givenname", "surname", "organization", "name", ":="))
 
 clean_extension_table <- function(df, extension) {
   cols <- get_extension_cols_cached(extension)
@@ -149,7 +149,7 @@ clean_extension_table <- function(df, extension) {
 
 #' Extract extension records from occurrence data with nested extension column.
 #'
-#' @usage unnest_extension(df, fields = "id")
+#' @usage unnest_extension(df, extension, fields = "id")
 #' @param df the occurrence dataframe.
 #' @param extension the extension type (e.g. `MeasurementOrFact`, `DNADerivedData`).
 #' @param fields columns from the occurrence dataframe to include.
