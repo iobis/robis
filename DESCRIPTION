@@ -1,7 +1,7 @@
 Package: robis
 Title: Ocean Biodiversity Information System (OBIS) Client
 Description: Client for the Ocean Biodiversity Information System (<https://obis.org>).
-Version: 2.11.2
+Version: 2.11.3
 Date: 2022-09-24
 Authors@R: c(
     person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut")),
@@ -33,7 +33,8 @@ Imports:
     xml2,
     glue,
     memoise,
-    stats
+    stats,
+    methods
 Collate:
     robis.R
     util.R

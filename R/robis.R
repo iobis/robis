@@ -13,6 +13,7 @@
 #' @importFrom rlang .data
 #' @importFrom curl has_internet
 #' @importFrom data.table as.data.table
+#' @importFrom methods is
 #' @author Pieter Provoost, \email{p.provoost@unesco.org}
 #' @author Samuel Bosch
 NULL

@@ -11,7 +11,7 @@ page_size <- function() {
 }
 
 handle_date <- function(date) {
-  if (!is.null(date) && class(date) == "Date") {
+  if (!is.null(date) && is(date, "Date")) {
     return(as.character(date))
   } else {
     return(date)
