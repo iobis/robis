@@ -2,7 +2,7 @@
 % Please edit documentation in R/occurrence.R
 \name{occurrence}
 \alias{occurrence}
-\title{Find occurrences.}
+\title{Find occurrence records}
 \usage{
 occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   nodeid = NULL, instituteid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
@@ -79,10 +79,16 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }
 \value{
-The occurrence records.
+The occurrence records in a \code{tibble} format. The number of columns will vary according to the number of information associated with the records.
+For more information about the type of data available with OBIS occurrences, see the \href{https://manual.obis.org/}{OBIS manual.}
 }
 \description{
-Find occurrences.
+Download occurrence records from OBIS. A set of filters can be used to delimit
+which data will be downloaded. Note that scientificname can be a species name or any other taxon name
+(e.g. a family name).
+}
+\note{
+When using a \code{geometry}, the function will fail if the geometry is too complex. One alternative is to use a bounding box or a simplified version of the geometry.
 }
 \examples{
 records <- occurrence(scientificname = "Abra sibogai")
