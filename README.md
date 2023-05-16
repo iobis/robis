@@ -46,7 +46,6 @@ Or you can create a `ggplot` map using:
 map_ggplot(records)
 ```
 
-[//]:map_ggplot(records)+coord_equal(xlim = c(100, 140), ylim = c(-10,20))+theme_bw()+labs(caption = expression(paste("Occurrence records for ",italic("Abra sibogai"))))+theme(text = element_text(size = 6));ggsave("man/figures/map.png", width = 5, height = 3)
 ![](man/figures/map.png)
 
 With the function `checklist` it's possible to obtain a checklist of all taxa in OBIS that met a certain filter. For example, here we obtain all species from the family "Tellinidae" 
