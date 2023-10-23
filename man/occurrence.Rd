@@ -77,6 +77,8 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{qcfields}{include lists of missing and invalid fields (default = \code{NULL}).}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
+
+\item{limit}{integer. Number of records to return. Default: All records.}
 }
 \value{
 The occurrence records.
