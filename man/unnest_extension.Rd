@@ -4,7 +4,7 @@
 \alias{unnest_extension}
 \title{Extract extension records from occurrence data with nested extension column.}
 \usage{
-unnest_extension(df, fields = "id")
+unnest_extension(df, extension, fields = "id")
 }
 \arguments{
 \item{df}{the occurrence dataframe.}

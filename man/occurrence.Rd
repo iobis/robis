@@ -89,5 +89,4 @@ Find occurrences.
 \examples{
 records <- occurrence(scientificname = "Abra sibogai")
 records <- occurrence(taxonid = 141438, startdate = as.Date("2007-10-10"))
-records <- occurrence(taxon = 141438, geometry = "POLYGON ((0 0, 0 45, 45 45, 45 0, 0 0))")
 }

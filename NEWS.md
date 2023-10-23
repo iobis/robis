@@ -1,3 +1,15 @@
+# robis 2.11.3
+
+Warnings and notes fixes.
+
+# robis 2.11.1
+
+Do not download extension definitions on package load.
+
+# robis 2.11.0
+
+Added `generate_citation()`.
+
 # robis 2.10.1
 
 Added contacts to `dataset()`.

@@ -11,7 +11,7 @@ page_size <- function() {
 }
 
 handle_date <- function(date) {
-  if (!is.null(date) && class(date) == "Date") {
+  if (!is.null(date) && is(date, "Date")) {
     return(as.character(date))
   } else {
     return(date)
@@ -121,15 +121,20 @@ fast_unnest <- function(dt, fields, column) {
   dt[, unlist(get(column), recursive = FALSE), by = mget(fields)]
 }
 
-extension_cols = list(
-  "DNADerivedData" = get_dwc_fields("https://rs.gbif.org/extension/gbif/1.0/dna_derived_data_2021-07-05.xml"),
-  "MeasurementOrFact" = get_dwc_fields("https://rs.gbif.org/extension/obis/extended_measurement_or_fact.xml")
-)
+get_extension_cols = function(extension) {
+  if (extension == "DNADerivedData") {
+    return(get_dwc_fields("https://rs.gbif.org/extension/gbif/1.0/dna_derived_data_2021-07-05.xml"))
+  } else if (extension == "MeasurementOrFact") {
+    return(get_dwc_fields("https://rs.gbif.org/extension/obis/extended_measurement_or_fact.xml"))
+  }
+}
 
-utils::globalVariables("where")
+get_extension_cols_cached <- memoise::memoise(get_extension_cols)
+
+utils::globalVariables(c("where", "givenname", "surname", "organization", "name", ":="))
 
 clean_extension_table <- function(df, extension) {
-  cols <- extension_cols[[extension]]
+  cols <- get_extension_cols_cached(extension)
   if (is.data.frame(df)) {
     df <- df %>%
       select(where(~!all(is.na(.x))))
@@ -144,7 +149,7 @@ clean_extension_table <- function(df, extension) {
 
 #' Extract extension records from occurrence data with nested extension column.
 #'
-#' @usage unnest_extension(df, fields = "id")
+#' @usage unnest_extension(df, extension, fields = "id")
 #' @param df the occurrence dataframe.
 #' @param extension the extension type (e.g. `MeasurementOrFact`, `DNADerivedData`).
 #' @param fields columns from the occurrence dataframe to include.
@@ -171,4 +176,30 @@ unnest_extension <- function(df, extension, fields = "id") {
       tibble()
     }
   }
+}
+
+#' Generate a citation from metadata elements.
+#'
+#' @usage generate_citation(title, published, url, contacts)
+#' @param title the dataset title.
+#' @param published the dataset published date.
+#' @param url the dataset url.
+#' @param contacts the dataset contacts as a dataframe.
+#' @return A citation string.
+#' @export
+generate_citation <- function(title, published, url, contacts) {
+  title <- gsub("\\.$", "", title)
+  published <- substr(published, 1, 10)
+  url <- url
+  names_list <- contacts %>%
+    select(givenname, surname, organization) %>%
+    distinct() %>%
+    arrange(surname) %>%
+    mutate(givenname = ifelse(!is.na(givenname), paste0(substr(givenname, 1, 1), "."), NA)) %>%
+    rowwise() %>%
+    mutate(name = ifelse(is.na(surname), organization, paste0(na.omit(c(surname, givenname)), collapse = ", "))) %>%
+    pull(name) %>%
+    paste0(collapse = ", ")
+  names_list <- gsub("\\.$", "", names_list)
+  glue("{names_list}. {title}. Published {published}. {url}.")
 }
