@@ -1,6 +1,7 @@
 Package: robis
 Title: Ocean Biodiversity Information System (OBIS) Client
 Description: Client for the Ocean Biodiversity Information System (<https://obis.org>).
+Encoding: UTF-8
 Version: 2.11.3
 Date: 2022-09-24
 Authors@R: c(
@@ -53,6 +54,6 @@ Suggests:
     knitr,
     rmarkdown,
     spelling
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 Language: en-US
