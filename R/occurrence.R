@@ -40,6 +40,7 @@
 #' @param fields fields to be included in the results.
 #' @param qcfields include lists of missing and invalid fields (default = \code{NULL}).
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
+#' @param limit integer. Number of records to return. Default: All records.
 #' @return The occurrence records.
 #' @examples
 #' records <- occurrence(scientificname = "Abra sibogai")
@@ -77,7 +78,8 @@ occurrence <- function(
   exclude = NULL,
   fields = NULL,
   qcfields = NULL,
-  verbose = FALSE
+  verbose = FALSE,
+  limit = NULL
 ) {
 
   after <- "-1"
@@ -124,20 +126,35 @@ occurrence <- function(
     http_request("GET", "metrics/logusage", c(query, list(agent = "robis")), verbose)
   }
 
-  total <- NA
+  # get total number of records
+  result <- http_request("GET", "occurrence", c(query, list(
+    after = after,
+    size = 0,
+    total = FALSE # needs to be set explicitly to not track counts for subsequent pages
+  )), verbose)
+
+  if(is.null(result)) return(invisible(NULL))
+
+  res <- fromJSON(content(result, "text", encoding = "UTF-8"), simplifyVector = TRUE)
+
+  total <- res$total
+
+  if(is.null(limit)) limit = total # download everything, back compatibility.
+
+  psize = min(limit, page_size()) # initialize page size.
 
   while (!last_page) {
 
     result <- http_request("GET", "occurrence", c(query, list(
       after = after,
-      size = page_size(),
+      size = psize,
       total = FALSE # needs to be set explicitely to not track counts for subsequent pages
     )), verbose)
-    if (is.null(result)) return(invisible(NULL))
+    # if (is.null(result)) return(invisible(NULL))
 
     text <- content(result, "text", encoding = "UTF-8")
     res <- fromJSON(text, simplifyVector = TRUE)
-    if (is.na(total)) total <- res$total
+    # if (is.na(total)) total <- res$total
     after <- res$results$id[nrow(res$results)]
 
     if (!is.null(res$results) && is.data.frame(res$results) && nrow(res$results) > 0) {
@@ -169,6 +186,8 @@ occurrence <- function(
 
       result_list[[i]] <- res$results
       fetched <- fetched + nrow(res$results)
+      psize = min(limit - fetched, page_size())
+      if(fetched >= limit) last_page <- TRUE
       log_progress(fetched, total)
       i <- i + 1
     } else {
