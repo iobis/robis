@@ -1,6 +1,5 @@
 # robis 2.11.3
-
-Warnings and notes fixes.
+* Added `keyword` parameter to `dataset()` function, enabling simple keyword search of dataset metadata via the `/dataset/search2` endpoint.
 
 # robis 2.11.1
 
