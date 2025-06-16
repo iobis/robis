@@ -203,3 +203,30 @@ generate_citation <- function(title, published, url, contacts) {
   names_list <- gsub("\\.$", "", names_list)
   glue("{names_list}. {title}. Published {published}. {url}.")
 }
+
+#' @keywords internal
+#validate keyword search logic for datasets
+validate_keyword <- function(keyword) {
+  if (!is.character(keyword) || length(keyword) != 1) {
+    stop("Keyword must be a single string.")
+  }
+
+  # Unbalanced quotes
+  if (stringr::str_count(keyword, '"') %% 2 != 0) {
+    warning("⚠️ Unbalanced double quotes detected in keyword string.")
+  }
+
+  # Discourage uppercase OR / AND / NOT if used literally
+  if (grepl("\\b(AND|OR|NOT)\\b", keyword)) {
+    warning("⚠️ Avoid using uppercase logical operators like AND/OR/NOT. Use symbolic forms instead: +, |, -.")
+  }
+
+  # Encourage quotes for phrases
+  if (grepl("\\b(coral reef|blue whale|deep sea)\\b", keyword) &&
+      !grepl('"[^"]*(coral reef|blue whale|deep sea)[^"]*"', keyword)) {
+    warning("💡 Consider quoting multi-word terms for exact matches, e.g., \"coral reef\".")
+  }
+
+
+  invisible(TRUE)
+}

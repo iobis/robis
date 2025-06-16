@@ -2,6 +2,7 @@
 % Please edit documentation in R/robis.R
 \docType{package}
 \name{robis}
+\alias{robis-package}
 \alias{robis}
 \title{R client for the OBIS API}
 \description{
@@ -9,6 +10,14 @@ This is an R client for the Ocean Biodiversity Information System (OBIS) API
 which is documented at \url{https://api.obis.org}.
 
 Code and issues for this package are managed at \url{https://github.com/iobis/robis}.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/iobis/robis}
+  \item Report bugs at \url{https://github.com/iobis/robis/issues}
+}
+
 }
 \author{
 Pieter Provoost, \email{p.provoost@unesco.org}
