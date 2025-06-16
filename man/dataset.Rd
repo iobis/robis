@@ -8,7 +8,7 @@ dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   nodeid = NULL, instituteid = NULL, areaid = NULL, startdate = NULL,
   enddate = NULL, startdepth = NULL, enddepth = NULL, geometry = NULL,
   redlist = NULL, hab = NULL, wrims = NULL, hasextensions = NULL,
-  exclude = NULL, verbose = FALSE)
+  exclude = NULL, keyword = NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}
@@ -39,20 +39,39 @@ dataset(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 
 \item{wrims}{include only WRiMS species.}
 
-\item{hasextensions}{which extensions need to be present (e.g. MeasurementOrFact, DNADerivedData, default = \code{NULL}).}
+\item{hasextensions}{which extensions need to be present (e.g. MeasurementOrFact, DNADerivedData).}
 
 \item{exclude}{quality flags to be excluded from the results.}
+
+\item{keyword}{Keyword(s) to search for in dataset metadata. When \code{keyword} is used, no other filter parameters may be specified.
+
+The search uses \href{https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html}{Elasticsearch \code{simple_query_string} syntax}.
+The following symbolic operators are supported:
+\itemize{
+\item \code{+}: Equivalent to AND, requiring all terms. Any whitespace is also an implicit AND.
+For example, \code{coral+reef} is equivalent to \code{coral reef}.
+\item Quotes (\code{"..."}): Used for exact phrase matching. For example, \code{"coral reef"} is stricter than the unquoted version.
+\item \code{|}: Equivalent to OR. Returns records where any listed term is present.
+\item \code{-}: Equivalent to NOT. Excludes records containing the specified term.
+\item \code{*}: Wildcard matching is supported \strong{only at the end of a word}.
+For example, \code{star*} matches "starfish" and \code{sea*} matches "seastar".
+However, \code{*star*} returns no results, and leading wildcards like \code{*star} may appear to work
+in some cases but should not be relied upon.
+\item Grouping with parentheses: \code{(coral | kelp) -fish} returns results that include coral OR kelp, but NOT fish.
+Removing the parentheses would change the meaning — it would return results that include coral,
+or kelp only when fish is also present (i.e., \code{coral OR (kelp -fish)}).
+}}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }
 \value{
-The datasets.
+A tibble of matching datasets.
 }
 \description{
 Create a list of datasets.
 }
 \examples{
-datasets <- dataset(scientificname = "Tellinidae")
-datasets <- dataset(geometry = "POLYGON ((2.3 51.8, 2.3 51.6, 2.6 51.6, 2.6 51.8, 2.3 51.8))")
-datasets <- dataset(areaid = 10181)
+dataset(scientificname = "Tellinidae")
+dataset(areaid = 10181)
+dataset(keyword = '(coral | kelp) -fish')
 }
