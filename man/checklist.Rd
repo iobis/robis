@@ -2,7 +2,7 @@
 % Please edit documentation in R/checklist.R
 \name{checklist}
 \alias{checklist}
-\title{Create a checklist.}
+\title{Create a checklist}
 \usage{
 checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   nodeid = NULL, instituteid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
@@ -48,10 +48,14 @@ checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }
 \value{
-The checklist.
+A checklist (\code{tibble}), with the records that met the filter.
 }
 \description{
-Create a checklist.
+This function returns all taxa observed for a given set of filters. Users can,
+for example, return all taxa from a particular Phylum or from a certain geographic region.
+}
+\note{
+When using a \code{geometry}, the function will fail if the geometry is too complex. One alternative is to use a bounding box or a simplified version of the geometry.
 }
 \examples{
 taxa <- checklist(scientificname = "Tellinidae")

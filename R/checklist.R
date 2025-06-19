@@ -1,4 +1,9 @@
-#' Create a checklist.
+#' Create a checklist
+#'
+#' @description
+#' This function returns all taxa observed for a given set of filters. Users can,
+#' for example, return all taxa from a particular Phylum or from a certain geographic region.
+#'
 #'
 #' @usage checklist(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, instituteid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
@@ -23,7 +28,9 @@
 #' @param flags quality flags which need to be set.
 #' @param exclude quality flags to be excluded from the results.
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
-#' @return The checklist.
+#' @return A checklist (\code{tibble}), with the records that met the filter.
+#' @note
+#' When using a \code{geometry}, the function will fail if the geometry is too complex. One alternative is to use a bounding box or a simplified version of the geometry.
 #' @examples
 #' taxa <- checklist(scientificname = "Tellinidae")
 #' taxa <- checklist(geometry = "POLYGON ((2.3 51.8, 2.3 51.6, 2.6 51.6, 2.6 51.8, 2.3 51.8))")
