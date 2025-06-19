@@ -1,4 +1,10 @@
-#' Find occurrences.
+#' Find occurrence records
+#'
+#' @description
+#' Download occurrence records from OBIS. A set of filters can be used to delimit
+#' which data will be downloaded. Note that scientificname can be a species name or any other taxon name
+#' (e.g. a family name).
+#'
 #'
 #' @usage occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 #'   nodeid = NULL, instituteid = NULL, areaid = NULL, startdate = NULL, enddate = NULL,
@@ -40,7 +46,11 @@
 #' @param fields fields to be included in the results.
 #' @param qcfields include lists of missing and invalid fields (default = \code{NULL}).
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
-#' @return The occurrence records.
+#' @return The occurrence records in a \code{tibble} format. The number of columns will vary according to the number of information associated with the records.
+#' For more information about the type of data available with OBIS occurrences, see the \href{https://manual.obis.org/}{OBIS manual.}
+#'
+#' @note
+#' When using a \code{geometry}, the function will fail if the geometry is too complex. One alternative is to use a bounding box or a simplified version of the geometry.
 #' @examples
 #' records <- occurrence(scientificname = "Abra sibogai")
 #' records <- occurrence(taxonid = 141438, startdate = as.Date("2007-10-10"))
