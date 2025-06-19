@@ -1,13 +1,12 @@
 Package: robis
 Title: Ocean Biodiversity Information System (OBIS) Client
 Description: Client for the Ocean Biodiversity Information System (<https://obis.org>).
-Encoding: UTF-8
 Version: 2.11.3
-Date: 2022-09-24
 Authors@R: c(
-    person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut")),
-    person("Samuel", "Bosch", , "mail@samuelbosch.com", role = "aut"),
-    person("Ward", "Appeltans", role = "ctb"),
+    person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut"), comment = c(ORCID = "0000-0002-4236-0384")),
+    person("Samuel", "Bosch", , "mail@samuelbosch.com", role = "aut", comment = c(ORCID = "0000-0002-2514-0283")),
+    person("Ward", "Appeltans", role = "ctb", comment = c(ORCID = "0000-0002-3237-4547")),
+    person("Stephen", "Formel", role = "ctb", comment = c(ORCID = "0000-0001-7418-1244")),
     person(, "OBIS", , "helpdesk@obis.org", role = "cph")
   )
 URL: https://github.com/iobis/robis
@@ -36,24 +35,14 @@ Imports:
     memoise,
     stats,
     methods
-Collate:
-    robis.R
-    util.R
-    area.R
-    checklist.R
-    dataset.R
-    dna.R
-    map.R
-    mof.R
-    node.R
-    occurrence.R
-    taxon.R    
 License: MIT + file LICENSE
 Suggests:
     testthat,
     knitr,
     rmarkdown,
     spelling
-RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Language: en-US
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2

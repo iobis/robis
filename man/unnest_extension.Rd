@@ -9,7 +9,7 @@ unnest_extension(df, extension, fields = "id")
 \arguments{
 \item{df}{the occurrence dataframe.}
 
-\item{extension}{the extension type (e.g. `MeasurementOrFact`, `DNADerivedData`).}
+\item{extension}{the extension type (e.g. \code{MeasurementOrFact}, \code{DNADerivedData}).}
 
 \item{fields}{columns from the occurrence dataframe to include.}
 }
