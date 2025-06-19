@@ -69,7 +69,7 @@ There are a variety of ways to add a spatial filter to your query:
 
 > If you're unsure how to construct WKT, `robis` includes the function `get_geometry`, which provides an interactive tool to draw shapes and return WKT than can be plugged into queries.
 
-> To use it, run: `wkt <- get_geometry()`. This will open up the tool in the Viewer of RStudio. You can zoom, pan, and use the shapes to draw on the map. If you are satisfied, click the 'Done' button in the bottom right hand corner, and it will assign the WKT to the object `wkt`. If you aren't happy with what you've drawn, you can click the trashcan icon to clear the shape from the tool.
+> To use it, run: `wkt <- get_geometry()`. This will open up the tool in the Viewer of RStudio. You can zoom, pan, and use the shapes to draw on the map. Once you are satisfied with what you've drawn, click the 'Done' button in the bottom right hand corner, and it will assign the WKT to the object `wkt`. If you aren't happy with what you've drawn, you can click the trashcan icon to clear the shape from the tool.
 
 ## How to use OBIS data
 
