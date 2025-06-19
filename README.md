@@ -59,15 +59,17 @@ There are a variety of ways to add a spatial filter to your query:
 
 1. Filter by geography using `areaid` filters.
 
-> OBIS provides polygon filters for about 800 areas of interest, like [the Southern Ocean](https://mapper.obis.org/?areaid=31907) or the [Bay of Bengal](https://mapper.obis.org/?areaid=34273). These can be viewed via the `area()` function and the corresponding `id`s can be used in the `areaid` parameter of the `occurrence()` and `ckecklist)_` functions.
+> OBIS provides polygon filters for about 800 areas of interest, like [the Southern Ocean](https://mapper.obis.org/?areaid=31907) or the [Bay of Bengal](https://mapper.obis.org/?areaid=34273). These can be viewed via the `area` function. The corresponding `id` values can be used in the `areaid` parameter of the `occurrence` and `checklist` functions.
 
 2. Filter with Well-Known Text (WKT) strings.
 
-> Both the `occurrence()` and `checklist()` functions allow spatial filtering with [Well-Known Text (WK)]Thttps://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry strings, via the `geometry` parameter. Following this [example from the OBIS Manual](https://manual.obis.org/access.html#r-package), obtain a checklist of Mollusc species in a certain area:`mollcheck<-checklist(scientificname="Mollusca", geometry = "POLYGON ((2.3 51.8, 2.3 51.6, 2.6 51.6, 2.6 51.8, 2.3 51.8))")`
+> Both the `occurrence` and `checklist` functions allow spatial filtering with [Well-Known Text (WK)](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) strings, via the `geometry` parameter. Following this [example from the OBIS Manual](https://manual.obis.org/access.html#r-package), here is an example of how to obtain a checklist of Mollusc species in a certain area:
+>
+> `mollcheck<-checklist(scientificname="Mollusca", geometry = "POLYGON ((2.3 51.8, 2.3 51.6, 2.6 51.6, 2.6 51.8, 2.3 51.8))")`
 
-If you're unsure how to construct WKT, `robis` includes the function `get_geometry`, which provides an interactive tool to draw shapes and return WKT than can be plugged into queries.
+> If you're unsure how to construct WKT, `robis` includes the function `get_geometry`, which provides an interactive tool to draw shapes and return WKT than can be plugged into queries.
 
-To use it, run: `wkt <- get_geometry()`. This will open up the tool in the Viewer of RStudio. You can zoom, pan, and use the shapes to draw on the map. If you are satisfied, click the 'Done' button in the bottom right hand corner, and it will assign the WKT to the object `wkt`. If you aren't happy with what you've drawn, you can click the trashcan icon to clear the shape from the tool.
+> To use it, run: `wkt <- get_geometry()`. This will open up the tool in the Viewer of RStudio. You can zoom, pan, and use the shapes to draw on the map. If you are satisfied, click the 'Done' button in the bottom right hand corner, and it will assign the WKT to the object `wkt`. If you aren't happy with what you've drawn, you can click the trashcan icon to clear the shape from the tool.
 
 ## How to use OBIS data
 
