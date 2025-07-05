@@ -11,7 +11,7 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
   redlist = NULL, hab = NULL, wrims = NULL, extensions = NULL, hasextensions = NULL,
   mof = NULL, dna = NULL, absence = NULL, event = NULL, dropped = NULL,
-  flags = NULL, exclude = NULL, fields = NULL, qcfields = NULL, verbose = FALSE)
+  flags = NULL, exclude = NULL, fields = NULL, qcfields = NULL, q=NULL, verbose = FALSE)
 }
 \arguments{
 \item{scientificname}{the scientific name.}
@@ -75,6 +75,8 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 \item{fields}{fields to be included in the results.}
 
 \item{qcfields}{include lists of missing and invalid fields (default = \code{NULL}).}
+
+\item{q}{text search (experimental).}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }

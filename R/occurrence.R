@@ -13,7 +13,7 @@
 #'   measurementvalueid = NULL, measurementunit = NULL, measurementunitid = NULL,
 #'   redlist = NULL, hab = NULL, wrims = NULL, extensions = NULL, hasextensions = NULL,
 #'   mof = NULL, dna = NULL, absence = NULL, event = NULL, dropped = NULL,
-#'   flags = NULL, exclude = NULL, fields = NULL, qcfields = NULL, verbose = FALSE)
+#'   flags = NULL, exclude = NULL, fields = NULL, qcfields = NULL, q=NULL, verbose = FALSE)
 #' @param scientificname the scientific name.
 #' @param taxonid the taxon identifier (WoRMS AphiaID).
 #' @param datasetid the dataset identifier.
@@ -45,6 +45,7 @@
 #' @param exclude quality flags to be excluded from the results.
 #' @param fields fields to be included in the results.
 #' @param qcfields include lists of missing and invalid fields (default = \code{NULL}).
+#' @param q text search (experimental).
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return The occurrence records in a \code{tibble} format. The number of columns will vary according to the number of information associated with the records.
 #' For more information about the type of data available with OBIS occurrences, see the \href{https://manual.obis.org/}{OBIS manual.}
@@ -87,6 +88,7 @@ occurrence <- function(
   exclude = NULL,
   fields = NULL,
   qcfields = NULL,
+  q = NULL,
   verbose = FALSE
 ) {
 
@@ -127,7 +129,8 @@ occurrence <- function(
     flags = handle_vector(flags),
     exclude = handle_vector(exclude),
     fields = handle_fields(fields),
-    qcfields = handle_logical(qcfields)
+    qcfields = handle_logical(qcfields),
+    q = q
   )
 
   if (getOption("robis_log_usage", TRUE)) {
