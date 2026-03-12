@@ -227,6 +227,10 @@ validate_keyword <- function(keyword) {
     warning("💡 Consider quoting multi-word terms for exact matches, e.g., \"coral reef\".")
   }
 
+  # Discourage double-sided wildcards
+  if (grepl("\\*.+\\*", keyword)) {
+    warning("⚠️ Double-sided wildcards detected.")
+  }
 
   invisible(TRUE)
 }
