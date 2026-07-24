@@ -76,7 +76,7 @@ occurrence(scientificname = NULL, taxonid = NULL, datasetid = NULL,
 
 \item{qcfields}{include lists of missing and invalid fields (default = \code{NULL}).}
 
-\item{q}{text search (experimental).}
+\item{q}{text search query.}
 
 \item{verbose}{logical. Optional parameter to enable verbose logging (default = \code{FALSE}).}
 }

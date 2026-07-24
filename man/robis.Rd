@@ -25,6 +25,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Pieter Provoost \email{pieterprovoost@gmail.com} (\href{https://orcid.org/0000-0002-4236-0384}{ORCID})
   \item Samuel Bosch \email{mail@samuelbosch.com} (\href{https://orcid.org/0000-0002-2514-0283}{ORCID})
 }
 

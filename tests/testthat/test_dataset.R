@@ -19,7 +19,7 @@ test_that("Keyword-only search returns results", {
 })
 
 test_that("Keyword with logical syntax works", {
-  res <- dataset(keyword = '"Gulf of Mexico" OR sponge -juvenile')
+  res <- dataset(keyword = '"Gulf of Mexico" | sponge -juvenile')
   expect_s3_class(res, "tbl_df")
 })
 

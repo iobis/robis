@@ -213,20 +213,24 @@ validate_keyword <- function(keyword) {
 
   # Unbalanced quotes
   if (stringr::str_count(keyword, '"') %% 2 != 0) {
-    warning("⚠️ Unbalanced double quotes detected in keyword string.")
+    warning("Unbalanced double quotes detected in keyword string.")
   }
 
   # Discourage uppercase OR / AND / NOT if used literally
   if (grepl("\\b(AND|OR|NOT)\\b", keyword)) {
-    warning("⚠️ Avoid using uppercase logical operators like AND/OR/NOT. Use symbolic forms instead: +, |, -.")
+    warning("Avoid using uppercase logical operators like AND/OR/NOT. Use symbolic forms instead: +, |, -.")
+  }
+
+  # Double-sided wildcards are unsupported
+  if (grepl("\\*[^*]+\\*", keyword)) {
+    warning("Double-sided wildcards (e.g. *star*) are not supported.")
   }
 
   # Encourage quotes for phrases
   if (grepl("\\b(coral reef|blue whale|deep sea)\\b", keyword) &&
       !grepl('"[^"]*(coral reef|blue whale|deep sea)[^"]*"', keyword)) {
-    warning("💡 Consider quoting multi-word terms for exact matches, e.g., \"coral reef\".")
+    warning("Consider quoting multi-word terms for exact matches, e.g., \"coral reef\".")
   }
-
 
   invisible(TRUE)
 }

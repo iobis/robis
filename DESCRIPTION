@@ -1,7 +1,7 @@
 Package: robis
 Title: Ocean Biodiversity Information System (OBIS) Client
 Description: Client for the Ocean Biodiversity Information System (<https://obis.org>).
-Version: 2.11.3
+Version: 2.12.0
 Authors@R: c(
     person("Pieter", "Provoost", , "pieterprovoost@gmail.com", c("cre", "aut"), comment = c(ORCID = "0000-0002-4236-0384")),
     person("Samuel", "Bosch", , "mail@samuelbosch.com", role = "aut", comment = c(ORCID = "0000-0002-2514-0283")),
@@ -45,4 +45,5 @@ VignetteBuilder: knitr
 Language: en-US
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 8.0.0
+Config/roxygen2/version: 8.0.0

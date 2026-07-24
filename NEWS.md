@@ -1,11 +1,12 @@
-* Added `keyword` parameter to `dataset()` function, enabling simple keyword search of dataset metadata via the `/dataset/search` endpoint.
+# robis 2.12.0
+
+* Added a startup message pointing to https://obis.org/data/access/ for large downloads.
+* Added `keyword` parameter to `dataset()` for keyword search of dataset metadata via the `/dataset/search2` endpoint.
+* Added `q` parameter to `occurrence()` for text search.
 
 # robis 2.11.3
 
 Warnings and notes fixes.
-
-# robis 2.11.3
-* Added `keyword` parameter to `dataset()` function, enabling simple keyword search of dataset metadata via the `/dataset/search2` endpoint.
 
 # robis 2.11.1
 
