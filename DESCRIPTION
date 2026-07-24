@@ -20,7 +20,6 @@ Imports:
     leaflet,
     ggplot2,
     tidyr,
-    httpcache,
     tibble,
     mapedit,
     sf,
@@ -40,7 +39,8 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    spelling
+    spelling,
+    httpcache
 VignetteBuilder: knitr
 Language: en-US
 Encoding: UTF-8

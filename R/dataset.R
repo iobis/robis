@@ -24,7 +24,7 @@
 #' @param keyword Keyword(s) to search for in dataset metadata using
 #' @param keyword Keyword(s) to search for in dataset metadata. When \code{keyword} is used, no other filter parameters may be specified.
 #'
-#'   The search uses \href{https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html}{Elasticsearch \code{simple_query_string} syntax}.
+#'   The search uses \href{https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-simple-query-string-query}{Elasticsearch \code{simple_query_string} syntax}.
 #'   The following symbolic operators are supported:
 #'   \itemize{
 #'     \item \code{+}: Equivalent to AND, requiring all terms. Any whitespace is also an implicit AND.

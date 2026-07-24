@@ -73,7 +73,7 @@ There are a variety of ways to add a spatial filter to your query:
 
 ## How to use OBIS data
 
-OBIS holds a large collection of biodiversity information, with more than 100 million presence records and almost 200 measurements and facts. This information is powering research in areas like taxonomy, phylogeny and ecology, and is being used as an important tool in conservation and management. You can learn more about OBIS with the [OBIS manual](https://manual.obis.org/). You can also explore some of our [use cases](https://obis.org/usecases/) or the many [publications](https://obis.org/library/) that applied OBIS data.
+OBIS holds a large collection of biodiversity information, with more than 100 million presence records and almost 200 measurements and facts. This information is powering research in areas like taxonomy, phylogeny and ecology, and is being used as an important tool in conservation and management. You can learn more about OBIS with the [OBIS manual](https://manual.obis.org/). You can also explore some of our [use cases](https://obis.org/usecases/) or the many [publications](https://obis.org/resources/publications/) that applied OBIS data.
 
 ## obistools package
 

@@ -5,6 +5,7 @@
 #' @importFrom data.table as.data.table
 #' @importFrom methods is
 #' @importFrom memoise memoise
+#' @importFrom purrr map
 #'
 #' @author Pieter Provoost, \email{p.provoost@unesco.org}
 #' @author Samuel Bosch

@@ -3,6 +3,7 @@
 * Added a startup message pointing to https://obis.org/data/access/ for large downloads.
 * Added `keyword` parameter to `dataset()` for keyword search of dataset metadata via the `/dataset/search2` endpoint.
 * Added `q` parameter to `occurrence()` for text search.
+* Moved `httpcache` from Imports to Suggests (only needed when request caching is enabled).
 
 # robis 2.11.3
 

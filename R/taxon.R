@@ -15,7 +15,7 @@ taxon <- function(
     taxonid <- str_trim(strsplit(taxonid, ",")[[1]])
   }
   ids <- split(taxonid, ceiling(seq_along(taxonid) / 100))
-  results <- purrr::map(ids, function(ids) {
+  results <- map(ids, function(ids) {
     ids <- handle_vector(ids)
     result <- http_request("GET", paste0("taxon/", ids), list(), verbose)
     if (is.null(result)) return(invisible(NULL))

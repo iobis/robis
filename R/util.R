@@ -56,6 +56,10 @@ http_request <- function(method, path, query, verbose=FALSE) {
     return(invisible(NULL))
   }
   if (use_cache()) {
+    if (!requireNamespace("httpcache", quietly = TRUE)) {
+      message("Error: Package 'httpcache' is required when caching is enabled. Install it with install.packages(\"httpcache\").")
+      return(invisible(NULL))
+    }
     get <- httpcache::GET
     post <- httpcache::POST
   } else {
@@ -129,7 +133,7 @@ get_extension_cols = function(extension) {
   }
 }
 
-get_extension_cols_cached <- memoise::memoise(get_extension_cols)
+get_extension_cols_cached <- memoise(get_extension_cols)
 
 utils::globalVariables(c("where", "givenname", "surname", "organization", "name", ":="))
 
