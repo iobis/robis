@@ -21,7 +21,6 @@
 #' @param wrims include only WRiMS species.
 #' @param hasextensions which extensions need to be present (e.g. MeasurementOrFact, DNADerivedData).
 #' @param exclude quality flags to be excluded from the results.
-#' @param keyword Keyword(s) to search for in dataset metadata using
 #' @param keyword Keyword(s) to search for in dataset metadata. When \code{keyword} is used, no other filter parameters may be specified.
 #'
 #'   The search uses \href{https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-simple-query-string-query}{Elasticsearch \code{simple_query_string} syntax}.
@@ -45,9 +44,11 @@
 #' @param verbose logical. Optional parameter to enable verbose logging (default = \code{FALSE}).
 #' @return A tibble of matching datasets.
 #' @examples
+#' \dontrun{
 #' dataset(scientificname = "Tellinidae")
 #' dataset(areaid = 10181)
 #' dataset(keyword = '(coral | kelp) -fish')
+#' }
 #' @export
 dataset <- function(
     scientificname = NULL,

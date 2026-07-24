@@ -71,7 +71,9 @@ A tibble of matching datasets.
 Create a list of datasets.
 }
 \examples{
+\dontrun{
 dataset(scientificname = "Tellinidae")
 dataset(areaid = 10181)
 dataset(keyword = '(coral | kelp) -fish')
+}
 }
