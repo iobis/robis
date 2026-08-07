@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: If you use this work, please cite it as below.
+title: R OBIS client
+type: software
+abstract: R client for the OBIS API
+url: https://github.com/iobis/robis
+license: MIT
+authors:
+  - given-names: Pieter
+    family-names: Provoost
+    orcid: "https://orcid.org/0000-0002-4236-0384"
+  - given-names: Samuel
+    family-names: Bosch
+  - given-names: Stephen
+    family-names: Formel
+    orcid: "https://orcid.org/0000-0001-7418-1244"
+  - family-names: silasprincipe
+    orcid: "https://orcid.org/0000-0002-8059-6304"
+  - given-names: Ben
+    family-names: Best
+    orcid: "https://orcid.org/0000-0002-2686-0784"
+  - family-names: sformel
+  - family-names: Samuel
+  - family-names: Samuel
+  - family-names: ironholds
+  - name: Intergovernmental Oceanographic Commission of UNESCO
+    alias: IOC-UNESCO
+    website: "https://obis.org"
+date-released: 2025-09-03
