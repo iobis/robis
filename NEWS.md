@@ -1,3 +1,8 @@
+# robis 2.12.1
+
+* Added Ben Best and Silas Principe as contributors.
+* Added Zenodo metadata (`.zenodo.json`). No code changes.
+
 # robis 2.12.0
 
 * Added a startup message pointing to https://obis.org/data/access/ for large downloads.

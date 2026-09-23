@@ -1,0 +1,75 @@
+{
+  "title": "robis: Ocean Biodiversity Information System (OBIS) Client",
+  "upload_type": "software",
+  "description": "<p>robis is an R package for accessing data from the Ocean Biodiversity Information System (OBIS) directly from R. OBIS is a global open-access data and information clearing-house on marine biodiversity for science, conservation and sustainable development.</p><p>With robis, users can download species occurrence data from OBIS, create checklists of taxa that meet a set of filters, download measurements and facts associated with occurrences, and create maps of occurrences, including interactive leaflet maps.</p><p>robis is available from <a href=\"https://CRAN.R-project.org/package=robis\">CRAN</a>, with documentation at <a href=\"https://iobis.github.io/robis/\">iobis.github.io/robis</a>. This archive contains the package source code from <a href=\"https://github.com/iobis/robis\">github.com/iobis/robis</a>.</p>",
+  "creators": [
+    {
+      "name": "Provoost, Pieter",
+      "orcid": "0000-0002-4236-0384",
+      "affiliation": "International Oceanographic Data and Information Exchange (IODE), IOC-UNESCO"
+    },
+    {
+      "name": "Bosch, Samuel",
+      "orcid": "0000-0002-2514-0283"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Appeltans, Ward",
+      "orcid": "0000-0002-3237-4547",
+      "affiliation": "International Oceanographic Data and Information Exchange (IODE), IOC-UNESCO",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Best, Ben",
+      "orcid": "0000-0002-2686-0784",
+      "affiliation": "EcoQuants",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Formel, Stephen",
+      "orcid": "0000-0001-7418-1244",
+      "affiliation": "The Data Patch",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Principe, Silas",
+      "orcid": "0000-0002-8059-6304",
+      "affiliation": "International Oceanographic Data and Information Exchange (IODE), IOC-UNESCO",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Ocean Biodiversity Information System",
+      "type": "RightsHolder"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "R",
+    "R package",
+    "OBIS",
+    "Ocean Biodiversity Information System",
+    "marine biodiversity",
+    "species occurrence",
+    "biodiversity data",
+    "API client",
+    "Darwin Core"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/iobis/robis",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://CRAN.R-project.org/package=robis",
+      "relation": "isVariantFormOf",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://iobis.github.io/robis/",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    }
+  ]
+}
